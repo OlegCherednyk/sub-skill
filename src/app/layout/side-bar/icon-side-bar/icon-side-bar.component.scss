@@ -1,0 +1,35 @@
+@import '../../../shared/style/_colors.scss';
+
+.icon-with-text {
+  display: flex;
+  justify-content: center;
+  transition: 0.5s;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+    background-color: $common_text_color;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+
+  span {
+    padding-left: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  
+}
+
+.icon-with-text:active .icon {
+  background-color: $normal_green_button;
+}
+
+.icon-with-text:active span {
+  color: $normal_green_button;
+}

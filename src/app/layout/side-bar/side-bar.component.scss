@@ -1,0 +1,117 @@
+@import '../../shared/style/colors';
+@import '../../shared/style/fonts';
+
+aside {
+  height: 100vh;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: fixed;
+  padding: 24px;
+  background-color: white;
+  color: $common_text_color;
+  font-family: $primary_font_family;
+
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+
+    gap: 40px;
+    height: 100%;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      height: 100%;
+      width: 100%;
+      
+
+      li {
+        display: flex;
+        align-items: center;
+        list-style: none;
+
+        span {
+          padding-left: 8px;
+          font-size: 14px;
+          font-weight: 500;
+          line-height: 21px;
+          letter-spacing: 0em;
+          text-align: left;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+
+  .languages {
+    display: flex;
+    cursor: pointer;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+
+    .flex-column {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+
+      .flex-row {
+        display: flex;
+        background-color: $hover_small_green_button;
+        padding: 8px 12px;
+        border-radius: 10px;
+        width: 100%;
+        justify-content: space-between;
+        transition: 0.5s;
+        
+
+        .arrow {
+          width: 24px;
+          height: 24px;
+          mask: url(../../../assets/icons/angle-down.svg);
+          background-color: $common_text_color;
+        }
+      }
+
+      span {
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 150%;
+      }
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        position: absolute;
+        bottom: 42px;
+        width: 100%;
+        transition: 0.5s;
+        
+
+        li {
+          background-color: $background_color;
+          font-size: 12px;
+          padding: 8px 12px;
+          width: 100%;
+        }
+
+        :last-child {
+            border-radius: 0px 0px 10px 10px;
+            
+        }
+        :first-child {
+            border-radius: 10px 10px 0px 0px;
+        }
+      }
+    }
+  }
+}

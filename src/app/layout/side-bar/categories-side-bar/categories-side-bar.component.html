@@ -1,0 +1,16 @@
+<div class="categories">
+    <icon-side-bar [icon]="categoryIcon"></icon-side-bar>
+    <ul>
+        <li *ngFor="let category of categories | keyvalue">
+            <span 
+            (click)="changeCategoryValue(category.key)"
+            [ngStyle]="categorySelected(category.key)"
+            >
+            {{ category.key }}
+            </span>
+        </li>
+
+    </ul>
+</div>
+
+

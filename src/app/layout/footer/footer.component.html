@@ -1,0 +1,115 @@
+<section>
+  <div class="column">
+    <h4>Main</h4>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="">About SubSkills</a>
+        </li>
+        <li>
+          <a href="">Help Center</a>
+        </li>
+        <li>
+          <a href="">Our Courses</a>
+        </li>
+        <li>
+          <a href="">Job Board</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="column">
+    <h4>Smth</h4>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="">Delivery services</a>
+        </li>
+        <li>
+          <a href="">Payment</a>
+        </li>
+        <li>
+          <a href="">Services</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="column">
+    <h4>Contact us</h4>
+
+    <nav>
+      <ul>
+        <li>
+          <a href="mailto:info@subskills.com">info@subskills.com</a>
+        </li>
+        <li>
+          <a href="tel:380990000000">+380 99 000 00 00</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="column">
+    <h4>SubSkills social</h4>
+
+    <nav class="social">
+      <ul>
+        <li *ngFor="let icon of icons | keyvalue">
+          <social-button [icon]="icon.value"></social-button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="column">
+    <h4>Payment Methods</h4>
+
+    <nav class="payment">
+      <ul>
+        <li class="visa">
+          <a href="">
+            <img src="assets/images/payment/visa.png" alt="VISA">
+          </a>
+        </li>
+
+        <li class="mastercard">
+          <a href="">
+            <img src="assets/images/payment/mastercard.png" alt="MasterCard">
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</section>
+
+<subscribe-form></subscribe-form>
+
+<section class="legal">
+  <div class="column">
+    <ul>
+      <li>
+        <a href="">Terms & Conditions</a>
+      </li>
+      <li>
+        <a href="">Privacy Notice</a>
+      </li>
+      <li>
+        <a href="">Cookie Notice</a>
+      </li>
+    </ul>
+
+    <p>
+      All materials are posted on behalf of organizations and specialists registered on Subskills. The Subskills team does not always share the opinions of the authors of the materials. If you find any material offensive or in violation of societal norms, please write to us at<br>
+      <a>info@subskills.com</a>
+    </p>
+  </div>
+
+  <div class="column">
+    <p>Ukraine</p>
+    <p>SubSkills © 2024</p>
+  </div>
+</section>

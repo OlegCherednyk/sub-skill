@@ -1,0 +1,26 @@
+@import '../../../../shared/style/colors';
+
+%flex-display {
+    display: flex;
+}
+.star-rating {
+    @extend %flex-display;
+    font-size: 16px;
+}
+.back-stars {
+    @extend %flex-display; 
+    gap: 5px;
+    color: $star_yellow;
+    position: relative;
+}
+
+.front-stars {
+    @extend %flex-display;
+    color: $star_yellow;
+    gap: 5px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    transition: all .5s
+}
+

@@ -1,0 +1,22 @@
+@import "src/app/shared/style/_colors.scss";
+
+.cart{
+    display: flex;
+justify-content: center;
+align-items: center;
+background-color: $background_white;
+height: 40px;
+border: none;
+border-radius: 8px;
+padding: 16px;
+gap: 16px;
+color: $common_text_color;
+font-size: 16px;
+font-weight: 700;
+transition: background-color 0.3s ease; 
+
+&:hover{
+    background-color: $background_search;
+    cursor: pointer;
+}
+}

@@ -1,0 +1,121 @@
+@import '../../../shared/style/colors';
+@import '../../../shared/style/fonts';
+
+
+.cart {
+    border-radius: 20px;
+    display: flex;
+    height: 412px;
+    width: 272px;
+    flex-direction: column;
+    background-color: #FFF;
+    font-family: $primary_font_family;
+
+    &__img {
+        width: 272px;
+        height: 194px;
+        border-radius: 20px 20px 0px 0px;
+        background: url("../../../../assets/images/test-cart-img.jpeg") center/cover no-repeat;
+    }
+
+    &__detailed-info {
+        display: flex;
+        flex-direction: column;
+        height: 218px;
+        justify-content: space-between;
+        padding: 16px;
+        
+
+        &__rating {
+            display: flex;
+            justify-content: space-between;
+
+            &__star-rating {
+                width: 50%;
+            }
+
+            &__reviews {
+                display: inline-block;
+                cursor: pointer;
+                font-size: 12px;
+                line-height: 18px;
+                font-weight: 600;
+                color: $gray_text;
+                
+            }
+        }
+
+        &__title-description {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            &__title {
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 30px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: $common_text_color;
+            }
+
+            &__description {
+                font-size: 12px;
+                font-weight: 400;
+                line-height: 18px;
+                letter-spacing: 0em;
+                text-align: left;
+                color: $gray_text;
+                
+                display: -webkit-box; 
+                -webkit-box-orient: vertical; 
+                -webkit-line-clamp: 2; 
+                overflow: hidden; 
+                text-overflow: ellipsis; 
+            }
+        }
+
+        &__buy {
+            display: flex;
+            // margin-top: auto;
+            align-items: center;
+            justify-content: space-between;
+
+            &__time {
+                display: flex;
+                gap: 8px;
+
+                &__value {
+                    font-size: 16px;
+                    font-weight: 700;
+                    line-height: 24px;
+                    letter-spacing: 0em;
+                    text-align: left;
+                    color: $gray_text;
+                }
+
+                i {
+                    font-size: 20px;
+                    color: $normal_green_button;
+                }
+            }
+
+            &__icon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 50%;
+                cursor: pointer;
+                height: 44px;
+                aspect-ratio: 1/1;
+                background-color: $hover_small_green_button;
+
+                i {
+                    font-size: 20px;
+                    color: $normal_green_button;
+                }
+            }
+        }
+    }
+
+}

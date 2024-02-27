@@ -1,0 +1,67 @@
+@import "src/app/shared/style/_colors.scss";
+
+.search-field {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $background_color;
+    border: none;
+    border-radius:  8px;
+    transition: background-color 0.3s ease; 
+
+      &__input{
+        width: 520px;
+        height: 40px;
+        background-color: inherit;
+        border: none;
+        outline: none;
+        border-radius:  8px 0 0 8px;
+        padding: 5px 15px;
+        transition: background-color 0.3s ease;       
+      }
+ 
+  &__input::placeholder {
+  color: $blocked_gray_button;
+  font-size: 16px;
+  font-family: 'Montserrat', sans-serif;
+
+  }
+  
+      &__button{
+        width: 40px;
+        height: 40px;
+        background-color: inherit;
+        border: none;
+        outline: none;
+        border-radius: 0 8px 8px 0;
+        transition: background-color 0.3s ease; 
+
+      }
+      &__button-icon{
+    fill: $blocked_gray_button;
+    }
+    }
+  
+    .search-field:hover, .search-field__input:focus  {
+      background-color: $background_search;
+    }
+    .search-field__input:hover + .search-field__button,
+    .search-field__input:focus + .search-field__button {
+      background-color: $background_search;
+
+    }
+ 
+    .search-field__input:hover::placeholder,
+    .search-field__input:focus::placeholder
+     {
+        
+      color: $common_text_color;
+    }
+    
+    .search-field__input:hover + .search-field__button .search-field__button-icon, .search-field__input:focus + .search-field__button .search-field__button-icon {
+        fill: $common_text_color;
+    }
+    .search-field__button:hover .search-field__button-icon {
+        fill: $common_text_color;
+    }
+  

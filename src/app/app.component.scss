@@ -1,0 +1,14 @@
+@import './shared/style/_colors.scss';
+
+.main {
+    background-color: $background_color;
+}
+
+.main-content {
+    padding-left: 280px;
+}
+
+app-footer {
+    display: block;
+    padding-left: 280px;
+}
