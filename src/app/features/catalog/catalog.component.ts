@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CatalogCardComponent } from './catalog-card/catalog-card.component';
+import { CatalogCardComponent } from '../../shared/components/catalog-card/catalog-card.component';
 import { Observable } from 'rxjs';
 import { CatalogCardService } from 'src/app/core/services/catalog-card.service';
 import { CatalogCard, CatalogCards } from 'src/app/core/interfaces/catalog';
