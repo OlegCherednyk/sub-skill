@@ -9,11 +9,12 @@ export interface CatalogCard {
     level: string,
     rating: number,
     views: number,    
-    reviews: []
+    reviews: [],
+    price: number,
 }
 
-export interface CatalogCards {
-    content: [ CatalogCard ],
+export interface CatalogCardsData {
+    content: CatalogCard[],
     pageable: {
         pageNumber: number,
         pageSize: number,
