@@ -2,7 +2,7 @@
 @import '../../../shared/style/fonts';
 
 
-.cart {
+.card {
     border-radius: 20px;
     display: flex;
     height: 412px;
@@ -15,7 +15,7 @@
         width: 272px;
         height: 194px;
         border-radius: 20px 20px 0px 0px;
-        background: url("../../../../assets/images/test-cart-img.jpeg") center/cover no-repeat;
+        background: url("../../../../assets/images/test-card-img.jpeg") center/cover no-repeat;
     }
 
     &__detailed-info {
