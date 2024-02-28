@@ -1,8 +1,5 @@
 <div class="catalog">
-    <ng-container *ngIf="catalogCarts$ | async as carts">
-        <catalog-cart *ngFor="let cart of carts" [cart]="cart"></catalog-cart>
+    <ng-container *ngIf="catalogCards$ | async as cards">
+        <catalog-card *ngFor="let card of cards" [card]="card"></catalog-card>
     </ng-container>
 </div>
-
-
-
