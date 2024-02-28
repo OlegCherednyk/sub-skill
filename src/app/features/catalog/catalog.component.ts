@@ -4,11 +4,12 @@ import { CatalogCardComponent } from '../../shared/components/catalog-card/catal
 import { Observable } from 'rxjs';
 import { CatalogCardService } from 'src/app/core/services/catalog-card.service';
 import { CatalogCard, CatalogCards } from 'src/app/core/interfaces/catalog';
+import { CatalogHorizontalCardComponent } from 'src/app/shared/components/catalog-horizontal-card/catalog-horizontal-card.component';
 
 @Component({
   selector: 'catalog',
   standalone: true,
-  imports: [CommonModule, CatalogCardComponent],
+  imports: [CommonModule, CatalogCardComponent, CatalogHorizontalCardComponent],
   templateUrl: './catalog.component.html',
   styleUrls: ['./catalog.component.scss']
 })

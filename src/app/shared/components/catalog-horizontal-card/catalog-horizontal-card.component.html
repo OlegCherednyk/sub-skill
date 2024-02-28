@@ -1,0 +1,32 @@
+<div class="horizontal-card">
+  <div class="horizontal-card__img"></div>
+  <div class="horizontal-card__details">
+    <div class="horizontal-card__rating-block">
+      <star-rating class="horizontal-card__rating-stars" [rating]="card.rating"></star-rating>
+      <span class="horizontal-card__rating">{{ card.rating }}</span>
+      (<span class="horizontal-card__votes">347</span>)
+    </div>
+
+    <button class="horizontal-card__bookmark">
+      <i class="uil uil-bookmark"></i>
+    </button>
+
+    <div class="horizontal-card__text-content">
+      <h4 class="horizontal-card__title">{{ card.name }}</h4>
+      <p class="horizontal-card__description">{{ card.description }}
+      </p>
+
+      <div class="horizontal-card__info-row">
+        <span class="horizontal-card__time">
+          <i class="uil uil-clock-three"></i>
+          {{ card.learningTime }}
+        </span>
+        <span class="horizontal-card__level">{{ card.level.toLowerCase() }}</span>
+        <span class="horizontal-card__lessons">12 lessons</span>
+      </div>
+    </div>
+
+    <p class="horizontal-card__price">25$</p>
+    <button class="horizontal-card__buy">Add to cart</button>
+  </div>
+</div>
