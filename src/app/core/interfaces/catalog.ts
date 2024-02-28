@@ -13,8 +13,8 @@ export interface CatalogCard {
     price: number,
 }
 
-export interface CatalogCards {
-    content: [ CatalogCard ],
+export interface CatalogCardsData {
+    content: CatalogCard[],
     pageable: {
         pageNumber: number,
         pageSize: number,
