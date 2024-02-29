@@ -1,0 +1,34 @@
+<div class="carousel">
+  <ng-container *ngIf="slides$ | async as cards">
+    <ngb-carousel
+      [interval]="3500"
+      [showNavigationArrows]="true"
+      [showNavigationIndicators]="true"
+      [wrap]="true">
+      <ng-template ngbSlide *ngFor="let card of cards">
+        <div class="carousel-wrapper">
+          <div class="carousel-block" [routerLink]="['/page-path', card.id]">
+            <img
+              [src]="card.photo"
+              alt="Card Image"
+              class="carousel-block__image" />
+            <div class="carousel-block__rating-block">
+              <star-rating
+                class="carousel-block__rating-stars"
+                [rating]="card.rating"></star-rating>
+              <span class="carousel-block__best-price">Best price</span>
+            </div>
+            <h4 class="carousel-block__title">{{ card.name }}</h4>
+            <span class="carousel-block__description" [truncate]="50">{{
+              card.description
+            }}</span>
+            <span class="carousel-block__time">
+              <i class="uil uil-clock-three"></i>
+              {{ card.learningTime }}
+            </span>
+          </div>
+        </div>
+      </ng-template>
+    </ngb-carousel>
+  </ng-container>
+</div>

@@ -1,23 +1,30 @@
 <div class="card">
-    <div class="card__img"></div>
-    <div class="card__detailed-info">
-        <div class="card__detailed-info__rating">
-            <star-rating class="card__detailed-info__rating__star-rating" [rating]="card.rating"></star-rating>
-            <a class="card__detailed-info__rating__reviews"> All Reviews</a>
-        </div>
-        <div class="card__detailed-info__title-description">
-            <div class="card__detailed-info__title-description__title">{{ card.name }}</div>
-            <div class="card__detailed-info__title-description__description">{{ card.description }}
-            </div>
-        </div>
-        <div class="card__detailed-info__buy">
-            <div class="card__detailed-info__buy__time">
-                <i class="uil uil-clock-three"></i>
-                <div class="card__detailed-info__buy__time__value">{{ card.learningTime }}</div>
-            </div>
-            <div class="card__detailed-info__buy__icon">
-                <i class="uil uil-bookmark"></i>
-            </div>
-        </div>
+  <div class="card__img"></div>
+  <div class="card__detailed-info">
+    <div class="card__detailed-info__rating">
+      <star-rating
+        class="card__detailed-info__rating__star-rating"
+        [rating]="card.rating"></star-rating>
+      <a class="card__detailed-info__rating__reviews"> All Reviews</a>
     </div>
+    <div class="card__detailed-info__title-description">
+      <div class="card__detailed-info__title-description__title">
+        {{ card.name }}
+      </div>
+      <div class="card__detailed-info__title-description__description">
+        {{ card.description }}
+      </div>
+    </div>
+    <div class="card__detailed-info__buy">
+      <div class="card__detailed-info__buy__time">
+        <i class="uil uil-clock-three"></i>
+        <div class="card__detailed-info__buy__time__value">
+          {{ card.learningTime }}
+        </div>
+      </div>
+      <div class="card__detailed-info__buy__icon">
+        <i class="uil uil-bookmark"></i>
+      </div>
+    </div>
+  </div>
 </div>

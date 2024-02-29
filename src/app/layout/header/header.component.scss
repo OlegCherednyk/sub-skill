@@ -1,26 +1,26 @@
-@import "src/app/shared/style/_fonts.scss";
-@import "src/app/shared/style/_colors.scss";
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
 
 .header {
-    &__container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: $background_white;
-      font-family: 'Montserrat', sans-serif;
-      font-weight: 400;
-      padding: 33px 50px 33px 60px;
-    
-    }
-    &__container-homelink {
-   font-size: 24px;
-   font-weight: 700;
-   color: $common_text_color;
-   transition: background-color 0.3s ease, border 0.3s ease; 
-        }
-    &__container-homelink:hover {
-      cursor: pointer;
-    }
- 
-
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $background_white;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    padding: 33px 50px 33px 60px;
   }
+  &__container-homelink {
+    font-size: 24px;
+    font-weight: 700;
+    color: $common_text_color;
+    text-decoration: none;
+    transition:
+      background-color 0.3s ease,
+      border 0.3s ease;
+  }
+  &__container-homelink:hover {
+    cursor: pointer;
+  }
+}
