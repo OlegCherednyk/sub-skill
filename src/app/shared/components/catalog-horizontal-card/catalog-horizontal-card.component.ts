@@ -11,6 +11,7 @@ import { TruncateDirective } from 'src/app/shared/directives/truncate.directive'
   templateUrl: './catalog-horizontal-card.component.html',
   styleUrls: ['./catalog-horizontal-card.component.scss']
 })
+
 export class CatalogHorizontalCardComponent {
   @Input() public card!: CatalogCard;
 }

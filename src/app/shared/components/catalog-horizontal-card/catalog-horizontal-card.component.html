@@ -1,5 +1,7 @@
 <div class="horizontal-card">
-  <div class="horizontal-card__img"></div>
+  <div class="horizontal-card__img">
+    <img [src]="card.photo" alt="">
+  </div>
   <div class="horizontal-card__details">
     <div class="horizontal-card__rating-block">
       <star-rating class="horizontal-card__rating-stars" [rating]="card.rating"></star-rating>
@@ -26,7 +28,7 @@
       </div>
     </div>
 
-    <p class="horizontal-card__price">25$</p>
+    <p class="horizontal-card__price">{{ card.price }}$</p>
     <button class="horizontal-card__buy">Add to cart</button>
   </div>
 </div>
