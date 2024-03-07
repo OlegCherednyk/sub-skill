@@ -13,5 +13,14 @@ import { TruncateDirective } from 'src/app/shared/directives/truncate.directive'
 })
 export class CatalogCardComponent {
   @Input() public card!: CatalogCard;
+
+  public hoverIcon: boolean = false;
   
+  public hoverActive(): void {
+    this.hoverIcon = true;
+  }
+
+  public hoverDisable(): void {
+    this.hoverIcon = false
+  }
 }
