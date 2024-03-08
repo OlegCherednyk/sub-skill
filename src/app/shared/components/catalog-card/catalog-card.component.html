@@ -19,22 +19,15 @@
                 <i class="uil uil-clock-three"></i>
                 <div class="card__time-value">{{ card.learningTime }}</div>
             </div>
-            <div class="card__icon"
-            (mouseenter)="hoverActive()"
-            (mouseleave)="hoverDisable()"
-            (click)="addToSaves()"
-            >
+            <div class="card__icon" (mouseenter)="hoverActive()" (mouseleave)="hoverDisable()" (click)="addToSaves()">
                 <i [ngClass]="{
                     'uil': !hoverIcon , 'uil-bookmark': !hoverIcon,
                     'uis': hoverIcon, 'uis-bookmark': hoverIcon
-            }"
-            [ngStyle]="{'color': (!clickedIcon && hoverIcon) ? '#9FE894' : '#53CA3E'}"></i>
+            }" [ngStyle]="{'color': (!clickedIcon && hoverIcon) ? '#9FE894' : '#53CA3E'}"></i>
             </div>
         </div>
-      </div>
-      <div class="card__detailed-info__buy__icon">
-        <i class="uil uil-bookmark"></i>
-      </div>
     </div>
-  </div>
+    <div class="card__detailed-info__buy__icon">
+        <i class="uil uil-bookmark"></i>
+    </div>
 </div>
