@@ -5,14 +5,12 @@ import { base_url } from '../core_variables';
 import { CatalogCard, CatalogCardsData } from '../interfaces/catalog';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CatalogCardService {
-
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient) {}
 
   public getCatalogCardsData(): Observable<CatalogCard[]> {
-
     return this._httpClient
       .get<CatalogCardsData>(`${base_url}microskill/all-paging`)
       .pipe(

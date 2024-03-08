@@ -11,15 +11,14 @@ import { CatalogHorizontalCardComponent } from 'src/app/shared/components/catalo
   standalone: true,
   imports: [CommonModule, CatalogCardComponent, CatalogHorizontalCardComponent],
   templateUrl: './catalog.component.html',
-  styleUrls: ['./catalog.component.scss']
+  styleUrls: ['./catalog.component.scss'],
 })
-export class CatalogComponent implements OnInit{
-  constructor(private cardService: CatalogCardService) { }
+export class CatalogComponent implements OnInit {
+  constructor(private cardService: CatalogCardService) {}
 
   public catalogCards$!: Observable<CatalogCard[]>;
 
   public ngOnInit(): void {
     this.catalogCards$ = this.cardService.getCatalogCardsData();
   }
-
 }
