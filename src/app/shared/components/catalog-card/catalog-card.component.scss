@@ -16,6 +16,33 @@
         height: 194px;
         border-radius: 20px 20px 0px 0px;
         background: url("../../../../assets/images/test-card-img.jpeg") center/cover no-repeat;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+    }   
+
+    &__rating {
+        display: flex;
+        justify-content: space-between;
+
+        &__star-rating {
+            width: 50%;
+        }
+
+        &__reviews {
+            display: inline-block;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 18px;
+            font-weight: 600;
+            color: $gray_text;
+
+        }
     }
 
     &__detailed-info {
@@ -24,96 +51,103 @@
         height: 218px;
         justify-content: space-between;
         padding: 16px;
-        
+    }
 
-        &__rating {
-            display: flex;
-            justify-content: space-between;
+    &__title-description {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
 
-            &__star-rating {
-                width: 50%;
-            }
+    &__title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 30px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: $common_text_color;
 
-            &__reviews {
-                display: inline-block;
-                cursor: pointer;
-                font-size: 12px;
-                line-height: 18px;
-                font-weight: 600;
-                color: $gray_text;
-                
+        span {
+            cursor: pointer;
+        }
+
+        &:hover {
+            color: $hover_title_text;
+            transition: .2;
+        }
+    }
+
+
+    &__description {
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 18px;
+        letter-spacing: 0em;
+        text-align: left;
+        color: $gray_text;
+
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+
+
+    &__buy {
+        display: flex;
+        // margin-top: auto;
+        align-items: center;
+        justify-content: space-between;
+
+        i {
+            font-size: 20px;
+            color: $normal_green_button;
+        }
+    }
+
+    &__time {
+        display: flex;
+        gap: 8px;
+
+        &-value {
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 24px;
+            letter-spacing: 0em;
+            text-align: left;
+            color: $gray_text;
+        }
+    }
+
+
+
+
+    &__icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        cursor: pointer;
+        height: 44px;
+        aspect-ratio: 1/1;
+        background-color: $hover_small_green_button;
+
+        i {
+            font-size: 20px;
+            color: $normal_green_button;
+        }
+
+        &:hover {
+            i {
+                color: $hover_small_green_button_bookmark;
             }
         }
 
-        &__title-description {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-
-            &__title {
-                font-size: 20px;
-                font-weight: 700;
-                line-height: 30px;
-                letter-spacing: 0em;
-                text-align: left;
-                color: $common_text_color;
-            }
-
-            &__description {
-                font-size: 12px;
-                font-weight: 400;
-                line-height: 18px;
-                letter-spacing: 0em;
-                text-align: left;
-                color: $gray_text;
-                
-                display: -webkit-box; 
-                -webkit-box-orient: vertical; 
-                -webkit-line-clamp: 2; 
-                overflow: hidden; 
-                text-overflow: ellipsis; 
-            }
-        }
-
-        &__buy {
-            display: flex;
-            // margin-top: auto;
-            align-items: center;
-            justify-content: space-between;
-
-            &__time {
-                display: flex;
-                gap: 8px;
-
-                &__value {
-                    font-size: 16px;
-                    font-weight: 700;
-                    line-height: 24px;
-                    letter-spacing: 0em;
-                    text-align: left;
-                    color: $gray_text;
-                }
-
-                i {
-                    font-size: 20px;
-                    color: $normal_green_button;
-                }
-            }
-
-            &__icon {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-radius: 50%;
-                cursor: pointer;
-                height: 44px;
-                aspect-ratio: 1/1;
-                background-color: $hover_small_green_button;
-
-                i {
-                    font-size: 20px;
-                    color: $normal_green_button;
-                }
+        &:active {
+            i {
+                color: $normal_green_button;
             }
         }
     }

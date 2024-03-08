@@ -12,7 +12,7 @@ export class CatalogCardService {
 
   public getCatalogCardsData(): Observable<CatalogCard[]> {
     return this._httpClient
-      .get<CatalogCardsData>(`${base_url}microskill/all`)
+      .get<CatalogCardsData>(`${base_url}microskill/all-paging`)
       .pipe(
         map(data => data.content),
         // add base64 prefix to images
