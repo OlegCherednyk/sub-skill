@@ -22,12 +22,13 @@
             <div class="card__icon"
             (mouseenter)="hoverActive()"
             (mouseleave)="hoverDisable()"
+            (click)="addToSaves()"
             >
                 <i [ngClass]="{
                     'uil': !hoverIcon , 'uil-bookmark': !hoverIcon,
                     'uis': hoverIcon, 'uis-bookmark': hoverIcon
             }"
-            ></i>
+            [ngStyle]="{'color': (!clickedIcon && hoverIcon) ? '#9FE894' : '#53CA3E'}"></i>
             </div>
         </div>
     </div>
