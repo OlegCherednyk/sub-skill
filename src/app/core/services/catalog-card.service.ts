@@ -12,11 +12,18 @@ export class CatalogCardService {
   constructor(private _httpClient: HttpClient) { }
 
   public getCatalogCardsData(): Observable<CatalogCard[]> {
-    return this._httpClient.get<CatalogCardsData>(`${base_url}microskill/all`)
-    .pipe(
-      map(data => data.content),
-      // add base64 prefix to images
-      map(cards => cards.map(card => ({...card, photo: `data:image/jpeg;base64,${card.photo}`})))
-    );
+
+    return this._httpClient
+      .get<CatalogCardsData>(`${base_url}microskill/all-paging`)
+      .pipe(
+        map(data => data.content),
+        // add base64 prefix to images
+        map(cards =>
+          cards.map(card => ({
+            ...card,
+            photo: `data:image/jpeg;base64,${card.photo}`,
+          }))
+        )
+      );
   }
 }
