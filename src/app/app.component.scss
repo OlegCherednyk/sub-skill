@@ -2,10 +2,12 @@
 
 .main {
   background-color: $background_color;
+  width: 100%;
 }
 
 .main-content {
-  padding-left: 280px;
+  flex: 1;
+  margin-left: 208px;
 }
 
 app-footer {

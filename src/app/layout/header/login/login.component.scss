@@ -1,0 +1,15 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+
+.login {
+  font-family: $primary_font_family;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: $normal_green_button;
+  border: none;
+  outline: none;
+  background-color: inherit;
+}

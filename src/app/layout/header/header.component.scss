@@ -2,6 +2,7 @@
 @import 'src/app/shared/style/_colors.scss';
 
 .header {
+  width: 1232px;
   &__container {
     display: flex;
     justify-content: space-between;
@@ -9,7 +10,8 @@
     background-color: $background_white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
-    padding: 33px 50px 33px 60px;
+    padding: 32px 48px;
+    border-bottom: 1px solid $stroke-color;
   }
   &__container-homelink {
     font-size: 24px;
@@ -22,5 +24,11 @@
   }
   &__container-homelink:hover {
     cursor: pointer;
+  }
+  &__container-right {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 32px;
   }
 }

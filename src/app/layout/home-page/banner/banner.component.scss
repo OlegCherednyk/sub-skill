@@ -2,9 +2,9 @@
 @import '../../../shared/style/fonts';
 
 .carousel {
-  max-width: 1232px;
-  min-width: 1231px;
-  width: auto;
+  width: 1137px;
+  display: flex;
+  gap: 24px;
 }
 
 .carousel-wrapper {
@@ -34,7 +34,7 @@
       no-repeat;
 
     padding: 40px 16px 40px 32px;
-    gap: 16px;
+    gap: 24px;
     &:hover {
       cursor: pointer;
     }

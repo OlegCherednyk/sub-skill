@@ -3,7 +3,7 @@
 
 aside {
   height: 100vh;
-  width: 280px;
+  width: 208px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,7 +28,6 @@ aside {
       gap: 40px;
       height: 100%;
       width: 100%;
-      
 
       li {
         display: flex;
@@ -53,8 +52,6 @@ aside {
     cursor: pointer;
     justify-content: space-between;
     align-items: center;
-    
-    
 
     .flex-column {
       width: 100%;
@@ -70,7 +67,6 @@ aside {
         width: 100%;
         justify-content: space-between;
         transition: 0.5s;
-        
 
         .arrow {
           width: 24px;
@@ -95,7 +91,6 @@ aside {
         bottom: 42px;
         width: 100%;
         transition: 0.5s;
-        
 
         li {
           background-color: $background_color;
@@ -105,11 +100,10 @@ aside {
         }
 
         :last-child {
-            border-radius: 0px 0px 10px 10px;
-            
+          border-radius: 0px 0px 10px 10px;
         }
         :first-child {
-            border-radius: 10px 10px 0px 0px;
+          border-radius: 10px 10px 0px 0px;
         }
       }
     }

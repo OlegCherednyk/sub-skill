@@ -1,15 +1,18 @@
 <header class="header">
-      <div class="header__container">
-        <div class="header__container-homelink">
-          <a
-          type="button"
-            title="home"
-            (click)="toHomePage()"
-            class="header__container-homelink">
-          Home</a>
-        </div>
-        <app-search></app-search>
-        <app-cart></app-cart>
+  <div class="header__container">
+    <div class="header__container-homelink">
+      <a
+        type="button"
+        title="home"
+        (click)="toHomePage()"
+        class="header__container-homelink">
+        Home</a
+      >
     </div>
-  </header>
-  
+    <app-search></app-search>
+    <div class="header__container-right">
+      <app-login></app-login>
+      <app-cart></app-cart>
+    </div>
+  </div>
+</header>
