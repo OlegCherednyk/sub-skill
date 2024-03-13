@@ -1,0 +1,51 @@
+@import '../../../shared/style/colors';
+@import '../../../shared/style/fonts';
+
+.popular-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 1137px;
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $common_text_color;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 214px;
+    height: auto;
+    padding: 16px 32px;
+    border-radius: 10px;
+    gap: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: 0em;
+    color: $root-black;
+    text-transform: lowercase;
+    list-style: none;
+    background-color: $hover_small_green_button;
+    transition: color 0.3s ease;
+    &:hover {
+      color: $normal_green_button;
+    }
+  }
+}
