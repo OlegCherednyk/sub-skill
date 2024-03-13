@@ -1,6 +1,8 @@
 <div class="catalog">
   <ng-container *ngIf="catalogCards$ | async as cards">
     <catalog-card *ngFor="let card of cards" [card]="card"></catalog-card>
-    <catalog-horizontal-card *ngFor="let card of cards" [card]="card"></catalog-horizontal-card>
+    <catalog-horizontal-card
+      *ngFor="let card of cards"
+      [card]="card"></catalog-horizontal-card>
   </ng-container>
 </div>
