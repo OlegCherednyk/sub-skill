@@ -42,9 +42,13 @@
     color: $root-black;
     text-transform: lowercase;
     list-style: none;
-    background-color: $hover_small_green_button;
+    background-color: $banner-white;
     transition: color 0.3s ease;
     &:hover {
+      background-color: $hover_small_green_button;
+    }
+    &.active {
+      background-color: $hover_small_green_button;
       color: $normal_green_button;
     }
   }

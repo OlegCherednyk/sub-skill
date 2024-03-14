@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class PopularCategoriesComponent {
   public popularCategories$!: Observable<PopularCategory[]>;
-
+  public activeCategory: PopularCategory | null = null;
   constructor(private popularCategoriesService: PopularCategoriesService) {}
 
   ngOnInit(): void {
@@ -29,5 +29,12 @@ export class PopularCategoriesComponent {
       repeated.push(categories[i % categories.length]);
     }
     return repeated;
+  }
+  setActiveCategory(category: PopularCategory): void {
+    this.activeCategory = category;
+  }
+
+  isActiveCategory(category: PopularCategory): boolean {
+    return this.activeCategory === category;
   }
 }

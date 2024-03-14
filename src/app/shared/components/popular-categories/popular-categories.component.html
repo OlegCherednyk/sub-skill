@@ -5,7 +5,10 @@
     *ngIf="popularCategories$ | async as categories">
     <li
       class="popular-categories__list-item"
-      *ngFor="let category of repeatedCategories(categories, 10)">
+      *ngFor="let category of repeatedCategories(categories, 10)"
+      [class.active]="isActiveCategory(category)"
+      (click)="setActiveCategory(category)">
+    
       {{ category.name }}
     </li>
   </ul>
