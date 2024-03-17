@@ -1,0 +1,15 @@
+<div class="popular-categories">
+  <h2 class="popular-categories__title">Popular Categories</h2>
+  <ul
+    class="popular-categories__list"
+    *ngIf="popularCategories$ | async as categories">
+    <li
+      class="popular-categories__list-item"
+      *ngFor="let category of repeatedCategories(categories, 10)"
+      [class.active]="isActiveCategory(category)"
+      (click)="setActiveCategory(category)">
+    
+      {{ category.name }}
+    </li>
+  </ul>
+</div>
