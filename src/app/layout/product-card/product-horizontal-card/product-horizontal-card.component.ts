@@ -15,30 +15,30 @@ import { ButtonComponent } from 'src/app/shared/components/button/button.compone
   styleUrls: ['./product-horizontal-card.component.scss'],
 })
 export class ProductHorizontalCardComponent {
-  @Input() public card!: CatalogCard;
-  productId!: string | null;
-  product$!: Observable<CatalogCard | undefined>;
+  @Input() public product!: CatalogCard;
+  // productId!: string | null;
+  // product$!: Observable<CatalogCard | undefined>;
   public hoverIcon: boolean = false;
   public clickedIcon: boolean = false;
 
-  constructor(
-    private route: ActivatedRoute,
-    private catalogCardService: CatalogCardService
-  ) {}
+  // constructor(
+  //   private route: ActivatedRoute,
+  //   private catalogCardService: CatalogCardService
+  // ) {}
 
-  ngOnInit(): void {
-    this.productId = this.route.snapshot.paramMap.get('id');
-    console.log(typeof this.productId);
-    if (this.productId !== null) {
-      this.product$ = this.catalogCardService.getCatalogCardsData().pipe(
-        map(cards =>
-          cards.find(card => {
-            return card.id.toString() === this.productId;
-          })
-        )
-      );
-    }
-  }
+  // ngOnInit(): void {
+  //   this.productId = this.route.snapshot.paramMap.get('id');
+  //   console.log(typeof this.productId);
+  //   if (this.productId !== null) {
+  //     this.product$ = this.catalogCardService.getCatalogCardsData().pipe(
+  //       map(cards =>
+  //         cards.find(card => {
+  //           return card.id.toString() === this.productId;
+  //         })
+  //       )
+  //     );
+  //   }
+  // }
 
   public addToSaves(): void {
     this.clickedIcon = !this.clickedIcon;

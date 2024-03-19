@@ -6,7 +6,7 @@
   height: auto;
   width: 100%;
   flex-direction: column;
-  background-color: $background_white;
+  background-color: $banner-white;
   font-family: $primary_font_family;
   border-radius: 20px;
   padding: 24px;
@@ -20,11 +20,13 @@
   }
 
   &__title-text {
+    font-family: $additional_font_family;
+
     font-size: 32px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 130%;
     text-align: left;
-    color: $small_text_color;
+    color: $root-black;
 
     span {
       cursor: pointer;

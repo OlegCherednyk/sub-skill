@@ -1,0 +1,16 @@
+<div class="about-card">
+  <div class="about-card__title">
+    <span class="about-card__title-text">About</span>
+  </div>
+  <div class="about-card__description">
+    {{ product.description }}
+  </div>
+  <div class="about-card__tags">
+    <span class="about-card__tags-text">Tags</span>
+    <ul class="about-card__tags-list">
+      <li *ngFor="let tag of product.tags" class="about-card__tags-item">
+        {{ tag.toLowerCase() }}
+      </li>
+    </ul>
+  </div>
+</div>

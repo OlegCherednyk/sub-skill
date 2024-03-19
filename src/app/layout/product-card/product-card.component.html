@@ -1,13 +1,19 @@
 <div class="product-card-page">
-  <button
-    type="button"
-    (click)="goBack()"
-    class="product-card-page__goback-block">
-    <img
-      src="../../../assets/icons/Vector.svg"
-      class="product-card-page__go-back"
-      alt="<-" />
-    <span class="product-card-page__go-back">Go Back</span>
-  </button>
-  <app-product-horizontal-card></app-product-horizontal-card>
+  <!-- <ng-container *ngIf="product$ | async as cards"> -->
+  <!-- <catalog-card *ngFor="let card of cards" [card]="card"></catalog-card> -->
+  <ng-container *ngIf="product$ | async as product">
+    <button
+      type="button"
+      (click)="goBack()"
+      class="product-card-page__goback-block">
+      <img
+        src="../../../assets/icons/Vector.svg"
+        class="product-card-page__go-back"
+        alt="-" />
+      <span class="product-card-page__go-back">Go Back</span>
+    </button>
+    <app-product-horizontal-card
+      [product]="product"></app-product-horizontal-card>
+    <app-product-about-card [product]="product"></app-product-about-card>
+  </ng-container>
 </div>
