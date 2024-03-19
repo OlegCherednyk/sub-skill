@@ -5,7 +5,7 @@ import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { map, Observable } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { CatalogCardService } from 'src/app/core/services/catalog-card.service';
-import { ButtonComponent } from 'src/app/shared/button/button.component';
+import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 
 @Component({
   selector: 'app-product-horizontal-card',
