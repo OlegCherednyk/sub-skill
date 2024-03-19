@@ -1,0 +1,38 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+
+.product-card-page {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  width: 100%;
+  height: auto;
+  gap: 32px;
+  padding: 10px 48px;
+  overflow: hidden;
+  &__goback-block {
+    display: flex;
+    width: 15%;
+    background: inherit;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 8px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+  }
+  &__goback-icon {
+    width: 24px;
+    height: 24px;
+    padding: 6px 9px;
+  }
+  &__goback-text {
+    font-family: $primary_font_family;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24.32px;
+    text-align: left;
+    color: $gray_text;
+  }
+}

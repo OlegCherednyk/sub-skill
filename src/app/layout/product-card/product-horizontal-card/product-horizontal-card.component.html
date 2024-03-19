@@ -1,0 +1,70 @@
+<div class="product-card" *ngIf="product$ | async as product">
+  <div class="product-card__title">
+    <span class="product-card__title-text">{{ product.name }}</span>
+    <div
+      class="product-card__title-icon"
+      (mouseenter)="hoverActive()"
+      (mouseleave)="hoverDisable()"
+      (click)="addToSaves()">
+      <i
+        [ngClass]="{
+          uil: !hoverIcon,
+          'uil-bookmark': !hoverIcon,
+          uis: hoverIcon,
+          'uis-bookmark': hoverIcon
+        }"
+        [ngStyle]="{
+          color: !clickedIcon && hoverIcon ? '#9FE894' : '#53CA3E'
+        }"></i>
+    </div>
+  </div>
+  <div class="product-card__rating">
+    <star-rating [rating]="product.rating"></star-rating>
+    <div class="product-card__rating-value">
+      <span class="product-card__rating-float">{{ product.rating }}</span>
+      <span class="product-card__rating-views">({{ product.views }})</span>
+    </div>
+  </div>
+  <div class="product-card__main">
+    <div class="product-card__left-part">
+      <div class="product-card__description">
+        <div class="product-card__description-text">
+          {{ product.description }}
+        </div>
+        <div class="product-card__level">
+          <span class="product-card__level-text">{{
+            product.level.toLowerCase()
+          }}</span>
+          <span>·</span>
+          <span>12 lessons</span>
+        </div>
+      </div>
+      <div class="product-card__bottom-block">
+        <div class="product-card__time">
+          <i class="uil uil-clock-three"></i>
+          <span class="product-card__time-text">{{
+            product.learningTime
+          }}</span>
+        </div>
+        <div class="product-card__buy-block">
+          <app-button
+            [text]="'Buy now'"
+            [style]="'dark'"
+            [width]="'272px'"
+            [disabled]="false"
+            [padding]="'16px 32px'"></app-button>
+
+          <app-button
+            [text]="'Add to cart'"
+            [style]="'light'"
+            [width]="'272px'"
+            [disabled]="false"
+            [padding]="'16px 32px'"></app-button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card__img">
+      <img [src]="product.photo" alt="" />
+    </div>
+  </div>
+</div>
