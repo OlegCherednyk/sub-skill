@@ -1,4 +1,8 @@
 <div class="home-page">
     <app-banner></app-banner>
-    <catalog></catalog>
+    <card-track 
+    [typeOfTrack]="categories.new"
+    [countOfPages]="3"
+    [pageSize]="4"
+    [title]="'NEW'"></card-track>
 </div>

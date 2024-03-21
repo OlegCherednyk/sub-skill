@@ -1,0 +1,18 @@
+<div class="cards-track">
+    <div class="cards-track__container">
+        <div class="cards-track__title">{{ title }}</div>
+        <div class="cards-track__pagination">
+            <i class="uil uil-arrow-left" (click)="prevPage()"></i>
+            <span>{{ currentPage * pageSize }}/{{ countOfPages * pageSize }} </span>
+            <i class="uil uil-arrow-right" (click)="nextPage()"></i>
+        </div>
+    </div>
+    <div class="cards-track__block">
+        <div class="cards-track__block__track"
+            [ngStyle]="{'transform': 'translateX(calc(' + (-100 * (currentPage-1)) + '%))'}">
+            <div class="cards-track__current" *ngFor="let cardsList of chunkArray(trackCardsAll, pageSize)">
+                <catalog-card *ngFor="let card of cardsList" [card]="card"></catalog-card>
+            </div>
+        </div>
+    </div>
+</div>
