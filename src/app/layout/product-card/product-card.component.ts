@@ -6,6 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CatalogCardService } from 'src/app/core/services/catalog-card.service';
 import { map, Observable } from 'rxjs';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
+import { ProductWhatIsInCardComponent } from './product-what-is-in-card/product-what-is-in-card.component';
+import { ProductAutolayoutCardComponent } from './product-autolayout-card/product-autolayout-card.component';
 
 @Component({
   selector: 'app-product-card',
@@ -14,6 +16,8 @@ import { CatalogCard } from 'src/app/core/interfaces/catalog';
     CommonModule,
     ProductHorizontalCardComponent,
     ProductAboutCardComponent,
+    ProductWhatIsInCardComponent,
+    ProductAutolayoutCardComponent,
   ],
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],

@@ -1,0 +1,113 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+
+.autolayout-card {
+  display: flex;
+  height: auto;
+  width: 368px;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: $banner-white;
+  font-family: $primary_font_family;
+  border-radius: 20px;
+  padding: 32px;
+  gap: 32px;
+
+  &__title-text {
+    font-family: $primary_font_family;
+
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 150%;
+    text-align: left;
+    color: $root-black;
+  }
+  &__img {
+    width: 100%;
+    height: 240px;
+    border-radius: 20px;
+    background: url('../../../../assets/images/test-card-img.jpeg') center/cover
+      no-repeat;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+    }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 24px;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  i {
+    font-size: 24px;
+    color: $normal_green_button;
+
+    &:hover {
+      i {
+        color: $hover_small_green_button_bookmark;
+      }
+    }
+
+    &:active {
+      i {
+        color: $normal_green_button;
+      }
+    }
+  }
+  .gray {
+    color: $blocked_gray_button;
+  }
+  &__list-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  &__list-text {
+    font-family: $primary_font_family;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+    text-align: left;
+    color: $gray_text;
+  }
+  &__list-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 44px;
+    aspect-ratio: 1/1;
+    background-color: $hover_small_green_button;
+  }
+  &__bottom-part {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  &__bottom-text {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%;
+    text-align: left;
+    color: $gray_text;
+  }
+}

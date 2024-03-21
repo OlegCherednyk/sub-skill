@@ -16,29 +16,8 @@ import { ButtonComponent } from 'src/app/shared/components/button/button.compone
 })
 export class ProductHorizontalCardComponent {
   @Input() public product!: CatalogCard;
-  // productId!: string | null;
-  // product$!: Observable<CatalogCard | undefined>;
   public hoverIcon: boolean = false;
   public clickedIcon: boolean = false;
-
-  // constructor(
-  //   private route: ActivatedRoute,
-  //   private catalogCardService: CatalogCardService
-  // ) {}
-
-  // ngOnInit(): void {
-  //   this.productId = this.route.snapshot.paramMap.get('id');
-  //   console.log(typeof this.productId);
-  //   if (this.productId !== null) {
-  //     this.product$ = this.catalogCardService.getCatalogCardsData().pipe(
-  //       map(cards =>
-  //         cards.find(card => {
-  //           return card.id.toString() === this.productId;
-  //         })
-  //       )
-  //     );
-  //   }
-  // }
 
   public addToSaves(): void {
     this.clickedIcon = !this.clickedIcon;
