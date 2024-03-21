@@ -1,0 +1,71 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+
+.button {
+  &__dark {
+    //   width: 272px;
+    // padding: 16px 32px;
+    background-color: $common_text_color;
+    color: $focus_green_button;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24.32px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $small_text_color;
+      color: $hover_green_button;
+    }
+
+    &:focus {
+      background-color: $small_text_color;
+      color: $hover_green_button;
+    }
+
+    &:active {
+      background-color: $common_text_color;
+      color: $click_green_button;
+    }
+
+    &:disabled {
+      background-color: $blocked_gray_button;
+      color: $blocked_light_text;
+    }
+  }
+  &__light {
+    //   width: 272px;
+    // padding: 16px 32px;
+    // padding: 12px 24px;
+
+    background-color: inherit;
+    color: $common_text_color;
+    border: 1px solid $normal_green_button;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24.32px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $small_text_color;
+      color: $hover_green_button;
+    }
+
+    &:focus {
+      background-color: $small_text_color;
+      color: $hover_green_button;
+    }
+
+    &:active {
+      background-color: $common_text_color;
+      color: $click_green_button;
+    }
+
+    &:disabled {
+      background-color: $blocked_gray_button;
+      color: $blocked_light_text;
+    }
+  }
+}

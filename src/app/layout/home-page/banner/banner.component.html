@@ -7,7 +7,7 @@
       [wrap]="true">
       <ng-template ngbSlide *ngFor="let card of cards">
         <div class="carousel-wrapper">
-          <div class="carousel-block" [routerLink]="['/page-path', card.id]">
+          <div class="carousel-block" [routerLink]="['/product-card', card.id]">
             <img
               [src]="card.photo"
               alt="Card Image"
