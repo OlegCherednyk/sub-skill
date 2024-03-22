@@ -27,7 +27,7 @@ export class CardTrackComponent implements OnInit {
 
 
     ngOnInit(): void {
-        this.trackCards$ = this.trackService.getTrack(this.typeOfTrack, this.pageSize * this.countOfPages, HomeTrackCategories.new);
+        this.trackCards$ = this.trackService.getTrack(this.pageSize * this.countOfPages, this.typeOfTrack);
         this.trackCards$.subscribe((res) => {
             this.trackCardsAll = res;
             console.log(this.trackCardsAll)

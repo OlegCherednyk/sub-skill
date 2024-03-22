@@ -7,12 +7,28 @@
             <i class="uil uil-arrow-right" (click)="nextPage()"></i>
         </div>
     </div>
-    <div class="cards-track__block">
-        <div class="cards-track__block__track"
-            [ngStyle]="{'transform': 'translateX(calc(' + (-100 * (currentPage-1)) + '%))'}">
-            <div class="cards-track__current" *ngFor="let cardsList of chunkArray(trackCardsAll, pageSize)">
-                <catalog-card *ngFor="let card of cardsList" [card]="card"></catalog-card>
+    
+    <ng-template [ngIf]="pageSize <= 4" [ngIfElse]="bigTrack">
+        <div class="cards-track__block">
+            <div class="cards-track__block__track"
+                [ngStyle]="{'transform': 'translateX(calc(' + (-100 * (currentPage-1)) + '%))'}">
+                <div class="cards-track__current" *ngFor="let cardsList of chunkArray(trackCardsAll, pageSize)">
+                    <catalog-card *ngFor="let card of cardsList" [card]="card"></catalog-card>
+                </div>
             </div>
         </div>
-    </div>
+    </ng-template>
+    <ng-template #bigTrack>
+        <div class="cards-track__block-big">
+            <div class="cards-track__block-big__track"
+                [ngStyle]="{
+                    'transform': 'translateX(calc(' + (-100 * (currentPage-1)) + '%))',
+                    }">
+                <div class="cards-track__current" *ngFor="let cardsList of chunkArray(trackCardsAll, pageSize)">
+                    <catalog-card *ngFor="let card of cardsList" [card]="card"></catalog-card>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+
 </div>

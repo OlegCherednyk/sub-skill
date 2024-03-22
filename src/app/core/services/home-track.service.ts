@@ -11,7 +11,7 @@ export class HomeTrackService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  public getTrack(type: string, size: number, categories: string): Observable<CatalogCard[]> {
+  public getTrack(size: number, categories: string): Observable<CatalogCard[]> {
     return this._httpClient
       .get<CatalogCardsData>(`${base_url}microskill/${categories}?size=${size}`)
       .pipe(
