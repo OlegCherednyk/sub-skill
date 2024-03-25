@@ -1,0 +1,121 @@
+@import '../../../shared/style/colors';
+
+.cards-track {
+    width: 1136px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    &__container {
+        width: 1136px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 30.4px;
+        text-align: left;
+        color: $common_text_color;
+    }
+
+    &__pagination {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+
+        i {
+            color: $common_text_color;
+            cursor: pointer;
+            font-size: 23px;
+            padding: 3px 8.5px;
+            border-radius: 10px;
+            transition-duration: .2s;
+
+            &:hover {
+                background-color: $hover_small_green_button;
+            }
+
+            &:active {
+                color: $normal_green_button;
+            }
+        }
+    }
+
+    &__block {
+        width: 1136px;
+        overflow-x: hidden;
+
+
+        &__track {
+            display: flex;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            transition: transform 0.5s ease-in-out;
+            transform: translateX(calc(-100%));
+
+            div {
+                width: 1136px;
+                display: flex;
+                justify-content: flex-start;
+                gap: 16px;
+            }
+        }
+
+    }
+
+    &__block-big {
+        width: 1136px;
+        overflow-x: hidden;
+        
+
+        &__track {
+            display: flex;
+            width: 100%;
+            row-gap: 16px;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            transition: transform 0.5s ease-in-out;
+            transform: translateX(calc(-100%));
+            
+
+            div {
+                flex-shrink: 0;
+                width: 1136px;
+                flex-wrap: wrap;
+                display: flex;
+                justify-content: flex-start;
+                gap: 16px;
+            }
+        }
+
+    }
+
+    &__block-horizontal {
+        width: 1136px;
+        overflow-x: hidden;
+        
+
+        &__track {
+            display: flex;
+            width: 100%;
+            gap: 16px;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            transition: transform 0.5s ease-in-out;
+            transform: translateX(calc(-100%));
+            
+
+            div {
+                width: 1136px;
+                display: flex;
+                justify-content: flex-start;
+                gap: 16px;
+            }
+        }
+
+    }
+
+}
