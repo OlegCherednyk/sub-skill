@@ -5,11 +5,12 @@ import { Observable } from 'rxjs';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { CatalogCardComponent } from 'src/app/shared/components/catalog-card/catalog-card.component';
 import { HomeTrackCategories } from 'src/app/core/interfaces/home-page';
+import { CatalogHorizontalCardComponent } from 'src/app/shared/components/catalog-horizontal-card/catalog-horizontal-card.component';
 
 @Component({
     selector: 'card-track',
     standalone: true,
-    imports: [CommonModule, CatalogCardComponent],
+    imports: [CommonModule, CatalogCardComponent, CatalogHorizontalCardComponent],
     templateUrl: './card-track.component.html',
     styleUrls: ['./card-track.component.scss']
 })
@@ -23,6 +24,7 @@ export class CardTrackComponent implements OnInit {
     @Input() countOfPages: number = 4;
     @Input() pageSize: number = 4;
     @Input() title: string = '';
+    @Input() typeOfCard: string = 'standart';
     public currentPage: number = 1;
 
 

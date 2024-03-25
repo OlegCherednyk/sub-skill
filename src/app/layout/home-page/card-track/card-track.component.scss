@@ -93,4 +93,29 @@
 
     }
 
+    &__block-horizontal {
+        width: 1136px;
+        overflow-x: hidden;
+        
+
+        &__track {
+            display: flex;
+            width: 100%;
+            gap: 16px;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            transition: transform 0.5s ease-in-out;
+            transform: translateX(calc(-100%));
+            
+
+            div {
+                width: 1136px;
+                display: flex;
+                justify-content: flex-start;
+                gap: 16px;
+            }
+        }
+
+    }
+
 }
