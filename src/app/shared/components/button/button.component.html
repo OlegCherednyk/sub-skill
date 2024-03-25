@@ -1,0 +1,7 @@
+<button
+  [ngClass]="style === 'dark' ? 'button__dark' : 'button__light'"
+  [disabled]="disabled"
+  [style.width]="width"
+  [style.padding]="padding">
+  {{ text }}
+</button>

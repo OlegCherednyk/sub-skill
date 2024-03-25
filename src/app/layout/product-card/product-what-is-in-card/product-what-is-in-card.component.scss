@@ -1,0 +1,97 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+
+.what-is-in-card {
+  display: flex;
+  height: auto;
+  width: 100%;
+  flex-direction: column;
+  background-color: $banner-white;
+  font-family: $primary_font_family;
+  border-radius: 20px;
+  padding: 32px;
+  gap: 24px;
+
+  &__title-text {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 150%;
+    color: $root-black;
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+  }
+  &__list-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 16px;
+  }
+  &__list-text-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__list-text-block-title {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 150%;
+    color: $common_text_color;
+  }
+  &__list-text-block-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color: $gray_text;
+  }
+  &__description {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color: $gray_text;
+  }
+  &__tags {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  &__tags-text {
+    font-family: $additional_font_family;
+    font-size: 16px;
+
+    font-weight: 600;
+    line-height: 150%;
+    color: $root-black;
+  }
+  &__tags-list {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+  }
+  &__tags-item {
+    display: flex;
+    border: 1px solid $stroke-color;
+    border-radius: 100px;
+    padding: 8px 16px;
+    font-family: $primary_font_family;
+    color: $common_text_color;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 150%;
+  }
+}

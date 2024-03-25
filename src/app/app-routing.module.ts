@@ -16,5 +16,11 @@ export const routes: Routes = [
         m => m.CatalogComponent // тут буде компонент корзини
       ),
   },
+  {
+    path: 'product-card/:id',
+    loadComponent: () =>
+      import('./layout/product-card/product-card.component').then(
+        m => m.ProductCardComponent
+      ),
+  },
 ];
-

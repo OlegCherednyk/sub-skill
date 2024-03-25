@@ -1,0 +1,55 @@
+<div class="autolayout-card">
+  <span class="autolayout-card__title-text">{{ product.name }}</span>
+  <div class="autolayout-card__img">
+    <img [src]="product.photo" alt="Photo" />
+  </div>
+
+  <div class="autolayout-card__main">
+    <ul class="autolayout-card__list">
+      <li class="autolayout-card__list-item">
+        <i class="uil uil-check-circle"></i>
+        <span class="autolayout-card__list-text">Last update Jan 10, 2024</span>
+      </li>
+      <li class="autolayout-card__list-item">
+        <i class="uil uil-cog"></i>
+
+        <span class="autolayout-card__list-text">English, Ukrainian</span>
+      </li>
+      <li class="autolayout-card__list-item">
+        <i class="uil uil-mobile-android"></i>
+
+        <span class="autolayout-card__list-text">Access on mobile</span>
+      </li>
+      <li class="autolayout-card__list-item">
+        <i class="uil uil-cloud-check"></i>
+
+        <span class="autolayout-card__list-text"
+          >Eternal access in your profile</span
+        >
+      </li>
+    </ul>
+    <div class="product-card__buy-block">
+      <app-button
+        [text]="'Buy now'"
+        [style]="'dark'"
+        [width]="'304px'"
+        [disabled]="false"
+        [padding]="'16px 32px'"></app-button>
+    </div>
+    <ul class="autolayout-card__bottom-part">
+      <li class="autolayout-card__bottom-text">Share on</li>
+      <li>
+        <i class="uil uil-linkedin gray"></i>
+      </li>
+      <li>
+        <i class="uil uil-twitter gray"></i>
+      </li>
+      <li>
+        <i class="uil uil-telegram gray"></i>
+      </li>
+      <li>
+        <i class="uil uil-link-alt gray"></i>
+      </li>
+    </ul>
+  </div>
+</div>
