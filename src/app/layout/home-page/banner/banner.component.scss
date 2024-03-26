@@ -75,7 +75,6 @@
     &__title {
       text-overflow: ellipsis;
       white-space: nowrap;
-      overflow: hidden;
       font-weight: 700;
       font-size: 32px;
       line-height: 130%; //41.6px;
@@ -105,7 +104,6 @@
     }
 
     &__description {
-      overflow: hidden;
       font-weight: 500;
       font-size: 20px;
       line-height: 150%; //30px
