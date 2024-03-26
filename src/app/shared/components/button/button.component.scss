@@ -3,8 +3,6 @@
 
 .button {
   &__dark {
-    //   width: 272px;
-    // padding: 16px 32px;
     background-color: $common_text_color;
     color: $focus_green_button;
     border: none;
@@ -35,10 +33,6 @@
     }
   }
   &__light {
-    //   width: 272px;
-    // padding: 16px 32px;
-    // padding: 12px 24px;
-
     background-color: inherit;
     color: $common_text_color;
     border: 1px solid $normal_green_button;

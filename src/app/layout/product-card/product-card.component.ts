@@ -8,6 +8,7 @@ import { map, Observable } from 'rxjs';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { ProductWhatIsInCardComponent } from './product-what-is-in-card/product-what-is-in-card.component';
 import { ProductAutolayoutCardComponent } from './product-autolayout-card/product-autolayout-card.component';
+import { GobackComponent } from 'src/app/shared/goback/goback.component';
 
 @Component({
   selector: 'app-product-card',
@@ -18,6 +19,7 @@ import { ProductAutolayoutCardComponent } from './product-autolayout-card/produc
     ProductAboutCardComponent,
     ProductWhatIsInCardComponent,
     ProductAutolayoutCardComponent,
+    GobackComponent,
   ],
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],
@@ -43,9 +45,5 @@ export class ProductCardComponent {
         )
       );
     }
-  }
-
-  goBack(): void {
-    window.history.back();
   }
 }

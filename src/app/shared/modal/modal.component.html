@@ -1,0 +1,33 @@
+<div
+  class="modal fade"
+  id="customModal"
+  tabindex="-1"
+  aria-labelledby="customModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="customModalLabel">
+          Заголовок модального окна
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          aria-label="Close"
+          (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <!-- Тело модального окна -->
+        <p>{{ message }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cancel()">
+          Отмена
+        </button>
+        <button type="button" class="btn btn-primary" (click)="delete()">
+          Удалить
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,81 @@
+<div class="signup">
+  <img src="../../../assets/SUBSkill.svg" alt="" />
+  <div class="signup__main">
+    <app-goback></app-goback>
+    <div class="signup__join">
+      <div class="signup__switcher">
+        <button class="signup__switcher-login" disabled="disabled">
+          Login
+        </button>
+        <button class="signup__switcher-signup" disabled="none">SignUp</button>
+      </div>
+      <span class="signup__title">Join SubSkill for free</span>
+      <form [formGroup]="authForm" class="signup__form">
+        <div class="signup__form-item" *ngIf="!continueWithEmailClicked">
+          <label for="inputName" class="signup__label">Email</label>
+          <input
+            title="email"
+            formControlName="email"
+            type="text"
+            id="inputEmail"
+            class="signup__input" />
+        </div>
+        <div class="signup__form-item" *ngIf="continueWithEmailClicked">
+          <label for="inputName" class="signup__label">Full name</label>
+          <input
+            title="username"
+            formControlName="username"
+            type="text"
+            id="inputName"
+            class="signup__input" />
+        </div>
+        <div class="signup__form-item" *ngIf="continueWithEmailClicked">
+          <label for="inputPassword" class="signup__label">Password</label>
+
+          <input
+            title="password"
+            formControlName="password"
+            type="password"
+            id="inputPassword"
+            class="signup__input" />
+          <span class="signup__form-password-requirement"
+            >Password must be at least 8 characters</span
+          >
+        </div>
+      </form>
+    </div>
+  </div>
+  <app-button
+    *ngIf="!continueWithEmailClicked"
+    [text]="'Continue with email'"
+    [style]="'dark'"
+    [width]="'672px'"
+    [disabled]="false"
+    [padding]="'16px 32px'"
+    (click)="onContinueWithEmailButton()"></app-button>
+  <app-button
+    *ngIf="continueWithEmailClicked"
+    [text]="'Join Subskill'"
+    [style]="'dark'"
+    [width]="'672px'"
+    [disabled]="false"
+    [padding]="'16px 32px'"
+    (click)="onSingUpButton()"></app-button>
+  <div class="signup__separator" *ngIf="!continueWithEmailClicked">
+    <span class="signup__separator-line-left"></span>
+    <span class="signup__separator-or-text">or</span>
+    <span class="signup__separator-line-right"></span>
+  </div>
+  <div class="signup__button-block" *ngIf="!continueWithEmailClicked">
+    <button type="button" class="signup__button">
+      <img src="./../../../assets/icons/social/facebook2.svg" />
+
+      <span class="signup__button-text"> Continue with Facebook</span>
+    </button>
+    <button type="button" class="signup__button">
+      <img src="./../../../assets/icons/social/google.svg" />
+
+      <span class="signup__button-text">Continue with Google</span>
+    </button>
+  </div>
+</div>

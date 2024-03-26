@@ -1,0 +1,184 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+
+.signup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 752px;
+  margin: 20px auto;
+  padding: 40px;
+  gap: 40px;
+  align-items: center;
+  background-color: white;
+  font-family: $primary_font_family;
+  border-radius: 20px;
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+  }
+  &__join {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    gap: 32px;
+  }
+  &__title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 31.2px;
+    text-align: center;
+    color: $common_text_color;
+  }
+  &__switcher {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 498px;
+    height: 40px;
+    padding: 2px;
+    background-color: $background_color;
+    border-radius: 10px;
+  }
+  &__switcher-signup {
+    background-color: $focus_green_button;
+    color: $common_text_color;
+    font-size: 14px;
+    line-height: 150%;
+    width: 247px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+  }
+  &__switcher-login {
+    background-color: inherit;
+    color: $common_text_color;
+    font-size: 14px;
+    line-height: 150%;
+    outline: none;
+    border: none;
+    width: 247px;
+    border-radius: 10px;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+  &__form-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  &__label {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21.28px;
+    text-align: left;
+    color: $gray_text;
+    width: 100%;
+  }
+  &__input {
+    width: 100%;
+    height: auto;
+    padding: 12px 24px;
+    gap: 16px;
+    border-radius: 10px;
+    border: 1px solid $stroke-color;
+    background-color: $input-color;
+    &:focus {
+      outline: $focus_green_button;
+      border: 1px solid $focus_green_button;
+    }
+  }
+  .signup__form-item:focus-within .signup__label {
+    color: $focus_green_button;
+  }
+  &__form-password-requirement {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: left;
+    color: $blocked_gray_button;
+  }
+  &__separator {
+    display: flex;
+    position: relative;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__separator-or-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19.36px;
+    color: $blocked_gray_button;
+  }
+
+  &__separator-line-left {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 312px;
+    transform: translateY(-100%);
+    border-bottom: 1px solid $stroke-color;
+  }
+
+  &__separator-line-right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 312px;
+    transform: translateY(-100%);
+    border-bottom: 1px solid $stroke-color;
+  }
+  &__button-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+  }
+  &__button {
+    width: 328px;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    background-color: inherit;
+    color: $common_text_color;
+    border: 1px solid $normal_green_button;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24.32px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $small_text_color;
+      color: $hover_green_button;
+    }
+
+    &:focus {
+      background-color: $small_text_color;
+      color: $hover_green_button;
+    }
+
+    &:active {
+      background-color: $common_text_color;
+      color: $click_green_button;
+    }
+
+    &:disabled {
+      background-color: $blocked_gray_button;
+      color: $blocked_light_text;
+    }
+  }
+}
