@@ -12,4 +12,8 @@
   border: none;
   outline: none;
   background-color: inherit;
+  &:hover,
+  &:focus {
+    color: $accent-root-dark;
+  }
 }
