@@ -1,33 +1,37 @@
 <div
-  class="modal fade"
+  *ngIf="modalData && modalData.isVisible"
+  class="modal"
   id="customModal"
   tabindex="-1"
   aria-labelledby="customModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="customModalLabel">
-          Заголовок модального окна
-        </h5>
-        <button
-          type="button"
-          class="btn-close"
-          aria-label="Close"
-          (click)="closeModal()"></button>
-      </div>
-      <div class="modal-body">
-        <!-- Тело модального окна -->
-        <p>{{ message }}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="cancel()">
-          Отмена
-        </button>
-        <button type="button" class="btn btn-primary" (click)="delete()">
-          Удалить
-        </button>
-      </div>
+  aria-hidden="false">
+  <div class="modal__content">
+    <div class="modal__header">
+      <h5 class="modal__title" id="customModalLabel">{{ modalData.title }}</h5>
+      <button
+        type="button"
+        class="modal__close"
+        aria-label="Close"
+        (click)="closeModal()"></button>
+    </div>
+    <div class="modal__body">
+      <p>{{ modalData.message }}</p>
+    </div>
+    <div class="modal__footer" *ngIf="modalData.showButtons">
+      <app-button
+        [text]="'Cancel'"
+        [style]="'light'"
+        [width]="'272px'"
+        [disabled]="false"
+        [padding]="'16px 32px'"
+        (click)="cancel()"></app-button>
+      <app-button
+        [text]="'Delete'"
+        [style]="'dark'"
+        [width]="'272px'"
+        [disabled]="false"
+        [padding]="'16px 32px'"
+        (click)="delete()"></app-button>
     </div>
   </div>
 </div>

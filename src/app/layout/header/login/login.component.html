@@ -3,6 +3,7 @@
   type="button"
   title="login"
   class="login"
-  [routerLink]="['/auth/register']">
-  Log in
+  (click)="openSignUpForm()">
+  {{ username ? username : 'Log in' }}
 </button>
+<app-signup *ngIf="signUpFormOpen" (close)="closeSignUpForm()"></app-signup>

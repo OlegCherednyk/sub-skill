@@ -2,17 +2,30 @@
 @import 'src/app/shared/style/_colors.scss';
 
 .signup {
+  position: fixed;
+  top: 47%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 752px;
   margin: 20px auto;
   padding: 40px;
-  gap: 40px;
+  gap: 32px;
   align-items: center;
   background-color: white;
   font-family: $primary_font_family;
   border-radius: 20px;
+  &__logo {
+    width: 48px;
+    height: 40px;
+  }
   &__main {
     display: flex;
     flex-direction: column;
@@ -44,7 +57,7 @@
     border-radius: 10px;
   }
   &__switcher-signup {
-    background-color: $focus_green_button;
+    background-color: inherit;
     color: $common_text_color;
     font-size: 14px;
     line-height: 150%;
@@ -52,6 +65,9 @@
     outline: none;
     border: none;
     border-radius: 10px;
+  }
+  &__switcher-signup:disabled {
+    background-color: $focus_green_button;
   }
   &__switcher-login {
     background-color: inherit;
@@ -63,6 +79,10 @@
     width: 247px;
     border-radius: 10px;
   }
+  &__switcher-login:disabled {
+    background-color: $focus_green_button;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
@@ -75,6 +95,14 @@
     justify-content: center;
     align-items: flex-start;
     gap: 8px;
+  }
+  &__form-item-password {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
   }
   &__label {
     font-size: 14px;
@@ -96,6 +124,24 @@
       outline: $focus_green_button;
       border: 1px solid $focus_green_button;
     }
+    &::placeholder {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24.32px;
+      text-align: left;
+      color: $light_grey;
+    }
+  }
+  &__toggle-password-icon {
+    font-size: 24px;
+    color: $common_text_color;
+    position: absolute;
+    top: 37px;
+    right: 24px;
+    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+    }
   }
   .signup__form-item:focus-within .signup__label {
     color: $focus_green_button;
@@ -107,8 +153,21 @@
     text-align: left;
     color: $blocked_gray_button;
   }
+  &__if-forgot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  &__forgot {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 150%; //21.28px;
+    color: $normal_green_button;
+  }
   &__separator {
     display: flex;
+    width: 100%;
     position: relative;
     gap: 16px;
     justify-content: center;
@@ -116,6 +175,8 @@
   }
 
   &__separator-or-text {
+    display: flex;
+
     font-size: 16px;
     font-weight: 500;
     line-height: 19.36px;
@@ -123,6 +184,8 @@
   }
 
   &__separator-line-left {
+    display: flex;
+    justify-content: flex-start;
     position: absolute;
     top: 50%;
     left: 0;
@@ -132,6 +195,8 @@
   }
 
   &__separator-line-right {
+    display: flex;
+
     position: absolute;
     top: 50%;
     right: 0;
@@ -147,7 +212,7 @@
   }
   &__button {
     width: 328px;
-    padding: 16px 32px;
+    padding: 12px 32px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -181,4 +246,13 @@
       color: $blocked_light_text;
     }
   }
+}
+.app-signup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1000;
 }

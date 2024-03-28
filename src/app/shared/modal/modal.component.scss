@@ -1,29 +1,55 @@
-/* Стили для заднего фона модального окна */
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+
 .modal-backdrop {
-  background-color: rgba(0, 0, 0, 0.5); /* Затемненный фон */
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.modal {
+  width: 785px;
+  background: #fff;
+  font-family: $primary_font_family;
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    border-radius: 20px;
+  }
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  &__close {
+    position: absolute;
+    right: 5px;
+  }
+  &__body {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%; //24.32px;
+    text-align: left;
+    color: $common_text_color;
+  }
+  &__footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
 }
 
-/* Стили для содержимого модального окна */
-.modal-content {
-  background-color: #fff; /* Цвет фона модального окна */
-  border-radius: 10px; /* Радиус скругления углов */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); /* Тень */
-}
-
-/* Стили для заголовка модального окна */
 .modal-title {
-  color: #333; /* Цвет текста */
+  color: #333;
 }
 
-/* Стили для кнопок в футере модального окна */
 .modal-footer .btn {
-  margin-right: 10px; /* Отступ между кнопками */
+  margin-right: 10px;
 }
 
-/* Стили для кнопки закрытия модального окна */
 .btn-close {
-  color: #333; /* Цвет крестика закрытия */
-  font-size: 1.5rem; /* Размер шрифта */
+  color: #333;
+  font-size: 1.5rem;
 }
-
-/* Стили для содерж

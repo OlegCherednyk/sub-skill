@@ -17,7 +17,13 @@ export class HttpErrorService {
         err.error.message || 'An error occurred during the HTTP request.',
       details: err.message,
     };
-    this.modalService.openModal(error.message);
+    const modalInfo = {
+      title: String(err.status),
+      message: err.error.message,
+      isVisible: true,
+      showButtons: false,
+    };
+    this.modalService.openModal(modalInfo);
 
     return throwError(
       () => new Error('Something bad happened; please try again.')

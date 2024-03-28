@@ -1,43 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModalService } from 'src/app/core/services/modal.service';
+import { ModalData } from 'src/app/core/interfaces/modal';
+import { ButtonComponent } from '../components/button/button.component';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonComponent],
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-  constructor() {}
+  @Input() modalData: ModalData | null = null;
+  constructor(private modalService: ModalService) {}
 
-  ngOnInit(): void {
-    // Вызов функции для автоматического закрытия модального окна через 2 секунды
-    setTimeout(() => {
-      this.closeModal();
-    }, 2000);
-  }
+  ngOnInit(): void {}
 
-  // Функция для закрытия модального окна
   closeModal(): void {
-    const modalElement = document.getElementById('customModal');
-    if (modalElement) {
-      modalElement.classList.remove('show');
-      modalElement.setAttribute('aria-hidden', 'true');
-    }
+    this.modalService.closeModal();
   }
 
-  // Функция для обработки нажатия на кнопку "Отмена"
   cancel(): void {
-    // Добавьте здесь свою логику для кнопки "Отмена"
     console.log('Нажата кнопка "Отмена"');
-    this.closeModal(); // Закрытие модального окна после выполнения действия
+    this.closeModal();
   }
 
-  // Функция для обработки нажатия на кнопку "Удалить"
   delete(): void {
-    // Добавьте здесь свою логику для кнопки "Удалить"
-    console.log('Нажата кнопка "Удалить"');
-    this.closeModal(); // Закрытие модального окна после выполнения действия
+    this.closeModal();
   }
 }

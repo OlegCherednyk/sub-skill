@@ -1,16 +1,33 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ModalData } from '../interfaces/modal';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ModalService {
-  errorMessage$: BehaviorSubject<string> = new BehaviorSubject<string>('');
+  private modalDataSubject: BehaviorSubject<ModalData> =
+    new BehaviorSubject<ModalData>({
+      title: '',
+      message: '',
+      isVisible: false,
+      showButtons: false,
+    });
+  public modalData$: Observable<ModalData> =
+    this.modalDataSubject.asObservable();
 
   constructor() {}
 
-  openModal(errorMessage: string): void {
-    this.errorMessage$.next(errorMessage);
-    //модальное окно здесь
+  openModal(data: ModalData): void {
+    this.modalDataSubject.next(data);
+  }
+  closeModal(): void {
+    const data: ModalData = {
+      title: '',
+      message: '',
+      isVisible: false,
+      showButtons: false,
+    };
+    this.modalDataSubject.next(data);
   }
 }

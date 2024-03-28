@@ -23,9 +23,9 @@ export const routes: Routes = [
         m => m.ProductCardComponent
       ),
   },
-  {
-    path: 'auth/register',
-    loadComponent: () =>
-      import('./auth/signup/signup.component').then(m => m.SignupComponent),
-  },
+  // {
+  //   path: 'auth/register',
+  //   loadComponent: () =>
+  //     import('./auth/signup/signup.component').then(m => m.SignupComponent),
+  // },
 ];

@@ -1,16 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GobackComponent } from 'src/app/shared/goback/goback.component';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
 import {
+  FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { SignUpBody, SignUpRequestBody } from 'src/app/core/interfaces/auth';
+import {
+  SignInBody,
+  SignUpBody,
+  SignUpRequestBody,
+} from 'src/app/core/interfaces/auth';
+import { ModalComponent } from 'src/app/shared/modal/modal.component';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-signup',
@@ -20,58 +27,95 @@ import { SignUpBody, SignUpRequestBody } from 'src/app/core/interfaces/auth';
     GobackComponent,
     ButtonComponent,
     ReactiveFormsModule,
+    ModalComponent,
   ],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
+  @Output() close: EventEmitter<any> = new EventEmitter();
   continueWithEmailClicked = false;
-  authForm = new FormGroup({
-    email: new FormControl('', [Validators.required]),
-
-    username: new FormControl('', [Validators.required]),
-    password: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^.{8,}$/),
-    ]),
-  });
+  showPassword = false;
+  loginActive: boolean = false;
+  authForm: FormGroup;
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) {
-    this.authForm.valueChanges.subscribe(() => {
-      this.authForm.markAsTouched();
+    this.authForm = this.formBuilder.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.pattern(/^.{8,}$/)]],
     });
+  }
+  gobackButton() {
+    this.continueWithEmailClicked = false;
+  }
+
+  closeSignUpForm() {
+    this.close.emit();
+  }
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+  toggleLoginButton() {
+    this.loginActive = true;
+    this.authForm.addControl(
+      'username',
+      this.formBuilder.control('', [Validators.required])
+    );
+  }
+  toggleSignUpButton() {
+    this.loginActive = false;
+
+    this.authForm.removeControl('username');
   }
 
   requestData = {} as SignUpRequestBody;
-  encodeData(data: any): string {
-    return btoa(JSON.stringify(data));
-  }
-  onContinueWithEmailButton(): void {
-    // if (this.authForm.invalid) {
-    //   return;
-    // }
-    const emailData = this.authForm.value.email as string;
-    const encodedData = this.encodeData(emailData);
-    console.log(encodedData);
 
-    console.log('data', emailData);
-    this.requestData.email = encodedData;
+  onContinueWithEmailButton(): void {
+    if (this.authForm.invalid) {
+      return;
+    }
+
+    this.requestData.email = this.authForm.value.email as string;
+
     this.continueWithEmailClicked = true;
+    if (!this.authForm.get('username')) {
+      this.authForm.addControl(
+        'username',
+        this.formBuilder.control('', [Validators.required])
+      );
+    }
   }
   onSingUpButton(): void {
     if (this.authForm.invalid) {
+      console.log('authForm.invalid');
       return;
     }
     const data = this.authForm.value as SignUpBody;
     this.requestData.username = data.username;
     this.requestData.password = data.password;
-    this.requestData.imageUrl =
-      'https://www.flaticon.com/free-icon/profile_3135715?term=user&page=1&position=4&origin=search&related_id=3135715';
+    this.requestData.imageUrl = null;
 
     console.log('this.requestData', this.requestData);
     this.authService.signUp(this.requestData);
+  }
+
+  onLigInButton(): void {
+    if (this.authForm.invalid) {
+      console.log('authForm.invalid');
+      return;
+    }
+    const data = this.authForm.value as SignInBody;
+    this.requestData.email = data.email;
+    this.requestData.password = data.password;
+
+    console.log('this.requestData', this.requestData);
+    // this.authService.logIn(this.requestData);
+  }
+  forgotPassword() {
+    console.log('Ой йой, забув пароль');
   }
 }

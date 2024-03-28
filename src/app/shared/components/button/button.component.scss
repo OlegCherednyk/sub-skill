@@ -62,4 +62,42 @@
       color: $blocked_light_text;
     }
   }
+  &__red {
+    background-color: $root_critic;
+    color: $banner-white;
+    border: 1px solid $root_critic;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24.32px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+        background-color:  $root_critic_dark;
+          border: 1px solid $root_critic_dark;
+
+      color:$banner-white;
+
+    }
+    &:focus {
+        background-color:  $root_critic_dark;
+          border: 1px solid $root_critic_dark;
+
+      color:$banner-white;
+
+    }
+    &:active {
+      background-color: inherit;
+      color:$root_critic_dark;
+                border: 1px solid $root_critic_dark;
+
+    }
+
+    &:disabled {
+      background-color: inherit;
+      color: $root_critic;
+                border: 1px solid $root_critic;
+
+    }
+  }
 }
