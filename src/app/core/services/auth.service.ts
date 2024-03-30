@@ -62,6 +62,8 @@ export class AuthService {
 
         localStorage.setItem('token', resp.token as string);
         localStorage.setItem('username', data.username);
+        localStorage.setItem('password', data.password);
+
         // this.router.navigate(['signin']);
         let modalInfo = {
           title: 'Success',
@@ -77,7 +79,7 @@ export class AuthService {
   changePassword(data: ChangePasswordBody): void {
     console.log('data', data);
     this.httpService.changePasswordHttp(data).subscribe(resp => {
-      // localStorage.setItem('token', resp as unknown as string);
+      localStorage.setItem('password', data.password);
 
       console.log('resp', resp);
       if (resp === null) {

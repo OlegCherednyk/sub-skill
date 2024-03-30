@@ -6,4 +6,10 @@
   (click)="openSignUpForm()">
   {{ username ? username : 'Log in' }}
 </button>
-<app-signup *ngIf="signUpFormOpen" (close)="closeSignUpForm()"></app-signup>
+<app-signup
+  *ngIf="signUpFormOpen"
+  (openForgotPassword)="openForgotPasswordForm()"
+  (closeSignupForm)="closeSignUpForm()"></app-signup>
+<app-forgot-password
+  *ngIf="forgotPasswordFormOpen"
+  (closeForgot)="closeForgotPasswordForm()"></app-forgot-password>

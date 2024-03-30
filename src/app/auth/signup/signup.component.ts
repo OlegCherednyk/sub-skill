@@ -18,6 +18,7 @@ import {
 } from 'src/app/core/interfaces/auth';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 import { BehaviorSubject } from 'rxjs';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 @Component({
   selector: 'app-signup',
@@ -28,20 +29,21 @@ import { BehaviorSubject } from 'rxjs';
     ButtonComponent,
     ReactiveFormsModule,
     ModalComponent,
+    ForgotPasswordComponent,
   ],
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
 export class SignupComponent {
-  @Output() close: EventEmitter<any> = new EventEmitter();
+  @Output() closeSignupForm: EventEmitter<any> = new EventEmitter();
   continueWithEmailClicked = false;
   showPassword = false;
   loginActive: boolean = false;
   authForm: FormGroup;
-
+  @Output() openForgotPassword: EventEmitter<void> = new EventEmitter<void>();
   constructor(
     private authService: AuthService,
-    private router: Router,
+
     private formBuilder: FormBuilder
   ) {
     this.authForm = this.formBuilder.group({
@@ -54,8 +56,9 @@ export class SignupComponent {
   }
 
   closeSignUpForm() {
-    this.close.emit();
+    this.closeSignupForm.emit();
   }
+
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
@@ -114,8 +117,5 @@ export class SignupComponent {
 
     console.log('this.requestData', this.requestData);
     // this.authService.logIn(this.requestData);
-  }
-  forgotPassword() {
-    console.log('Ой йой, забув пароль');
   }
 }

@@ -82,7 +82,10 @@
       (click)="
         loginActive ? onLigInButton() : onContinueWithEmailButton()
       "></app-button>
-    <span class="signup__forgot" *ngIf="loginActive" (click)="forgotPassword()"
+    <span
+      class="signup__forgot"
+      *ngIf="loginActive"
+      (click)="openForgotPassword.emit()"
       >Forgot your password?</span
     >
   </div>

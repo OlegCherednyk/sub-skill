@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
+  FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
@@ -21,33 +22,41 @@ import {
   styleUrls: ['./forgot-password.component.scss'],
 })
 export class ForgotPasswordComponent {
-  showPassword = false;
+  @Output() closeForgot: EventEmitter<any> = new EventEmitter();
 
-  repasswordForm = new FormGroup({
-    newpassword: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^.{8,}$/),
-    ]),
-    passwordRepeat: new FormControl('', [
-      Validators.required,
-      Validators.pattern(/^.{8,}$/),
-    ]),
-  });
-  constructor(private authService: AuthService) {
-    this.repasswordForm.valueChanges.subscribe(() => {
-      this.repasswordForm.markAsTouched();
+  showPassword = false;
+  repasswordForm: FormGroup;
+  requestData: ChangePasswordBody = { password: '' };
+  isChangePasswordMode = false;
+
+  constructor(
+    private authService: AuthService,
+    private formBuilder: FormBuilder
+  ) {
+    this.repasswordForm = this.formBuilder.group({
+      newpassword: ['', [Validators.required, Validators.pattern(/^.{8,}$/)]],
+      passwordRepeat: [
+        '',
+        [Validators.required, Validators.pattern(/^.{8,}$/)],
+      ],
     });
   }
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
-  data = this.repasswordForm.value as ChangePasswordForm;
-  requestData: ChangePasswordBody = {
-    password: this.data.newPassword,
-  };
-  onChangePasswordButton(): void {
+  closeForgotPasswordForm() {
+    this.closeForgot.emit();
+  }
+
+  onChangeForgottenPasswordButton(): void {
     if (this.repasswordForm.invalid) {
       console.log('repasswordForm.invalid');
+      return;
+    }
+    const currentPasswordFromLS = localStorage.getItem('password');
+    if (currentPasswordFromLS !== this.repasswordForm.value.currentpassword) {
+      console.log(' current password are wrong. Try again');
+
       return;
     }
     if (
@@ -57,9 +66,33 @@ export class ForgotPasswordComponent {
       console.log('passwords dont equal');
       return;
     }
-    console.log('this.requestData', this.data.password);
+
+    const formData = this.repasswordForm.value;
+    this.requestData.password = formData.newpassword;
+
+    console.log('this.requestData', this.requestData);
     this.authService.changePassword(this.requestData);
   }
+
+  onChangePasswordButton(): void {
+    if (this.repasswordForm.invalid) {
+      return;
+    }
+    const formData = this.repasswordForm.value;
+
+    this.requestData.password = formData.newpassword;
+
+    if (!this.repasswordForm.get('currentpassword')) {
+      this.repasswordForm.addControl(
+        'currentpassword',
+        this.formBuilder.control('', [
+          Validators.required,
+          Validators.pattern(/^.{8,}$/),
+        ])
+      );
+    }
+  }
+
   onCancelButton() {
     console.log('cancel');
   }
