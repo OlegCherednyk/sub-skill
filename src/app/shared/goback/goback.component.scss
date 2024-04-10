@@ -12,6 +12,11 @@
     outline: none;
     border: none;
     cursor: pointer;
+    color: $gray_text;
+
+    &:hover{
+      color:$normal_green_button;
+    }
   }
   i {
     font-size: 24px;

@@ -1,32 +1,76 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { ModalData } from 'src/app/core/interfaces/modal';
 import { ButtonComponent } from '../components/button/button.component';
+import { delay, Subscription } from 'rxjs';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { EventService } from 'src/app/core/services/event.service';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, RouterModule],
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
-})
-export class ModalComponent implements OnInit {
-  @Input() modalData: ModalData | null = null;
-  constructor(private modalService: ModalService) {}
+  changeDetection: ChangeDetectionStrategy.OnPush,
 
-  ngOnInit(): void {}
+
+})
+export class ModalComponent implements OnInit, OnDestroy {
+  modalData!: ModalData;
+  isLogo: boolean = false;
+  isBookmark: boolean = false;
+  isProfile: boolean = false;
+
+  private modalSubscription!: Subscription;
+  constructor(
+    private modalService: ModalService,
+    private authService: AuthService,
+    private eventService: EventService,
+    private router: Router,
+  ) {
+  }
+
+  ngOnInit(): void {
+    this.modalSubscription = this.modalService.modalData$.subscribe(data => {
+
+      this.modalData = data;
+      if (data.message !== '' || data.additionalMessage !== '') {
+        this.isLogo = data.isLogo;
+        this.isBookmark = data.isBookmark;
+        this.isProfile = data.isProfile;
+      }
+   
+    });
+    const redirectUrl = this.authService.getRedirectUrl();
+    if (redirectUrl) {
+      this.router.navigateByUrl(redirectUrl);
+    } else {
+      this.router.navigateByUrl('/');
+    }
+  }
 
   closeModal(): void {
-    this.modalService.closeModal();
+    setTimeout(() => {
+      this.eventService.emitModalEvent();
+    }, 2000);
   }
 
   cancel(): void {
-    console.log('Нажата кнопка "Отмена"');
     this.closeModal();
   }
+  close(): void {
+    this.eventService.emitModalEvent();
 
-  delete(): void {
-    this.closeModal();
+  }
+  deleteProfile(): void {
+    this.authService.deleteAccount();
+    this.eventService.emitModalEvent();
+
+  }
+  ngOnDestroy(): void {
+    this.modalSubscription.unsubscribe();
   }
 }

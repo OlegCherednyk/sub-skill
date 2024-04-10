@@ -1,6 +1,10 @@
-export interface ModalData {
+export interface ModalData
+{
+  isLogo: boolean;
   title: string;
   message: string;
-  isVisible: boolean;
+  additionalMessage: string;
+  isBookmark: boolean;
+  isProfile: boolean;
   showButtons: boolean;
 }

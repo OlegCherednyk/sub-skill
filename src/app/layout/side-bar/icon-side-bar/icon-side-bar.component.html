@@ -1,7 +1,8 @@
-<div class="icon-with-text">
-    <div class="icon"
+<div class="icon-with-text"  [ngClass]="{ 'isActive': isIconActive }" (click)="handleIconClick(icon)" >
+  <div
+    class="icon"
     [ngStyle]="{
-        'mask': icon.img
+      mask: icon.img
     }"></div>
-    <span>{{ icon.title }}</span>
+  <span>{{ icon.title }}</span>
 </div>

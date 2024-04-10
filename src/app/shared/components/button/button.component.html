@@ -1,5 +1,9 @@
 <button
-  [ngClass]="style === 'dark' ? 'button__dark' : 'button__light'"
+  [ngClass]="{
+    button__dark: style === 'dark',
+    button__light: style === 'light',
+    button__red: style === 'red'
+  }"
   [disabled]="disabled"
   [style.width]="width"
   [style.padding]="padding">

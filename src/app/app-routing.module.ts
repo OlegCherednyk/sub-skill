@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { authGuard } from './core/guards/auth.guard';
 
 export const routes: Routes = [
   {
@@ -27,5 +28,23 @@ export const routes: Routes = [
   //   path: 'auth/register',
   //   loadComponent: () =>
   //     import('./auth/signup/signup.component').then(m => m.SignupComponent),
+  // },
+  {
+    path: 'profile',
+    loadComponent: () =>
+      import('./auth/profile/profile.component').then(m => m.ProfileComponent),
+      canActivate: [authGuard],
+  },
+
+
+  {
+    path: 'signup-page',
+    loadComponent: () =>
+      import('./auth/signup-page/signup-page.component').then(m => m.SignupPageComponent),
+  },
+  // {
+  //   path: 'my-skills',
+  //   loadComponent: () =>
+  //     import('./').then(m => m.), // тут буде щлях до компоненту my-skills
   // },
 ];

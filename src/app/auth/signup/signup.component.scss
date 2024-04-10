@@ -1,55 +1,69 @@
 @import 'src/app/shared/style/_fonts.scss';
 @import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
 
 .signup {
-  position: fixed;
-  top: 47%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1001;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include flex-column-center;
   width: 752px;
-  margin: 20px auto;
   padding: 40px;
   gap: 32px;
   align-items: center;
   background-color: white;
   font-family: $primary_font_family;
   border-radius: 20px;
+
+  // position: fixed;
+  // top: 47%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  // z-index: 10;
+
+  // margin: 20px auto;
+
+  &__modaltype {
+    position: fixed;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+
+    margin: 20px auto;
+  }
+  &__pagetype {
+    background-color: inherit;
+  }
   &__logo {
     width: 48px;
     height: 40px;
   }
+
   &__main {
-    display: flex;
-    flex-direction: column;
+    @include flex-column-center;
+
     gap: 16px;
     width: 100%;
   }
   &__join {
-    display: flex;
-    flex-direction: column;
+    @include flex-column-center;
     align-items: center;
     width: 100%;
     gap: 32px;
   }
   &__title {
-    font-size: 24px;
-    font-weight: 700;
-    line-height: 31.2px;
+    @include font-24-700;
     text-align: center;
     color: $common_text_color;
   }
+  &__error-phrase{
+    @include font-14-500;
+    text-align: center;
+    color: $root_critic;
+  
+  }
   &__switcher {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
+    @include flex-row-center;
     width: 498px;
     height: 40px;
     padding: 2px;
@@ -59,58 +73,93 @@
   &__switcher-signup {
     background-color: inherit;
     color: $common_text_color;
-    font-size: 14px;
-    line-height: 150%;
+    @include font-14-500;
+
     width: 247px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+  }
+  &__switcher-signup-page {
+    background-color: $banner-white;
+    color: $common_text_color;
+    @include font-14-500;
+
+    width: 247px;
+    height: 100%;
     outline: none;
     border: none;
     border-radius: 10px;
   }
   &__switcher-signup:disabled {
+    height: 100%;
+    background-color: $focus_green_button;
+  }
+  &__switcher-signup-page:disabled {
+    height: 100%;
     background-color: $focus_green_button;
   }
   &__switcher-login {
     background-color: inherit;
     color: $common_text_color;
-    font-size: 14px;
-    line-height: 150%;
+    @include font-14-500;
+
     outline: none;
     border: none;
     width: 247px;
     border-radius: 10px;
   }
+  &__switcher-login-page {
+    background-color: $banner-white;
+    color: $common_text_color;
+    @include font-14-500;
+
+    outline: none;
+    border: none;
+    width: 247px;
+    height: 100%;
+
+    border-radius: 10px;
+  }
   &__switcher-login:disabled {
+    height: 100%;
+
     background-color: $focus_green_button;
   }
 
   &__form {
-    display: flex;
-    flex-direction: column;
+    @include flex-column-center;
+
     gap: 24px;
     width: 100%;
   }
   &__form-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex-column-center;
+
     align-items: flex-start;
     gap: 8px;
   }
   &__form-item-password {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    @include flex-column-center;
+
     align-items: flex-start;
     gap: 8px;
     position: relative;
   }
+  &__error-message {
+    @include font-12-500;
+    line-height: 130%;
+    color: $root_critic;
+  }
   &__label {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21.28px;
+    @include font-14-500;
+
     text-align: left;
     color: $gray_text;
     width: 100%;
+  }
+  &__label-invalid {
+    color: $root_critic;
   }
   &__input {
     width: 100%;
@@ -125,11 +174,15 @@
       border: 1px solid $focus_green_button;
     }
     &::placeholder {
-      font-size: 16px;
-      font-weight: 400;
-      line-height: 24.32px;
-      text-align: left;
+      @include font-16-400;
+
       color: $light_grey;
+    }
+  }
+  &__input-invalid {
+    border: 1px solid $root_critic;
+    &:focus {
+      border: 1px solid $root_critic;
     }
   }
   &__toggle-password-icon {
@@ -139,30 +192,36 @@
     top: 37px;
     right: 24px;
     cursor: pointer;
-    &:hover {
-      cursor: pointer;
-    }
+ 
+  }
+  &__toggle-password-icon-invalid {
+    color: $root_critic;
   }
   .signup__form-item:focus-within .signup__label {
     color: $focus_green_button;
   }
+  .signup__form-item:focus-within .signup__label-invalid {
+    color: $root_critic;
+  }
   &__form-password-requirement {
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 16px;
-    text-align: left;
+    @include font-12-500;
+
+    color: $blocked_gray_button;
+  }
+  &__form-passw-requirement {
+    @include font-12-500;
+
     color: $blocked_gray_button;
   }
   &__if-forgot {
-    display: flex;
-    flex-direction: column;
+    width: 672px;
+    @include flex-column-center;
     align-items: center;
     gap: 16px;
   }
   &__forgot {
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 150%; //21.28px;
+    @include font-14-500;
+
     color: $normal_green_button;
     cursor: pointer;
   }
@@ -171,22 +230,18 @@
     width: 100%;
     position: relative;
     gap: 16px;
-    justify-content: center;
-    align-items: center;
+    @include flex-row-center;
   }
 
   &__separator-or-text {
     display: flex;
-
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 19.36px;
+    @include font-16-500-120;
     color: $blocked_gray_button;
   }
 
   &__separator-line-left {
-    display: flex;
-    justify-content: flex-start;
+    @include flex-row-start;
+
     position: absolute;
     top: 50%;
     left: 0;
@@ -206,24 +261,20 @@
     border-bottom: 1px solid $stroke-color;
   }
   &__button-block {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-row-center;
+
     gap: 16px;
   }
   &__button {
     width: 328px;
     padding: 12px 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-row-center;
     gap: 8px;
     background-color: inherit;
     color: $common_text_color;
     border: 1px solid $normal_green_button;
-    font-size: 16px;
-    font-weight: 700;
-    line-height: 24.32px;
+    @include font-16-700;
+
     border-radius: 10px;
     cursor: pointer;
 
@@ -255,5 +306,12 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.75);
-  z-index: 1000;
+  z-index: 9;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px $input-color inset !important; 
+    -webkit-text-fill-color: #333 !important; 
 }

@@ -28,8 +28,9 @@
     }
 
     &:disabled {
-      background-color: $blocked_gray_button;
+      background-color: $stroke-color;
       color: $blocked_light_text;
+      cursor: not-allowed;
     }
   }
   &__light {
@@ -73,31 +74,27 @@
     cursor: pointer;
 
     &:hover {
-        background-color:  $root_critic_dark;
-          border: 1px solid $root_critic_dark;
+      background-color: $root_critic_dark;
+      border: 1px solid $root_critic_dark;
 
-      color:$banner-white;
-
+      color: $banner-white;
     }
     &:focus {
-        background-color:  $root_critic_dark;
-          border: 1px solid $root_critic_dark;
+      background-color: $root_critic_dark;
+      border: 1px solid $root_critic_dark;
 
-      color:$banner-white;
-
+      color: $banner-white;
     }
     &:active {
       background-color: inherit;
-      color:$root_critic_dark;
-                border: 1px solid $root_critic_dark;
-
+      color: $root_critic_dark;
+      border: 1px solid $root_critic_dark;
     }
 
     &:disabled {
       background-color: inherit;
       color: $root_critic;
-                border: 1px solid $root_critic;
-
+      border: 1px solid $root_critic;
     }
   }
 }

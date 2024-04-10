@@ -12,4 +12,12 @@
   border: none;
   outline: none;
   background-color: inherit;
+  transition: 0.5s;
+
+  &:hover{
+  
+    color: $hover_title_text}
+}
+.login__for-name{
+  color:  $common_text_color;
 }

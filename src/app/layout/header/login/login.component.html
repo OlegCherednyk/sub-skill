@@ -3,13 +3,13 @@
   type="button"
   title="login"
   class="login"
+  [ngClass]="{'login__for-name': isUser}"
+
   (click)="openSignUpForm()">
-  {{ username ? username : 'Log in' }}
+  <ng-container class="login__for-name"
+    *ngIf="authService.username$ | async as username; else loginText"> Hello, 
+    {{ username }}!
+  </ng-container>
+  <ng-template #loginText> Log in </ng-template>
 </button>
-<app-signup
-  *ngIf="signUpFormOpen"
-  (openForgotPassword)="openForgotPasswordForm()"
-  (closeSignupForm)="closeSignUpForm()"></app-signup>
-<app-forgot-password
-  *ngIf="forgotPasswordFormOpen"
-  (closeForgot)="closeForgotPasswordForm()"></app-forgot-password>
+<app-signup *ngIf="signUpFormOpen" ></app-signup>

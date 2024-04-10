@@ -1,5 +1,15 @@
-<div class="signup">
-  <img src="../../../assets/SUBSkill.svg" alt="img" class="signup__logo" />
+<div
+  class="signup"
+  [ngClass]="{
+    'signup__modaltype ': isModalType,
+    'signup__pagetype ': !isModalType
+  }"
+ >
+  <img
+    src="../../../assets/LogoSmall.svg"
+    alt="img"
+    class="signup__logo"
+    *ngIf="isModalType" />
   <div class="signup__main">
     <app-goback
       *ngIf="continueWithEmailClicked"
@@ -7,31 +17,72 @@
     <div class="signup__join">
       <div class="signup__switcher">
         <button
-          class="signup__switcher-login"
+        [ngClass]="{
+          'signup__switcher-signup-page': !isModalType,
+          'signup__switcher-signup': isModalType
+        }"
           [disabled]="loginActive"
           (click)="!continueWithEmailClicked ? toggleLoginButton() : null">
           Login
         </button>
         <button
-          class="signup__switcher-signup"
+          [ngClass]="{
+            'signup__switcher-signup-page': !isModalType,
+            'signup__switcher-signup': isModalType
+          }"
           [disabled]="!loginActive"
           (click)="toggleSignUpButton()">
           SignUp
         </button>
       </div>
-      <span class="signup__title">Join SubSkill for free</span>
+      <span
+        *ngIf="loginActive && isModalType"
+        class="signup__title"
+        >Welcome back</span
+      >
+      <ng-template
+        *ngIf="!loginActive  && isModalType"
+        class="signup__title"
+        >Join SubSkill for free</ng-template
+      >
       <form [formGroup]="authForm" class="signup__form">
+        <span *ngIf="isError" class="signup__error-phrase">There is no registered user for this email. Please check the correctness of the entered data</span>
         <div
           class="signup__form-item"
-          *ngIf="!continueWithEmailClicked || loginActive">
-          <label for="inputName" class="signup__label">Email</label>
+          *ngIf="!continueWithEmailClicked || loginActive"
+          
+          >
+          <label
+            for="inputEmail"
+            class="signup__label"
+            [ngClass]="{
+              'signup__label-invalid':
+            authForm.get('email')?.invalid &&
+            (authForm.get('email')?.dirty || authForm.get('email')?.touched) || isError}
+          "
+            >Email</label
+          >
           <input
             title="email"
             formControlName="email"
             type="text"
             id="inputEmail"
             class="signup__input"
-            placeholder="your.email@example.com" />
+            placeholder="your.email@example.com"
+            [ngClass]="{
+              'signup__input-invalid':
+            authForm.get('email')?.invalid &&
+            (authForm.get('email')?.dirty || authForm.get('email')?.touched)  || isError}
+          "
+             />
+          <span
+            class="signup__error-message"
+            *ngIf="!isError &&
+              authForm.get('email')?.invalid &&
+              (authForm.get('email')?.dirty || authForm.get('email')?.touched )
+            ">
+            Incorrect form of email
+          </span>
         </div>
         <div class="signup__form-item" *ngIf="continueWithEmailClicked">
           <label for="inputName" class="signup__label">Full name</label>
@@ -46,7 +97,17 @@
         <div
           class="signup__form-item-password"
           *ngIf="continueWithEmailClicked || loginActive">
-          <label for="inputPassword" class="signup__label">Password </label>
+          <label
+            for="inputPassword"
+            class="signup__label"
+            [ngClass]="{
+              'signup__label-invalid':
+                authForm.get('password')?.invalid &&
+                (authForm.get('password')?.dirty ||
+                  authForm.get('password')?.touched)
+            }"
+            >Password
+          </label>
 
           <input
             title="password"
@@ -54,26 +115,59 @@
             [type]="showPassword ? 'text' : 'password'"
             id="inputPassword"
             class="signup__input"
-            placeholder="Enter your password" />
+            placeholder="Enter your password"
+            [ngClass]="{
+              'signup__input-invalid':
+                authForm.get('password')?.invalid &&
+                (authForm.get('password')?.dirty ||
+                  authForm.get('password')?.touched) || isError
+            }" />
           <span
             class="signup__toggle-password-icon"
             (click)="togglePasswordVisibility()">
-            <i
-              [ngClass]="
-                !showPassword ? 'uil uil-eye-slash' : 'uil uil-eye'
-              "></i>
+            <i [ngClass]="{
+              'signup__toggle-password-icon-invalid': (authForm.get('password')?.invalid && (authForm.get('password')?.dirty || authForm.get('password')?.touched)) || isError,
+              'uil uil-eye-slash': !showPassword,
+              'uil uil-eye': showPassword
+            }"></i>
+            
           </span>
-
-          <span class="signup__form-password-requirement" *ngIf="!loginActive"
-            >Password must be at least 8 characters</span
-          >
+          <span
+            *ngIf="!loginActive"
+            [ngClass]="{
+              'signup__form-passw-requirement':
+                !authForm.get('password')?.dirty &&
+                !authForm.get('password')?.touched,
+              'signup__error-message':
+                authForm.get('password')?.invalid &&
+                (authForm.get('password')?.dirty ||
+                  authForm.get('password')?.touched),
+              'signup__form-password-requirement':
+                !authForm.get('password')?.invalid &&
+                (authForm.get('password')?.dirty ||
+                  authForm.get('password')?.touched)
+            }">
+            Password must be at least 8 characters
+          </span>
+   
+          <span
+            *ngIf="!isError &&
+              loginActive && 
+              authForm.get('password')?.invalid &&
+              (authForm.get('password')?.dirty ||
+                authForm.get('password')?.touched)
+            "
+            class="signup__error-message">
+            Wrong password
+          </span>
+       
         </div>
       </form>
     </div>
   </div>
   <div class="signup__if-forgot">
     <app-button
-      *ngIf="!continueWithEmailClicked || loginActive"
+      *ngIf="!continueWithEmailClicked || loginActive" 
       [text]="!loginActive ? 'Continue with email' : 'Login with email'"
       [style]="'dark'"
       [width]="'672px'"
@@ -85,7 +179,7 @@
     <span
       class="signup__forgot"
       *ngIf="loginActive"
-      (click)="openForgotPassword.emit()"
+      (click)="onForgotPasswordButton()"
       >Forgot your password?</span
     >
   </div>
@@ -119,4 +213,7 @@
     </button>
   </div>
 </div>
-<div class="app-signup-backdrop" (click)="closeSignUpForm()"></div>
+<div
+  *ngIf="isModalType"
+  class="app-signup-backdrop"
+  ></div>
