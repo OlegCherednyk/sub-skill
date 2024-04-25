@@ -23,4 +23,11 @@ export const routes: Routes = [
         m => m.ProductCardComponent
       ),
   },
+  {
+    path: 'catalog-cards/:id',
+    loadComponent: () =>
+      import('./features/catalog/catalog.component').then(
+        m => m.CatalogComponent
+      ),
+  }
 ];

@@ -1,3 +1,4 @@
-export interface CategoriesSideBar {
-    [category: string]: boolean
+export interface CatalogCategory {
+	id: number;
+	name: string;
 }
