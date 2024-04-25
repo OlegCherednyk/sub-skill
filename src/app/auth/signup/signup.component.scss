@@ -1,0 +1,317 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.signup {
+  @include flex-column-center;
+  width: 752px;
+  padding: 40px;
+  gap: 32px;
+  align-items: center;
+  background-color: white;
+  font-family: $primary_font_family;
+  border-radius: 20px;
+
+  // position: fixed;
+  // top: 47%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  // box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  // z-index: 10;
+
+  // margin: 20px auto;
+
+  &__modaltype {
+    position: fixed;
+    top: 47%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+
+    margin: 20px auto;
+  }
+  &__pagetype {
+    background-color: inherit;
+  }
+  &__logo {
+    width: 48px;
+    height: 40px;
+  }
+
+  &__main {
+    @include flex-column-center;
+
+    gap: 16px;
+    width: 100%;
+  }
+  &__join {
+    @include flex-column-center;
+    align-items: center;
+    width: 100%;
+    gap: 32px;
+  }
+  &__title {
+    @include font-24-700;
+    text-align: center;
+    color: $common_text_color;
+  }
+  &__error-phrase{
+    @include font-14-500;
+    text-align: center;
+    color: $root_critic;
+  
+  }
+  &__switcher {
+    @include flex-row-center;
+    width: 498px;
+    height: 40px;
+    padding: 2px;
+    background-color: $background_color;
+    border-radius: 10px;
+  }
+  &__switcher-signup {
+    background-color: inherit;
+    color: $common_text_color;
+    @include font-14-500;
+
+    width: 247px;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+  }
+  &__switcher-signup-page {
+    background-color: $banner-white;
+    color: $common_text_color;
+    @include font-14-500;
+
+    width: 247px;
+    height: 100%;
+    outline: none;
+    border: none;
+    border-radius: 10px;
+  }
+  &__switcher-signup:disabled {
+    height: 100%;
+    background-color: $focus_green_button;
+  }
+  &__switcher-signup-page:disabled {
+    height: 100%;
+    background-color: $focus_green_button;
+  }
+  &__switcher-login {
+    background-color: inherit;
+    color: $common_text_color;
+    @include font-14-500;
+
+    outline: none;
+    border: none;
+    width: 247px;
+    border-radius: 10px;
+  }
+  &__switcher-login-page {
+    background-color: $banner-white;
+    color: $common_text_color;
+    @include font-14-500;
+
+    outline: none;
+    border: none;
+    width: 247px;
+    height: 100%;
+
+    border-radius: 10px;
+  }
+  &__switcher-login:disabled {
+    height: 100%;
+
+    background-color: $focus_green_button;
+  }
+
+  &__form {
+    @include flex-column-center;
+
+    gap: 24px;
+    width: 100%;
+  }
+  &__form-item {
+    @include flex-column-center;
+
+    align-items: flex-start;
+    gap: 8px;
+  }
+  &__form-item-password {
+    @include flex-column-center;
+
+    align-items: flex-start;
+    gap: 8px;
+    position: relative;
+  }
+  &__error-message {
+    @include font-12-500;
+    line-height: 130%;
+    color: $root_critic;
+  }
+  &__label {
+    @include font-14-500;
+
+    text-align: left;
+    color: $gray_text;
+    width: 100%;
+  }
+  &__label-invalid {
+    color: $root_critic;
+  }
+  &__input {
+    width: 100%;
+    height: auto;
+    padding: 12px 24px;
+    gap: 16px;
+    border-radius: 10px;
+    border: 1px solid $stroke-color;
+    background-color: $input-color;
+    &:focus {
+      outline: $focus_green_button;
+      border: 1px solid $focus_green_button;
+    }
+    &::placeholder {
+      @include font-16-400;
+
+      color: $light_grey;
+    }
+  }
+  &__input-invalid {
+    border: 1px solid $root_critic;
+    &:focus {
+      border: 1px solid $root_critic;
+    }
+  }
+  &__toggle-password-icon {
+    font-size: 24px;
+    color: $common_text_color;
+    position: absolute;
+    top: 37px;
+    right: 24px;
+    cursor: pointer;
+ 
+  }
+  &__toggle-password-icon-invalid {
+    color: $root_critic;
+  }
+  .signup__form-item:focus-within .signup__label {
+    color: $focus_green_button;
+  }
+  .signup__form-item:focus-within .signup__label-invalid {
+    color: $root_critic;
+  }
+  &__form-password-requirement {
+    @include font-12-500;
+
+    color: $blocked_gray_button;
+  }
+  &__form-passw-requirement {
+    @include font-12-500;
+
+    color: $blocked_gray_button;
+  }
+  &__if-forgot {
+    width: 672px;
+    @include flex-column-center;
+    align-items: center;
+    gap: 16px;
+  }
+  &__forgot {
+    @include font-14-500;
+
+    color: $normal_green_button;
+    cursor: pointer;
+  }
+  &__separator {
+    display: flex;
+    width: 100%;
+    position: relative;
+    gap: 16px;
+    @include flex-row-center;
+  }
+
+  &__separator-or-text {
+    display: flex;
+    @include font-16-500-120;
+    color: $blocked_gray_button;
+  }
+
+  &__separator-line-left {
+    @include flex-row-start;
+
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 312px;
+    transform: translateY(-100%);
+    border-bottom: 1px solid $stroke-color;
+  }
+
+  &__separator-line-right {
+    display: flex;
+
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 312px;
+    transform: translateY(-100%);
+    border-bottom: 1px solid $stroke-color;
+  }
+  &__button-block {
+    @include flex-row-center;
+
+    gap: 16px;
+  }
+  &__button {
+    width: 328px;
+    padding: 12px 32px;
+    @include flex-row-center;
+    gap: 8px;
+    background-color: inherit;
+    color: $common_text_color;
+    border: 1px solid $normal_green_button;
+    @include font-16-700;
+
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $small_text_color;
+      color: $hover_green_button;
+    }
+
+    &:focus {
+      background-color: $small_text_color;
+      color: $hover_green_button;
+    }
+
+    &:active {
+      background-color: $common_text_color;
+      color: $click_green_button;
+    }
+
+    &:disabled {
+      background-color: $blocked_gray_button;
+      color: $blocked_light_text;
+    }
+  }
+}
+.app-signup-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0px 1000px $input-color inset !important; 
+    -webkit-text-fill-color: #333 !important; 
+}

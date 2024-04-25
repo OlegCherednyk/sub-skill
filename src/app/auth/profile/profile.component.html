@@ -1,0 +1,153 @@
+<div class="profile" *ngIf="profileInfo$ | async as profile">
+  <div class="profile__personal">
+    <div class="profile__personal-info-block">
+      <span class="profile__personal-info-title">Personal info</span>
+      <div class="profile__personal-info-main">
+        <div class="profile__personal-info-inputs">
+          <form [formGroup]="profileForm">
+            <div class="profile__form-item">
+              <label for="inputName" class="profile__label">Full name</label>
+              <input
+                title="username"
+                type="text"
+                formControlName="username"
+                (ngModelChange)="onFormControlChange()"
+                id="inputName"
+                class="profile__input"
+                placeholder="{{ profile.username || 'John Johnson' }}"
+                [ngClass]="{ exists: profile.username }" />
+            </div>
+            <div class="profile__form-item">
+              <label for="inputJob" class="profile__label">Job title</label>
+              <input
+                title="jobTitle"
+                formControlName="jobTitle"
+                (ngModelChange)="onFormControlChange()"
+                type="text"
+                class="profile__input"
+                id="inputJob"
+                placeholder="{{ profile.jobTitle || 'Ux Designer' }}"
+                [ngClass]="{ exists: profile.jobTitle }" />
+            </div>
+            <div class="profile__form-item">
+              <label for="inputEmail" class="profile__label">E-mail</label>
+              <input
+                title="email"
+                formControlName="email"
+                (ngModelChange)="onFormControlChange()"
+                type="text"
+                id="inputEmail"
+                class="profile__input"
+                placeholder="{{ profile.email || 'your.email@example.com' }}"
+                [ngClass]="{ exists: profile.email }" />
+            </div>
+            <div class="profile__form-item-password">
+              <label for="inputPassword" class="profile__label"
+                >Password
+              </label>
+
+              <input
+                title="password"
+                formControlName="password"
+                (ngModelChange)="onFormControlChange()"
+                [type]="showPassword ? 'text' : 'password'"
+                id="inputPassword"
+                class="profile__input"
+                [placeholder]="showPassword ? password : '********'" />
+
+              <span
+                class="profile__toggle-password-icon"
+                (click)="togglePasswordVisibility()">
+                <i
+                  [ngClass]="
+                    !showPassword ? 'uil uil-eye-slash' : 'uil uil-eye'
+                  "></i>
+              </span>
+            </div>
+          </form>
+        </div>
+        <div class="profile__personal-info-buttons">
+          <button
+            class="profile__personal-info-change-button"
+            (click)="onChangePasswordButton()">
+            Change password
+          </button>
+          <button class="profile__personal-info-button">Sign out</button>
+        </div>
+      </div>
+    </div>
+    <app-button
+      [text]="'Save all changes'"
+      [style]="'dark'"
+      [width]="'560px'"
+      [disabled]="!isFormDirty"
+      [padding]="'16px 32px'"
+      (click)="submitProfileSettings()"></app-button>
+    <button title="" class="profile__delete" (click)="onDeleteProfileButton()">
+      <span class="profile__delete-title">Delete Account</span>
+      <span class="profile__delete-text">
+        We`d hate to see you go, but you`re welcome to delete your account
+        anytime. Just remember, once you delete it, it`s gone forever.
+      </span>
+    </button>
+  </div>
+  <div class="profile__interests">
+    <div class="profile__interests-your-chooses">
+      <span class="profile__interests-title"> What is your interests? </span>
+      <ul class="profile__interests-list">
+        <li
+          class="profile__interests-list-item"
+          *ngFor="let interest of selectedInterests">
+          {{ interest }}
+          <i class="uil uil-multiply" (click)="deleteInterest(interest)"></i>
+        </li>
+      </ul>
+    </div>
+    <div class="profile__interests-for-choose">
+      <span class="profile__interests-for-choose-title"
+        >Choose your interest from the list
+      </span>
+      <div class="profile__interests-dropdown-container">
+        <div
+          *ngFor="let profession of professions"
+          class="profile__interests-dropdown-item"
+          [ngClass]="{ active: dropdownOpen[profession.id] }">
+          <div class="profile__interests-dropdown-select">
+            <button
+              class="profile__interests-dropdown-select-name"
+              (click)="toggleDropdown(profession.id)">
+              {{ profession.name }}
+              <i
+                class="uil"
+                [ngClass]="{
+                  'uil-angle-up': dropdownOpen[profession.id],
+                  'uil-angle-down': !dropdownOpen[profession.id]
+                }"></i>
+            </button>
+            <div
+              class="profile__interests-dropdown-select"
+              *ngIf="dropdownOpen[profession.id]">
+              <div
+                *ngFor="let technology of technologies[profession.id]"
+                class="profile__interests-dropdown-select-option"
+                [ngClass]="{ active: selectedTechnologies[technology.id] }">
+                <input
+                  title="checkbox"
+                  class="profile__interests-dropdown-select-checkbox"
+                  type="checkbox"
+                  [id]="'technology_' + technology.id"
+                  [value]="technology.id"
+                  [(ngModel)]="selectedTechnologies[technology.id]"
+                  (click)="toggleInterest(technology.name)"
+                  [checked]="selectedInterests.includes(technology.name)" />
+                <label [for]="'technology_' + technology.id"
+                  >{{ technology.name }}
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

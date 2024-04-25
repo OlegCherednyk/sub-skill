@@ -3,8 +3,6 @@
 
 .button {
   &__dark {
-    //   width: 272px;
-    // padding: 16px 32px;
     background-color: $common_text_color;
     color: $focus_green_button;
     border: none;
@@ -30,15 +28,12 @@
     }
 
     &:disabled {
-      background-color: $blocked_gray_button;
+      background-color: $stroke-color;
       color: $blocked_light_text;
+      cursor: not-allowed;
     }
   }
   &__light {
-    //   width: 272px;
-    // padding: 16px 32px;
-    // padding: 12px 24px;
-
     background-color: inherit;
     color: $common_text_color;
     border: 1px solid $normal_green_button;
@@ -66,6 +61,40 @@
     &:disabled {
       background-color: $blocked_gray_button;
       color: $blocked_light_text;
+    }
+  }
+  &__red {
+    background-color: $root_critic;
+    color: $banner-white;
+    border: 1px solid $root_critic;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24.32px;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $root_critic_dark;
+      border: 1px solid $root_critic_dark;
+
+      color: $banner-white;
+    }
+    &:focus {
+      background-color: $root_critic_dark;
+      border: 1px solid $root_critic_dark;
+
+      color: $banner-white;
+    }
+    &:active {
+      background-color: inherit;
+      color: $root_critic_dark;
+      border: 1px solid $root_critic_dark;
+    }
+
+    &:disabled {
+      background-color: inherit;
+      color: $root_critic;
+      border: 1px solid $root_critic;
     }
   }
 }

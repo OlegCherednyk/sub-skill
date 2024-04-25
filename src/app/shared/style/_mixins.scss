@@ -1,0 +1,66 @@
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+@mixin flex-column-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+@mixin flex-row-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex-row-start {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+@mixin font-12-500 {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 150%; //16px;
+}
+
+@mixin font-14-500 {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 150%; //21.28px;
+}
+
+@mixin font-16-400 {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 150%; //24.32px;
+}
+
+@mixin font-16-500-120 {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 120%; // 19.36px;
+}
+@mixin font-16-600 {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 150%; //24.32px;
+}
+@mixin font-16-700 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 150%; //24.32px;
+}
+@mixin font-20-700 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 150%; // 30.4px;
+}
+@mixin font-24-700 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 130%; // 31.2px;
+}

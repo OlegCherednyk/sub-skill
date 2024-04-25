@@ -10,7 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ButtonComponent {
   @Input() text: string = 'Button';
-  @Input() style: 'dark' | 'light' = 'dark';
+  @Input() style: 'dark' | 'light' | 'red'= 'dark';
   @Input() width: string = '272px';
   @Input() disabled: boolean = false;
   @Input() padding: string = '12px 24px';
