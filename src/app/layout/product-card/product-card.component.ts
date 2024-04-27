@@ -36,14 +36,10 @@ export class ProductCardComponent {
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
     console.log(typeof this.productId);
+    console.log('productId', this.productId);
+
     if (this.productId !== null) {
-      this.product$ = this.catalogCardService.getCatalogCardsData().pipe(
-        map(cards =>
-          cards.find(card => {
-            return card.id.toString() === this.productId;
-          })
-        )
-      );
+      this.product$ = this.catalogCardService.getCardById(+this.productId);
     }
   }
 }
