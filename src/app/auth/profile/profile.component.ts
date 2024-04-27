@@ -55,7 +55,6 @@ export class ProfileComponent implements OnInit {
         item => item !== interest
       );
       this.addInterest(interest);
-
     } else {
       this.selectedInterests.push(interest);
       this.deleteInterest(interest);
@@ -104,7 +103,7 @@ export class ProfileComponent implements OnInit {
       }
     );
 
-    this.httpService.getProfessionAllHttp().subscribe( 
+    this.httpService.getProfessionAllHttp().subscribe(
       (professions: ProfessionAllBody[]) => {
         this.professions = professions;
         professions.forEach(profession => {
@@ -138,7 +137,7 @@ export class ProfileComponent implements OnInit {
     if (index !== -1) {
       this.selectedInterests.splice(index, 1);
       const requestInterest = [];
-      requestInterest.push(interest)
+      requestInterest.push(interest);
       this.httpService.addInterestHttp(requestInterest);
     }
   }
@@ -148,7 +147,7 @@ export class ProfileComponent implements OnInit {
       this.selectedInterests.splice(index, 1);
       console.log('Deleted interest:', interest);
       const requestInterest = [];
-      requestInterest.push(interest)
+      requestInterest.push(interest);
       this.httpService.deleteInterestHttp(requestInterest);
     }
   }
@@ -176,11 +175,9 @@ export class ProfileComponent implements OnInit {
     };
     this.modalService.openModal(modalInfo);
     this.eventService.emitModalEvent();
-
   }
 
   submitProfileSettings() {
-
     const data = this.profileForm.value as ProfileBody;
     this.requestData.username = data.username || this.profile.username;
     this.requestData.jobTitle = data.jobTitle || this.profile.jobTitle;
@@ -196,16 +193,20 @@ export class ProfileComponent implements OnInit {
       this.authService.setUsername(data.username);
       this.profile = resp;
     });
-  //   this.httpService.addInterestHttp(this.selectedInterests).subscribe(resp => {
-  //     if (typeof resp === null)
-  //  {   this.httpService.getInterestAllHttp().subscribe(
-  //       (interests: string[]) => {
-  //         this.selectedInterests = interests;
-  //       },
-  //       (error: any) => {
-  //         console.error('Error fetching interests:', error);
-  //       }
-  //     ); }  })
+    //   this.httpService.addInterestHttp(this.selectedInterests).subscribe(resp => {
+    //     if (typeof resp === null)
+    //  {   this.httpService.getInterestAllHttp().subscribe(
+    //       (interests: string[]) => {
+    //         this.selectedInterests = interests;
+    //       },
+    //       (error: any) => {
+    //         console.error('Error fetching interests:', error);
+    //       }
+    //     ); }  })
     // this.authService.updateProfile(this.requestData);
+  }
+
+  onSignOut() {
+    this.authService.signOut();
   }
 }

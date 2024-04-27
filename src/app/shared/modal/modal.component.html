@@ -1,6 +1,4 @@
-<div
-  class="modal__content"
-  >
+<div class="modal__content">
   <button
     type="button"
     class="modal__close"
@@ -27,13 +25,13 @@
     alt="img"
     class="modal__bookmark"
     *ngIf="isBookmark"
-    [routerLink]="['/my-skills']" />
+    (click)="navigateToSkills()" />
   <img
     src="../../../assets/icons/profile.svg"
     alt="img"
     class="modal__bookmark"
     *ngIf="isProfile"
-    [routerLink]="['/profile']" />
+    (click)="navigateToProfile()" />
   <div class="modal__footer" *ngIf="modalData.showButtons">
     <app-button
       [text]="'Cancel'"
@@ -51,6 +49,4 @@
       (click)="deleteProfile()"></app-button>
   </div>
 </div>
-<div
-  class="app-modal-backdrop"
-  (click)="closeModal()"></div>
+<div class="app-modal-backdrop" (click)="closeModal()"></div>

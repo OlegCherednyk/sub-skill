@@ -33,15 +33,14 @@ export class AuthService {
 
   setRedirectUrl(url: string): void {
     this.redirectUrl = url;
-    console.log("this.redirectUrl",this.redirectUrl);
+    console.log('this.redirectUrl', this.redirectUrl);
   }
 
   getRedirectUrl(): string | null {
     return this.redirectUrl;
   }
   setModalStatus(status: boolean) {
-
-    console.log("setModalStatus", status);
+    console.log('setModalStatus', status);
     this.isModalTypeOpenSubject.next(status);
   }
 
@@ -104,7 +103,6 @@ export class AuthService {
           localStorage.setItem('username', username.username);
           this.setUsername(username.username);
           let modalInfo = {
-
             isLogo: true,
             isBookmark: true,
             isProfile: false,
@@ -118,9 +116,8 @@ export class AuthService {
           this.eventService.emitNotOpenSignUpEvent();
           this.eventService.emitModalEvent();
         });
-      } 
+      }
     });
-    
   }
   setUsername(username: string | null) {
     this.usernameSubject.next(username);
@@ -136,7 +133,6 @@ export class AuthService {
         console.log('resp', resp);
         if (resp === null) {
           let modalInfo = {
-
             isLogo: false,
             isBookmark: false,
             isProfile: false,
@@ -158,11 +154,10 @@ export class AuthService {
     console.log('data', data);
     this.httpService.forgotPasswordHttp(data.email).subscribe(resp => {
       console.log('resp', resp);
-      if (resp ) {
+      if (resp) {
         localStorage.setItem('password', resp);
 
         let modalInfo = {
-
           isLogo: true,
           isBookmark: false,
           isProfile: false,
@@ -180,7 +175,6 @@ export class AuthService {
     this.httpService.deleteUserHttp().subscribe(resp => {
       if (resp === null) {
         let modalInfo = {
-
           isLogo: true,
           isBookmark: false,
           isProfile: false,
@@ -194,7 +188,7 @@ export class AuthService {
         };
         this.modalService.openModal(modalInfo);
         this.router.navigate(['']);
-this.eventService.emitModalEvent();
+        this.eventService.emitModalEvent();
       }
     });
   }
@@ -220,4 +214,12 @@ this.eventService.emitModalEvent();
   // }
   // });
   // }
+  signOut(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('password');
+    localStorage.removeItem('email');
+    localStorage.removeItem('username');
+
+    this.router.navigate(['/']);
+  }
 }
