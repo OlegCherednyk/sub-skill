@@ -33,4 +33,8 @@ export class CatalogComponent implements OnInit {
       }
     });
   }
+
+  goBack(): void {
+    window.history.back();
+  }
 }

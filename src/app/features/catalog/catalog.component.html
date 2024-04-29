@@ -1,8 +1,12 @@
 <div class="catalog">
-  <ng-container *ngIf="catalogCards$ | async as cards">
-    <catalog-card *ngFor="let card of cards" [card]="card"></catalog-card>
-    <catalog-horizontal-card
-      *ngFor="let card of cards"
-      [card]="card"></catalog-horizontal-card>
-  </ng-container>
+    <button type="button" (click)="goBack()" class="catalog__goback-block">
+        <i class="uil uil-angle-left"></i>
+        <span class="catalog__goback-text">Go Back</span>
+    </button>
+
+    <div class="catalog__cards">
+        <ng-container *ngIf="catalogCards$ | async as cards">
+            <catalog-card *ngFor="let card of cards" [card]="card"></catalog-card>
+        </ng-container>
+    </div>
 </div>
