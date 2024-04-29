@@ -3,14 +3,15 @@
 .icon-with-text {
   display: flex;
   justify-content: center;
-  transition: 0.5s;
+  transition: 0.3s;
 
   .icon {
     width: 24px;
     height: 24px;
     background-color: $common_text_color;
     cursor: pointer;
-    transition: 0.2s;
+    transition: 0.3s;
+
   }
 
   span {
@@ -21,11 +22,15 @@
     letter-spacing: 0em;
     text-align: left;
     cursor: pointer;
-    transition: 0.2s;
   }
   
 }
-
+.isActive{
+  color: $normal_green_button;
+}
+.isActive .icon{
+  background-color: $normal_green_button;
+}
 .icon-with-text:active .icon {
   background-color: $normal_green_button;
 }

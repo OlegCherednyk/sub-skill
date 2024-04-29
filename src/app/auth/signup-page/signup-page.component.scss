@@ -1,0 +1,16 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.signup-page {
+  @include flex-column-center;
+  align-items: center;
+  background-color: inherit;
+  font-family: $primary_font_family;
+  padding-top: 70px;
+  gap: 32px;
+  &__title {
+    @include font-24-700;
+    color: $root-black;
+  }
+}

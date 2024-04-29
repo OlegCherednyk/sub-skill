@@ -1,13 +1,6 @@
 <div class="product-card-page">
   <ng-container *ngIf="product$ | async as product">
-    <button
-      type="button"
-      (click)="goBack()"
-      class="product-card-page__goback-block">
-      <i class="uil uil-angle-left"></i>
-
-      <span class="product-card-page__goback-text">Go Back</span>
-    </button>
+    <app-goback></app-goback>
     <app-product-horizontal-card
       [product]="product"></app-product-horizontal-card>
     <app-product-about-card [product]="product"></app-product-about-card>
