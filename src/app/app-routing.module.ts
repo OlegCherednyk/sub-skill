@@ -33,6 +33,7 @@ export const routes: Routes = [
       ),
   },
 
+
   // {
   //   path: 'auth/register',
   //   loadComponent: () =>
