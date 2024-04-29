@@ -4,7 +4,10 @@
     display: flex;
 justify-content: center;
 align-items: center;
-background-color: $background_white;
+// background-color: $background_white;
+background-color: $background_search;
+cursor: pointer;
+
 height: 40px;
 border: none;
 border-radius: 8px;

@@ -4,10 +4,9 @@
       <a
         type="button"
         title="home"
-        (click)="toHomePage()"
         class="header__container-homelink">
-        Home</a
-      >
+        {{ pageTitle }}
+      </a>
     </div>
     <app-search></app-search>
     <div class="header__container-right">
@@ -16,3 +15,5 @@
     </div>
   </div>
 </header>
+<app-change-password *ngIf="changePasswordFormOpen"></app-change-password>
+<app-forgot-password *ngIf="forgotPasswordFormOpen"></app-forgot-password>

@@ -1,0 +1,289 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+.profile {
+  @include flex-row-start;
+  align-items: flex-start;
+  gap: 16px;
+  font-family: $primary_font_family;
+  padding: 48px;
+  &__personal {
+    @include flex-column-center;
+    gap: 16px;
+  }
+  &__personal-info-block {
+    @include flex-column-start;
+
+    width: 560px;
+    padding: 24px;
+    gap: 24px;
+    border-radius: 20px;
+    background-color: $background_white;
+  }
+  &__personal-info-title {
+    @include font-16-600;
+    color: $root-black;
+  }
+  &__personal-info-main {
+    @include flex-column-center;
+    gap: 24px;
+  }
+  &__personal-info-inputs {
+    @include flex-column-start;
+    gap: 16px;
+  }
+  &__form-item {
+    @include flex-column-center;
+    gap: 8px;
+  }
+  &__form-item-password {
+    display: flex;
+    @include flex-column-start;
+
+    gap: 8px;
+    position: relative;
+  }
+  &__label {
+    @include font-14-500;
+    color: $gray_text;
+    width: 100%;
+  }
+  &__input {
+    width: 100%;
+    height: auto;
+    padding: 12px 24px;
+    gap: 16px;
+    border-radius: 10px;
+    border: 1px solid $stroke-color;
+    background-color: $input-color;
+    &:focus {
+      outline: $focus_green_button;
+      border: 1px solid $focus_green_button;
+    }
+  }
+
+  &__toggle-password-icon {
+    font-size: 24px;
+    color: $common_text_color;
+    position: absolute;
+    top: 37px;
+    right: 24px;
+    cursor: pointer;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .signup__form-item:focus-within .signup__label {
+    color: $focus_green_button;
+  }
+  &__personal-info-buttons {
+    @include flex-column-center;
+    align-items: center;
+    gap: 16px;
+  }
+  &__personal-info-change-button {
+    @include font-16-700;
+    color: $normal_green_button;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: inherit;
+  }
+  &__personal-info-button {
+    background-color: $background_search;
+    color: $common_text_color;
+    border: none;
+    @include font-16-700;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    padding: 16px 32px;
+    border-radius: 10px;
+
+    // &:hover {
+    //   background-color: $small_text_color;
+    //   color: $hover_green_button;
+    // }
+
+    // &:focus {
+    //   background-color: $small_text_color;
+    //   color: $hover_green_button;
+    // }
+
+    // &:active {
+    //   background-color: $common_text_color;
+    //   color: $click_green_button;
+    // }
+
+    // &:disabled {
+    //   background-color: $blocked_gray_button;
+    //   color: $blocked_light_text;
+    // }
+  }
+  &__delete {
+    @include flex-column-center;
+    width: 560px;
+    gap: 8px;
+    padding: 24px;
+    border-radius: 20px;
+    background-color: $background_white;
+    transition: 300ms ease-in-out;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+  &__delete-title {
+    @include font-16-700;
+    text-align: left;
+    color: $root_critic;
+  }
+  &__delete-text {
+    @include font-16-400;
+    text-align: left;
+    color: $root-dark_grey;
+  }
+  &__interests {
+    width: 560px;
+
+    @include flex-column-start;
+    border-radius: 20px;
+    gap: 24px;
+    padding: 24px;
+    background-color: $background_white;
+  }
+  &__interests-your-chooses {
+    @include flex-column-start;
+    gap: 16px;
+  }
+  &__interests-title {
+    @include font-16-600;
+    color: $root-black;
+  }
+  &__interests-list {
+    @include flex-row-start;
+    gap: 16px;
+    width: 100%;
+    overflow: hidden;
+    flex-wrap: wrap;
+  }
+  &__interests-list-item {
+    @include flex-row-start;
+    flex-wrap: nowrap;
+
+    justify-content: space-between;
+    border: 1px solid $normal_green_button;
+    border-radius: 100px;
+    padding: 8px 16px;
+    gap: 8px;
+    cursor: pointer;
+  }
+  &__interests-for-choose-title {
+    @include font-14-500;
+    color: $gray_text;
+  }
+  &__interests-dropdown-block {
+    @include flex-column-start;
+    width: 100%;
+    border-radius: 20px;
+  }
+  &__interests-dropdown-container {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+  &__interests-dropdown-item {
+    width: 100%;
+    border-bottom: 1px solid $stroke-color;
+    background-color: $input-color;
+    padding: 12px 24px;
+  }
+  &__interests-dropdown-item.active {
+    background-color: $banner-white;
+  }
+  &__interests-dropdown-label {
+    @include font-16-400;
+    color: $gray_text;
+  }
+  &__interests-dropdown-select {
+    width: 100%;
+  }
+  &__interests-dropdown-select-name {
+    width: 100%;
+    @include flex-row-start;
+    justify-content: space-between;
+    border: none;
+    outline: none;
+    background: inherit;
+  }
+  &__interests-dropdown-select-option {
+    @include flex-row-start;
+
+    padding: 12px 24px 12px 64px;
+    gap: 16px;
+    border-bottom: 1px solid $stroke-color;
+
+    width: 100%;
+    @include font-16-400;
+    color: $blocked_gray_button;
+    background-color: $input-color;
+  }
+  &__interests-dropdown-select-option:hover {
+    background-color: $background_search;
+  }
+  &__interests-dropdown-select-option.active {
+    background-color: $banner-white;
+    color: $gray_text;
+  }
+  &__interests-dropdown-select-option:checked {
+    color: $common_text_color;
+    background-color: $banner-white;
+  }
+}
+.uil-multiply {
+  font-size: 24px;
+  color: $blocked_gray_button;
+}
+.profile__interests-dropdown-select-checkbox {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+  border: 1px solid $stroke-color;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.profile__interests-dropdown-select-checkbox:hover {
+  background-color: $input-color;
+}
+
+.profile__interests-dropdown-select-checkbox:checked {
+  background-color: $banner-white;
+  border-color: $stroke-color;
+}
+
+.profile__interests-dropdown-select-checkbox:checked::after {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 16px;
+  border: solid $root_success_dark;
+  border-width: 0 3px 3px 0;
+  transform: rotate(45deg);
+  position: relative;
+  top: -10px;
+  left: -4px;
+}
+.profile__input::placeholder {
+  @include font-16-400;
+  text-align: left;
+
+  color: $blocked_gray_button;
+}
+.profile__input.exists::placeholder {
+  @include font-16-400;
+  text-align: left;
+
+  color: $common_text_color;
+}

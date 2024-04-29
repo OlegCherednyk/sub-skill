@@ -27,7 +27,7 @@
             "styles": [
               "src/styles.scss",
               "node_modules/@fortawesome/fontawesome-free/css/all.min.css"
-          ],
+            ],
             "scripts": []
           },
           "configurations": {
@@ -40,8 +40,8 @@
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "3kb",
+                  "maximumError": "8kb"
                 }
               ],
               "outputHashing": "all"

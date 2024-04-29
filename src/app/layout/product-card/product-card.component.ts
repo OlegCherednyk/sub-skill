@@ -8,6 +8,7 @@ import { map, Observable } from 'rxjs';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { ProductWhatIsInCardComponent } from './product-what-is-in-card/product-what-is-in-card.component';
 import { ProductAutolayoutCardComponent } from './product-autolayout-card/product-autolayout-card.component';
+import { GobackComponent } from 'src/app/shared/goback/goback.component';
 
 @Component({
   selector: 'app-product-card',
@@ -18,6 +19,7 @@ import { ProductAutolayoutCardComponent } from './product-autolayout-card/produc
     ProductAboutCardComponent,
     ProductWhatIsInCardComponent,
     ProductAutolayoutCardComponent,
+    GobackComponent,
   ],
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],
@@ -34,18 +36,10 @@ export class ProductCardComponent {
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
     console.log(typeof this.productId);
-    if (this.productId !== null) {
-      this.product$ = this.catalogCardService.getCatalogCardsData().pipe(
-        map(cards =>
-          cards.find(card => {
-            return card.id.toString() === this.productId;
-          })
-        )
-      );
-    }
-  }
+    console.log('productId', this.productId);
 
-  goBack(): void {
-    window.history.back();
+    if (this.productId !== null) {
+      this.product$ = this.catalogCardService.getCardById(+this.productId);
+    }
   }
 }

@@ -1,11 +1,22 @@
 <div class="home-page">
-    <app-banner></app-banner>
-    
-    <card-track [typeOfTrack]="categories.new" [countOfPages]="3" [pageSize]="4" [title]="'NEW'"></card-track>
-    <card-track [typeOfTrack]="categories.mostViews" [countOfPages]="3" [pageSize]="4" [title]="'Learners are viewing'"></card-track>
-    <card-track [typeOfTrack]="categories.bestsellers" [typeOfCard]="'horizontal'" [countOfPages]="6" [pageSize]="1" [title]="'Bestsellers'"></card-track>
+  <app-banner></app-banner>
+  <!-- <catalog></catalog> -->
+  <card-track
+    [typeOfTrack]="categories.new"
+    [countOfPages]="3"
+    [pageSize]="4"
+    [title]="'NEW'"></card-track>
+  <card-track
+    [typeOfTrack]="categories.mostViews"
+    [countOfPages]="3"
+    [pageSize]="4"
+    [title]="'Learners are viewing'"></card-track>
+  <card-track
+    [typeOfTrack]="categories.bestsellers"
+    [typeOfCard]="'horizontal'"
+    [countOfPages]="6"
+    [pageSize]="1"
+    [title]="'Bestsellers'"></card-track>
 
-    <app-popular-categories></app-popular-categories>
-
-    <card-track [typeOfTrack]="categories.popular" [countOfPages]="2" [pageSize]="8" [title]="'Popular skills'"></card-track>
+  <app-popular-categories></app-popular-categories>
 </div>

@@ -16,7 +16,6 @@ export class CatalogCardService {
   }
 
   private fetchCatalogCards(): Observable<CatalogCard[]> {
-    console.log('Fetching data from server');
     return this._httpClient
       .get<CatalogCardsData>(`${base_url}microskill/all-paging`)
       .pipe(
@@ -37,5 +36,17 @@ export class CatalogCardService {
 
   public getCatalogCardsData(): Observable<CatalogCard[]> {
     return this.cachedCatalogCards$;
+  }
+
+  public getCardById(id: number): Observable<CatalogCard> {
+    return this._httpClient
+      .get<CatalogCard>(`${base_url}microskill/find-by-id/${id}`)
+      .pipe(
+        map(data => ({
+          ...data,
+          photo: `data:image/jpeg;base64,${data.photo}`,
+        })),
+        shareReplay(1)
+      );
   }
 }
