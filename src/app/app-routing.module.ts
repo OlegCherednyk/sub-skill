@@ -24,6 +24,16 @@ export const routes: Routes = [
         m => m.ProductCardComponent
       ),
   },
+
+  {
+    path: 'catalog-cards/:id',
+    loadComponent: () =>
+      import('./features/catalog/catalog.component').then(
+        m => m.CatalogComponent
+      ),
+  },
+
+
   // {
   //   path: 'auth/register',
   //   loadComponent: () =>
@@ -47,4 +57,5 @@ export const routes: Routes = [
   //   loadComponent: () =>
   //     import('./').then(m => m.), // тут буде щлях до компоненту my-skills
   // },
+
 ];
