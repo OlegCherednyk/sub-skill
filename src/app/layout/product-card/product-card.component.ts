@@ -9,6 +9,7 @@ import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { ProductWhatIsInCardComponent } from './product-what-is-in-card/product-what-is-in-card.component';
 import { ProductAutolayoutCardComponent } from './product-autolayout-card/product-autolayout-card.component';
 import { GobackComponent } from 'src/app/shared/goback/goback.component';
+import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.service';
 
 @Component({
   selector: 'app-product-card',
@@ -31,7 +32,7 @@ export class ProductCardComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private catalogCardService: CatalogCardService
+    private catalogCardHttpService: CatalogCardHttpService
   ) {}
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
@@ -39,7 +40,7 @@ export class ProductCardComponent {
     console.log('productId', this.productId);
 
     if (this.productId !== null) {
-      this.product$ = this.catalogCardService.getCardById(+this.productId);
+      this.product$ = this.catalogCardHttpService.getCardById(+this.productId);
     }
   }
 }

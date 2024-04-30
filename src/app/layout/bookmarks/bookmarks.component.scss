@@ -1,0 +1,28 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+.saved-cards {
+  @include flex-column-start;
+  padding: 40px;
+  font-family: $primary_font_family;
+  gap: 24px;
+}
+.card-list {
+  @include flex-row-start;
+  font-family: $primary_font_family;
+  background-color: inherit;
+  flex-wrap: wrap;
+  gap: 16px;
+  &__title {
+    @include font-24-700;
+  }
+  &__no-cards {
+    @include flex-column-center;
+    align-items: center;
+    background-color: inherit;
+    @include font-24-700;
+
+    padding: 270px 0;
+    width: 100%;
+  }
+}

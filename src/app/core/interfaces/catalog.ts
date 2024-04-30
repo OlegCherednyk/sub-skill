@@ -11,6 +11,7 @@ export interface CatalogCard {
   views: number;
   reviews: [];
   price: number;
+  isSaved?: boolean;
 }
 
 export interface CatalogCardsData {
@@ -32,4 +33,8 @@ export interface CatalogCardsData {
   numberOfElements: number;
   first: boolean;
   empty: boolean;
+}
+export interface SavedMicroSkill {
+  id: number;
+  microSkills: CatalogCard[];
 }

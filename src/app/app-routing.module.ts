@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { bookmarkGuard } from './core/guards/bookmark.guard';
 
 export const routes: Routes = [
   {
@@ -33,18 +34,34 @@ export const routes: Routes = [
     path: 'profile',
     loadComponent: () =>
       import('./auth/profile/profile.component').then(m => m.ProfileComponent),
-      canActivate: [authGuard],
+    canActivate: [authGuard],
   },
-
 
   {
     path: 'signup-page',
     loadComponent: () =>
-      import('./auth/signup-page/signup-page.component').then(m => m.SignupPageComponent),
+      import('./auth/signup-page/signup-page.component').then(
+        m => m.SignupPageComponent
+      ),
   },
   // {
   //   path: 'my-skills',
   //   loadComponent: () =>
   //     import('./').then(m => m.), // тут буде щлях до компоненту my-skills
   // },
+  {
+    path: 'bookmarks',
+    loadComponent: () =>
+      import('./layout/bookmarks/bookmarks.component').then(
+        m => m.BookmarksComponent
+      ),
+    canActivate: [bookmarkGuard],
+  },
+  {
+    path: 'not-logged-page',
+    loadComponent: () =>
+      import(
+        './layout/bookmarks/not-logged-page/not-logged-page.component'
+      ).then(m => m.NotLoggedPageComponent),
+  },
 ];

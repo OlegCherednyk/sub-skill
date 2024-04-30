@@ -1,6 +1,6 @@
 <div class="card" [routerLink]="['/product-card', card.id]">
   <div class="card__img">
-    <img [src]="card.photo" alt="" />
+    <!-- <img [src]="card.photo" alt="" /> -->
   </div>
   <div class="card__detailed-info">
     <div class="card__rating">
@@ -22,20 +22,8 @@
       </div>
       <div
         class="card__icon"
-        (mouseenter)="hoverActive()"
-        (mouseleave)="hoverDisable()"
-        (click)="addToSaves()">
-        <i
-          [ngClass]="{
-            uil: !hoverIcon,
-            'uil-bookmark': !hoverIcon,
-            uis: hoverIcon,
-            'uis-bookmark': hoverIcon
-          }"
-          [ngStyle]="{
-            color: !clickedIcon && hoverIcon ? '#9FE894' : '#53CA3E'
-          }"></i>
-      </div>
+        (click)="toggleSaves($event, card.id)"
+        [ngClass]="{ active: card.isSaved }"></div>
     </div>
   </div>
 </div>

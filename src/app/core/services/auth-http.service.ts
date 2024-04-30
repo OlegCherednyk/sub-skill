@@ -49,7 +49,7 @@ export class HttpAuthService {
     'Content-Type': 'application/json',
     Authorization: `Bearer ${this.authToken}`,
   });
-createHeaders(): Record<string, string> {
+ createHeaders(): Record<string, string> {
     const authToken = localStorage.getItem('token') as string;
     return {
       Authorization: `Bearer ${authToken}`,

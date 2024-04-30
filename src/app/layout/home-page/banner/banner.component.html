@@ -8,10 +8,10 @@
       <ng-template ngbSlide *ngFor="let card of cards">
         <div class="carousel-wrapper">
           <div class="carousel-block" [routerLink]="['/product-card', card.id]">
-            <img
+            <!-- <img
               [src]="card.photo"
               alt="Card Image"
-              class="carousel-block__image" />
+              class="carousel-block__image" /> -->
             <div class="carousel-block__rating-block">
               <star-rating
                 class="carousel-block__rating-stars"

@@ -1,0 +1,11 @@
+<div class="not-logged-page">
+  <p class="not-logged-page__title">Log in to see your bookmarks</p>
+  <app-button
+    [text]="'Log in'"
+    [style]="'dark'"
+    [width]="'560px'"
+    [disabled]="false"
+    [padding]="'16px 32px'"
+    (click)="openLoginForm()"></app-button>
+</div>
+<app-signup *ngIf="signUpFormOpen" ></app-signup>
