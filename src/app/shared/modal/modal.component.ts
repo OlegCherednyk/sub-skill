@@ -64,6 +64,12 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
   close(): void {
     this.eventService.emitModalEvent();
+    console.log('this.router.url', this.router.url);
+    if (this.router.url === '/') {
+      this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+        this.router.navigate(['']);
+      });
+    }
   }
   deleteProfile(): void {
     this.authService.deleteAccount();

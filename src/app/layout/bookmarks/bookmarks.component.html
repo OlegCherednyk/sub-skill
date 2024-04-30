@@ -1,0 +1,14 @@
+<ng-container *ngIf="savedCards$ | async as savedCards">
+  <div *ngIf="savedCards.length > 0; else noCards" class="saved-cards">
+    <span class="card-list__title">You saved some skills</span>
+    <div class="card-list">
+      <catalog-card
+        *ngFor="let card of savedCards"
+        [card]="card"
+        (cardDeleted)="onCardDeleted(card.id)"></catalog-card>
+    </div>
+  </div>
+</ng-container>
+<ng-template #noCards>
+  <p class="card-list__no-cards">You don’t have any Bookmarks yet ;(</p>
+</ng-template>

@@ -1,12 +1,11 @@
 @import 'src/app/shared/style/_fonts.scss';
 @import 'src/app/shared/style/_colors.scss';
-
+@import 'src/app/shared/style/_mixins.scss';
 .header {
   width: 100%;
   &__container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-row-space;
+
     background-color: $background_white;
     font-family: 'Montserrat', sans-serif;
     font-weight: 400;
@@ -14,8 +13,8 @@
     border-bottom: 1px solid $stroke-color;
   }
   &__container-homelink {
-    font-size: 24px;
-    font-weight: 700;
+    @include font-16-600;
+
     color: $common_text_color;
     text-decoration: none;
     transition:
@@ -26,9 +25,8 @@
     cursor: pointer;
   }
   &__container-right {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-row-space;
+
     gap: 32px;
   }
 }

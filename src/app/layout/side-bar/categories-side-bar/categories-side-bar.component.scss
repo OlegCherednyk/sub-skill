@@ -15,7 +15,8 @@
     li {
       list-style: none;
 
-      span {
+      div {
+        display: inline-block;
         font-family: $primary_font_family;
         color: $small_text_color;
         font-size: 12px;
@@ -27,12 +28,9 @@
         margin-left: 8px;
         cursor: pointer;
       }
-    }
-
-    li:hover {
-      border-radius: 6px;
-
-      span {
+      
+      div:hover {
+        border-radius: 6px;
         transition: 0.5s;
         background-color: $hover_small_green_button;
         font-style: normal;

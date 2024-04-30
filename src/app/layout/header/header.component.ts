@@ -48,7 +48,6 @@ export class HeaderComponent implements OnDestroy, OnInit {
     private eventService: EventService,
     private cdr: ChangeDetectorRef
   ) {
-
     this.changePasswordSubscription =
       this.eventService.changePasswordEvent$.subscribe(() => {
         this.changePasswordFormOpen = !this.changePasswordFormOpen;
@@ -79,6 +78,12 @@ export class HeaderComponent implements OnDestroy, OnInit {
           case 'signup-page':
             this.pageTitle = 'Profile settings';
             break;
+          case 'bookmarks':
+            this.pageTitle = 'Bookmarks';
+            break;
+          case 'not-logged-page':
+            this.pageTitle = 'Bookmarks';
+            break;
 
           default:
             this.pageTitle = 'Unknown';
@@ -86,7 +91,6 @@ export class HeaderComponent implements OnDestroy, OnInit {
         this.cdr.detectChanges();
       });
   }
-
 
   ngOnDestroy() {
     this.changePasswordSubscription.unsubscribe();
