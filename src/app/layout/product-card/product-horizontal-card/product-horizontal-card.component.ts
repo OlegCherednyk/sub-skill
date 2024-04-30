@@ -2,9 +2,6 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { StarRatingComponent } from 'src/app/shared/components/star-rating/star-rating.component';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
-import { map, Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { CatalogCardService } from 'src/app/core/services/catalog-card.service';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 
 @Component({

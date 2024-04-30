@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CatalogCardComponent } from '../../shared/components/catalog-card/catalog-card.component';
-import { map, Observable, of } from 'rxjs';
-import { CatalogCardService } from 'src/app/core/services/catalog-card.service';
-import { CatalogCard, CatalogCardsData } from 'src/app/core/interfaces/catalog';
+import { Observable, of } from 'rxjs';
+import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { CatalogHorizontalCardComponent } from 'src/app/shared/components/catalog-horizontal-card/catalog-horizontal-card.component';
 import { SearchService } from 'src/app/core/services/search.service';
+import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.service';
 
 @Component({
   selector: 'catalog',
@@ -16,7 +16,7 @@ import { SearchService } from 'src/app/core/services/search.service';
 })
 export class CatalogComponent implements OnInit {
   constructor(
-    private cardService: CatalogCardService,
+    private cardHttpService: CatalogCardHttpService,
     private searchService: SearchService
   ) {}
 
@@ -29,7 +29,7 @@ export class CatalogComponent implements OnInit {
           this.searchService.filterCourses(searchKeyword)
         );
       } else {
-        this.catalogCards$ = this.cardService.getCatalogCardsData();
+        this.catalogCards$ = this.cardHttpService.getCatalogCardsData();
       }
     });
   }
