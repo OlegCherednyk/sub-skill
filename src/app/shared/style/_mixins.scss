@@ -8,6 +8,11 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+@mixin flex-column-space {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 @mixin flex-row-center {
   display: flex;
   flex-direction: row;

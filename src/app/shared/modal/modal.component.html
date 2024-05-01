@@ -1,56 +1,62 @@
-<div
-  class="modal__content"
-  >
-  <button
-    type="button"
-    class="modal__close"
-    aria-label="Close"
-    (click)="close()">
-    <i class="uil uil-multiply"></i>
-  </button>
-  <img
-    src="../../../assets/LogoSmall.svg"
-    alt="img"
-    class="modal__logo"
-    *ngIf="isLogo" />
+<div class="modal">
+  <div class="modal__content">
+    <button
+      type="button"
+      class="modal__close"
+      aria-label="Close"
+      (click)="close()">
+      <i class="uil uil-multiply"></i>
+    </button>
+    <img
+      src="../../../assets/LogoSmall.svg"
+      alt="img"
+      class="modal__logo"
+      *ngIf="isLogo" />
 
-  <h5 class="modal__title" id="customModalLabel">
-    {{ modalData.title }}
-  </h5>
-  <div class="modal__body">
-    <p>{{ modalData.message }}</p>
-    <span class="modal__additional">{{ modalData.additionalMessage }} </span>
-  </div>
-
-  <img
-    src="../../../assets/icons/boolmarks.svg"
-    alt="img"
-    class="modal__bookmark"
-    *ngIf="isBookmark"
-    [routerLink]="['/my-skills']" />
-  <img
-    src="../../../assets/icons/profile.svg"
-    alt="img"
-    class="modal__bookmark"
-    *ngIf="isProfile"
-    [routerLink]="['/profile']" />
-  <div class="modal__footer" *ngIf="modalData.showButtons">
-    <app-button
-      [text]="'Cancel'"
-      [style]="'light'"
-      [width]="'272px'"
-      [disabled]="false"
-      [padding]="'16px 32px'"
-      (click)="cancel()"></app-button>
-    <app-button
-      [text]="'Delete'"
-      [style]="'red'"
-      [width]="'272px'"
-      [disabled]="false"
-      [padding]="'16px 32px'"
-      (click)="deleteProfile()"></app-button>
+    <div class="modal__body">
+      <h5 class="modal__title" id="customModalLabel">
+        {{ modalData.title }}
+      </h5>
+      <span>{{ modalData.message }}</span>
+      <span class="modal__additional">{{ modalData.additionalMessage }} </span>
+    </div>
+    <button
+      type="button"
+      class="modal__bookmark"
+      *ngIf="isBookmark"
+      (click)="navigateToSkills()">
+      <img
+        src="../../../assets/icons/books.svg"
+        alt="img"
+        class="modal__bookmark-img" /><span>My Skills</span>
+    </button>
+    <button
+      type="button"
+      class="modal__bookmark"
+      *ngIf="isProfile"
+      (click)="navigateToProfile()">
+      <img
+        src="../../../assets/icons/user.svg"
+        alt="img"
+        class="modal__bookmark-img" /><span>Profile</span>
+    </button>
+    <div class="modal__footer" *ngIf="modalData.showButtons">
+      <app-button
+        [text]="'Cancel'"
+        [style]="'light'"
+        [width]="'272px'"
+        [disabled]="false"
+        [padding]="'16px 32px'"
+        (click)="cancel()"></app-button>
+      <app-button
+        [text]="'Delete'"
+        [style]="'red'"
+        [width]="'272px'"
+        [disabled]="false"
+        [padding]="'16px 32px'"
+        (click)="deleteProfile()"></app-button>
+    </div>
   </div>
 </div>
-<div
-  class="app-modal-backdrop"
- ></div>
+
+<div class="app-modal-backdrop"></div>

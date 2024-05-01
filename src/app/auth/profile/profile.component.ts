@@ -31,9 +31,9 @@ export class ProfileComponent implements OnInit {
   profileForm!: FormGroup;
   selectedInterests: string[] = [];
   professions: ProfessionAllBody[] = [];
-  dropdownOpen: { [key: number]: boolean } = {};
-  technologies: { [key: number]: ProfessionAllBody[] } = {};
-  selectedTechnologies: { [key: number]: number } = {};
+  // dropdownOpen: { [key: number]: boolean } = {};
+  // technologies: { [key: number]: ProfessionAllBody[] } = {};
+  // selectedTechnologies: { [key: number]: number } = {};
   requestData = {} as ProfileBody;
 
   constructor(
@@ -43,24 +43,11 @@ export class ProfileComponent implements OnInit {
     private modalService: ModalService,
     private authService: AuthService
   ) {}
-  toggleDropdown(professionId: number): void {
-    this.dropdownOpen[professionId] = !this.dropdownOpen[professionId];
-  }
+  // toggleDropdown(professionId: number): void {
+  //   this.dropdownOpen[professionId] = !this.dropdownOpen[professionId];
+  // }
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
-  }
-  toggleInterest(interest: string): void {
-    if (this.selectedInterests.includes(interest)) {
-      this.selectedInterests = this.selectedInterests.filter(
-        item => item !== interest
-      );
-      this.addInterest(interest);
-
-    } else {
-      this.selectedInterests.push(interest);
-      this.deleteInterest(interest);
-    }
-    this.isFormDirty = true;
   }
 
   ngOnInit(): void {
@@ -96,60 +83,89 @@ export class ProfileComponent implements OnInit {
       })
     );
     this.httpService.getInterestAllHttp().subscribe(
-      (interests: any[]) => {
+      (interests: ProfessionAllBody[]) => {
         this.selectedInterests = interests.map(interest => interest.name);
+        console.log('this.selectedInterests', this.selectedInterests);
       },
       (error: any) => {
         console.error('Error fetching interests:', error);
       }
     );
 
-    this.httpService.getProfessionAllHttp().subscribe( 
+    this.httpService.getProfessionAllHttp().subscribe(
       (professions: ProfessionAllBody[]) => {
         this.professions = professions;
-        professions.forEach(profession => {
-          this.httpService
-            .getTechnologyProfessionHttp(profession.name)
-            .subscribe({
-              next: (technologies: ProfessionAllBody[]) => {
-                this.technologies[profession.id] = technologies;
-              },
-              error: (error: any) => {
-                console.error(
-                  'Error fetching technologies for profession',
-                  profession.name,
-                  ':',
-                  error
-                );
-              },
-            });
-        });
+        console.log('this.professions', this.professions);
+
+        // professions.forEach(profession => {
+        //   this.httpService
+        //     .getTechnologyProfessionHttp(profession.name)
+        //     .subscribe({
+        //       next: (technologies: ProfessionAllBody[]) => {
+        //         this.technologies[profession.id] = technologies;
+        //       },
+        //       error: (error: any) => {
+        //         console.error(
+        //           'Error fetching technologies for profession',
+        //           profession.name,
+        //           ':',
+        //           error
+        //         );
+        //       },
+        //     });
+        // });
       },
       (error: any) => {
         console.error('Error fetching professions:', error);
       }
     );
   }
+
+  toggleInterest(interest: string): void {
+    console.log('toggleInterest');
+
+    if (this.selectedInterests.includes(interest)) {
+      this.deleteInterest(interest);
+    } else {
+      this.selectedInterests.push(interest);
+      this.addInterest(interest);
+    }
+  }
   onFormControlChange(): void {
     this.isFormDirty = true;
   }
   addInterest(interest: string) {
-    const index = this.selectedInterests.indexOf(interest);
-    if (index !== -1) {
-      this.selectedInterests.splice(index, 1);
-      const requestInterest = [];
-      requestInterest.push(interest)
-      this.httpService.addInterestHttp(requestInterest);
-    }
+    console.log('interest', interest);
+    // const index = this.selectedInterests.indexOf(interest);
+
+    const requestInterest = [];
+    requestInterest.push(interest);
+    // this.httpService.addInterestHttp(requestInterest);
+    console.log(' this.selectedInterests', requestInterest);
+
+    this.httpService.addInterestHttp(requestInterest).subscribe(resp => {
+      if (typeof resp === null) {
+        this.httpService.getInterestAllHttp().subscribe(
+          (interests: ProfessionAllBody[]) => {
+            this.selectedInterests = interests.map(interest => interest.name);
+          },
+          (error: any) => {
+            console.error('Error fetching interests:', error);
+          }
+        );
+      }
+    });
   }
+
   deleteInterest(interest: string) {
+    console.log('deleteInterest');
     const index = this.selectedInterests.indexOf(interest);
     if (index !== -1) {
       this.selectedInterests.splice(index, 1);
       console.log('Deleted interest:', interest);
       const requestInterest = [];
-      requestInterest.push(interest)
-      this.httpService.deleteInterestHttp(requestInterest);
+      requestInterest.push(interest);
+      this.httpService.deleteInterestHttp(interest).subscribe();
     }
   }
 
@@ -176,11 +192,9 @@ export class ProfileComponent implements OnInit {
     };
     this.modalService.openModal(modalInfo);
     this.eventService.emitModalEvent();
-
   }
 
   submitProfileSettings() {
-
     const data = this.profileForm.value as ProfileBody;
     this.requestData.username = data.username || this.profile.username;
     this.requestData.jobTitle = data.jobTitle || this.profile.jobTitle;
@@ -196,16 +210,11 @@ export class ProfileComponent implements OnInit {
       this.authService.setUsername(data.username);
       this.profile = resp;
     });
-  //   this.httpService.addInterestHttp(this.selectedInterests).subscribe(resp => {
-  //     if (typeof resp === null)
-  //  {   this.httpService.getInterestAllHttp().subscribe(
-  //       (interests: string[]) => {
-  //         this.selectedInterests = interests;
-  //       },
-  //       (error: any) => {
-  //         console.error('Error fetching interests:', error);
-  //       }
-  //     ); }  })
+
     // this.authService.updateProfile(this.requestData);
+  }
+
+  onSignOut() {
+    this.authService.signOut();
   }
 }

@@ -78,4 +78,15 @@ export class ModalComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.modalSubscription.unsubscribe();
   }
+
+  navigateToProfile(): void {
+    // Здесь можно выполнить какие-то действия перед переходом, если нужно
+    this.router.navigate(['/profile']);
+    this.closeModal(); // Вызываем функцию закрытия модального окна
+  }
+  navigateToSkills(): void {
+    // Здесь можно выполнить какие-то действия перед переходом, если нужно
+    this.router.navigate(['/my-skills']);
+    this.closeModal(); // Вызываем функцию закрытия модального окна
+  }
 }

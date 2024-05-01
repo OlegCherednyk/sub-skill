@@ -20,7 +20,15 @@
   // z-index: 10;
 
   // margin: 20px auto;
-
+  &__close {
+    margin: 0 0 0 auto;
+    font-size: 24px;
+    font-weight: 600;
+    cursor: pointer;
+    background: inherit;
+    border: none;
+    outline: none;
+  }
   &__modaltype {
     position: fixed;
     top: 47%;
@@ -56,11 +64,10 @@
     text-align: center;
     color: $common_text_color;
   }
-  &__error-phrase{
+  &__error-phrase {
     @include font-14-500;
     text-align: center;
     color: $root_critic;
-  
   }
   &__switcher {
     @include flex-row-center;
@@ -192,7 +199,6 @@
     top: 37px;
     right: 24px;
     cursor: pointer;
- 
   }
   &__toggle-password-icon-invalid {
     color: $root_critic;
@@ -312,6 +318,6 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0px 1000px $input-color inset !important; 
-    -webkit-text-fill-color: #333 !important; 
+  -webkit-box-shadow: 0 0 0px 1000px $input-color inset !important;
+  -webkit-text-fill-color: #333 !important;
 }

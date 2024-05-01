@@ -1,40 +1,48 @@
-<aside>
-  <nav>
-    <img src="../../../assets/Logo.svg" alt="" />
-    <ul>
-      <li *ngFor="let icon of iconOrder">
+<aside class="side-bar">
+  <nav class="side-bar__main">
+    <img
+      src="../../../assets/Logo.svg"
+      alt="Logo"
+      class="side-bar__logo"
+      width="72" />
+    <ul class="side-bar__list">
+      <li *ngFor="let icon of iconOrder" class="side-bar__list-top">
         <icon-side-bar [icon]="icons[icon]"></icon-side-bar>
       </li>
-
-      <hr />
-      <li>
+      <li class="side-bar__list-bottom">
         <categories-side-bar></categories-side-bar>
       </li>
     </ul>
   </nav>
   <div class="languages" (click)="languageButton()">
     <div class="flex-column" [@fadeOpenCloseMain]="openCloseLanguage">
-        <div class="flex-row">
-            <span  class="main-language">{{ languageEnglish ? 'English' : 'Not English' }}</span>
-            <div class="arrow" 
-            [ngStyle]="{
-              'mask': arrows[openCloseLanguage]
-            }"
-            ></div>
-        </div>
-        
-        <ul [@fadeInOut]="openCloseLanguage">
-            <li (click)="setLanguage(true)" 
-            [ngStyle]="{
-              'color': languageEnglish?'':'#A9A9A9'
-            }"
-            >English</li>
-            <li (click)="setLanguage(false)"
-            [ngStyle]="{
-              'color': languageEnglish?'#A9A9A9':''
-            }"
-            >Not English</li>
-        </ul>
+      <div class="flex-row">
+        <span class="main-language">{{
+          languageEnglish ? 'English' : 'Not English'
+        }}</span>
+        <div
+          class="arrow"
+          [ngStyle]="{
+            mask: arrows[openCloseLanguage]
+          }"></div>
+      </div>
+
+      <ul [@fadeInOut]="openCloseLanguage" class="languages__pop">
+        <li
+          (click)="setLanguage(true)"
+          [ngStyle]="{
+            color: languageEnglish ? '' : '#A9A9A9'
+          }">
+          English
+        </li>
+        <li
+          (click)="setLanguage(false)"
+          [ngStyle]="{
+            color: languageEnglish ? '#A9A9A9' : ''
+          }">
+          Not English
+        </li>
+      </ul>
     </div>
   </div>
 </aside>

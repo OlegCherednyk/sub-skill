@@ -4,13 +4,14 @@
 .categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px 0px;
+  gap: 24px;
 
   ul {
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding: 0 0 0 16px;
     gap: 16px;
+    margin: 0;
 
     li {
       list-style: none;
@@ -28,7 +29,7 @@
         margin-left: 8px;
         cursor: pointer;
       }
-      
+
       div:hover {
         border-radius: 6px;
         transition: 0.5s;
