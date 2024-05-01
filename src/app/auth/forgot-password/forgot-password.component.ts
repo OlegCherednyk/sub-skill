@@ -11,6 +11,7 @@ import { EventService } from 'src/app/core/services/event.service';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ForgotPasswordBody } from 'src/app/core/interfaces/auth';
 import { Subscription } from 'rxjs';
+import { ModalService } from 'src/app/core/services/modal.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -29,7 +30,8 @@ export class ForgotPasswordComponent {
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private eventService: EventService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private modalService: ModalService
   ) {
     this.forgotPasswordForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -49,7 +51,20 @@ export class ForgotPasswordComponent {
     this.requestData = this.forgotPasswordForm.value;
 
     console.log('this.requestData', this.requestData);
-    this.authService.forgotPassword(this.requestData);
+    // this.authService.forgotPassword(this.requestData);
+    let modalInfo = {
+      isLogo: true,
+      isBookmark: false,
+      isProfile: false,
+
+      title: 'Password recovery',
+      message: `We sent you a password recovery link to ${this.requestData.email} `,
+      additionalMessage: 'Check your e-mail',
+      showButtons: false,
+    };
+    this.modalService.openModal(modalInfo);
+    this.eventService.emitModalEvent();
+    this.closeForgotPasswordForm();
   }
 
   closeForgotPasswordForm() {

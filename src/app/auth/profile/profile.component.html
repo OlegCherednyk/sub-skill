@@ -109,7 +109,7 @@
       <span class="profile__interests-for-choose-title"
         >Choose your interest from the list
       </span>
-      <div class="profile__interests-dropdown-container">
+      <!-- <div class="profile__interests-dropdown-container">
         <div
           *ngFor="let profession of professions"
           class="profile__interests-dropdown-item"
@@ -148,6 +148,24 @@
               </div>
             </div>
           </div>
+        </div>
+      </div> -->
+      <div class="profile__interests-dropdown-container">
+        <div
+          *ngFor="let profession of professions"
+          class="profile__interests-dropdown-select-option"
+          [ngClass]="{ active: selectedInterests }">
+          <input
+            title="checkbox"
+            class="profile__interests-dropdown-select-checkbox"
+            type="checkbox"
+            [id]="'technology_' + profession.id"
+            [value]="profession.id"
+            (click)="toggleInterest(profession.name)"
+            [checked]="selectedInterests.includes(profession.name)" />
+          <label [for]="'technology_' + profession.id"
+            >{{ profession.name }}
+          </label>
         </div>
       </div>
     </div>

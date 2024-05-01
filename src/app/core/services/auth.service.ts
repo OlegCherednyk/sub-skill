@@ -150,27 +150,29 @@ export class AuthService {
       });
     }
   }
-  forgotPassword(data: ForgotPasswordBody): void {
-    console.log('data', data);
-    this.httpService.forgotPasswordHttp(data.email).subscribe(resp => {
-      console.log('resp', resp);
-      if (resp) {
-        localStorage.setItem('password', resp);
+  // forgotPassword(data: ForgotPasswordBody): void {
+  //   console.log('data', data);
+  // this.httpService.forgotPasswordHttp(data.email).subscribe(resp => {
+  //   console.log('resp', resp);
+  //   if (resp) {
+  //     localStorage.setItem('password', resp);
 
-        let modalInfo = {
-          isLogo: true,
-          isBookmark: false,
-          isProfile: false,
+  // let modalInfo = {
+  //   isLogo: true,
+  //   isBookmark: false,
+  //   isProfile: false,
 
-          title: 'Password recovery',
-          message: `We sent you a password recovery link to ${data.email} `,
-          additionalMessage: 'Check your e-mail',
-          showButtons: false,
-        };
-        this.modalService.openModal(modalInfo);
-      }
-    });
-  }
+  //   title: 'Password recovery',
+  //   message: `We sent you a password recovery link to ${data.email} `,
+  //   additionalMessage: 'Check your e-mail',
+  //   showButtons: false,
+  // };
+
+  // this.modalService.openModal(modalInfo);
+
+  // }
+  // });
+  // }
   deleteAccount(): void {
     this.httpService.deleteUserHttp().subscribe(resp => {
       if (resp === null) {

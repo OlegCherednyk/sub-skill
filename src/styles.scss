@@ -12,6 +12,11 @@ app-root {
   width: 100%;
   height: 100%;
 }
+ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
