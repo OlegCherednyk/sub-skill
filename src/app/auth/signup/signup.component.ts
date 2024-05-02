@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
+  Input,
   OnDestroy,
   OnInit,
   Output,
@@ -45,8 +46,8 @@ import { HttpErrorService } from 'src/app/core/services/http-error.service';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent implements OnInit, OnDestroy{
-
+export class SignupComponent implements OnInit, OnDestroy {
+  @Input() formId!: string;
   @Output() loginWithGoogle: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() closeSignupForm: EventEmitter<any> = new EventEmitter();
@@ -62,25 +63,29 @@ export class SignupComponent implements OnInit, OnDestroy{
 
   constructor(
     private authService: AuthService,
-private httpErrorService: HttpErrorService,
+    private httpErrorService: HttpErrorService,
     private formBuilder: FormBuilder,
     private eventService: EventService,
-    private cdr:  ChangeDetectorRef
+    private cdr: ChangeDetectorRef
   ) {
     this.authForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern(/^.{8,}$/)]],
     });
-    this.isErrorSubscription = this.httpErrorService.isError$.subscribe(isErrorStatus => {
-      this.isError = isErrorStatus;
-      this.cdr.markForCheck();     });
+    this.isErrorSubscription = this.httpErrorService.isError$.subscribe(
+      isErrorStatus => {
+        this.isError = isErrorStatus;
+        this.cdr.markForCheck();
+      }
+    );
   }
-ngOnInit(): void {
-  this.isModalTypeSubscription = this.authService.isModalTypeOpen$.subscribe(isModal => {
-    this.isModalType = isModal;
-  });
-
-}
+  ngOnInit(): void {
+    this.isModalTypeSubscription = this.authService.isModalTypeOpen$.subscribe(
+      isModal => {
+        this.isModalType = isModal;
+      }
+    );
+  }
 
   gobackButton() {
     this.continueWithEmailClicked = false;
@@ -89,10 +94,13 @@ ngOnInit(): void {
     this.eventService.emitforgotPasswordEvent();
     this.eventService.emitNotOpenSignUpEvent();
   }
+  // closeSignUpForm() {
+  //   this.eventService.emitSignUpFormEvent();
+  // }
   closeSignUpForm() {
-    this.eventService.emitSignUpFormEvent();
+    // Принимаем идентификатор формы
+    this.eventService.emitCloseSignUpFormEvent(this.formId);
   }
-
   togglePasswordVisibility() {
     this.showPassword = !this.showPassword;
   }
@@ -139,7 +147,7 @@ ngOnInit(): void {
   onLigInButton(): void {
     const emailControl = this.authForm && this.authForm.get('email');
     const passwordControl = this.authForm && this.authForm.get('password');
-    if (emailControl?.invalid || passwordControl?.invalid) { 
+    if (emailControl?.invalid || passwordControl?.invalid) {
       return;
     }
     const data = this.authForm.value as SignInBody;

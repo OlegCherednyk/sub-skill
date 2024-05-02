@@ -19,7 +19,6 @@ import { Subscription } from 'rxjs';
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
 
-
   imports: [
     CommonModule,
     RouterModule,
@@ -32,9 +31,11 @@ import { Subscription } from 'rxjs';
 })
 export class LoginComponent implements OnDestroy {
   isModal: boolean = true;
-isUser:boolean = false;
+  isUser: boolean = false;
   username: string | null = null;
   signUpFormOpen: boolean = false;
+  formId = 'header';
+
   // changePasswordFormOpen: boolean = false;
   private signupFormSubscription: Subscription;
   private changePasswordSubscription: Subscription;
@@ -44,21 +45,21 @@ isUser:boolean = false;
     private eventService: EventService,
     private cdr: ChangeDetectorRef
   ) {
-
     this.authService.username$.subscribe(username => {
       this.username = username || 'Log in';
-      if(username){
-      this.isUser = true;
+      if (username) {
+        this.isUser = true;
       }
     });
- 
-    this.signupFormSubscription = this.eventService.signUpFormEvent$.subscribe(
-      () => {
-        console.log('Sign up event received by LoginComponent');
-        this.signUpFormOpen = !this.signUpFormOpen;
-        this.cdr.detectChanges();
-      }
-    );
+
+ this.signupFormSubscription = this.eventService.closeSignUpForm$.subscribe(
+   (closedFormId: string) => {
+     if (closedFormId === this.formId) {
+       this.signUpFormOpen = false;
+       this.cdr.detectChanges();
+     }
+   }
+ );
     this.changePasswordSubscription =
       this.eventService.changePasswordEvent$.subscribe(() => {
         this.signUpFormOpen = !this.signUpFormOpen;
@@ -73,12 +74,12 @@ isUser:boolean = false;
 
   openSignUpForm() {
     this.signUpFormOpen = true;
-    this.authService.setModalStatus(true)
+    this.authService.setModalStatus(true);
   }
 
-  closeSignUpForm() {
-    this.signUpFormOpen = false;
-  }
+  // closeSignUpForm() {
+  //   this.signUpFormOpen = false;
+  // }
 
   ngOnDestroy() {
     this.signupFormSubscription.unsubscribe();

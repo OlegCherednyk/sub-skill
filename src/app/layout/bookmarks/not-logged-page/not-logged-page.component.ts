@@ -15,22 +15,26 @@ import { SignupComponent } from 'src/app/auth/signup/signup.component';
 })
 export class NotLoggedPageComponent implements OnDestroy {
   signUpFormOpen: boolean = false;
+  formId = 'bookmarks';
   private signupFormSubscription: Subscription;
   constructor(
     public authService: AuthService,
     private eventService: EventService,
     private cdr: ChangeDetectorRef
   ) {
-    this.signupFormSubscription = this.eventService.signUpFormEvent$.subscribe(
-      () => {
-        this.signUpFormOpen = !this.signUpFormOpen;
-        this.cdr.detectChanges();
+    this.signupFormSubscription = this.eventService.closeSignUpForm$.subscribe(
+      (closedFormId: string) => {
+        if (closedFormId === this.formId) {
+          this.signUpFormOpen = false;
+          this.cdr.detectChanges();
+        }
       }
     );
   }
   openLoginForm() {
     this.signUpFormOpen = true;
     this.authService.setModalStatus(true);
+    // this.eventService.emitSignUpFormEvent();
   }
   ngOnDestroy() {
     this.signupFormSubscription.unsubscribe();
