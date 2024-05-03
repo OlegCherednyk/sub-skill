@@ -1,0 +1,28 @@
+<div class="total">
+  <div class="total__info-item">
+    <span class="total__text">Order Information:</span>
+    <span class="total__data">{{ forOrderingItems.length }} items</span>
+  </div>
+  <div class="total__info-item">
+    <span class="total__text">Total duration:</span>
+    <span class="total__data">{{ calculateTotalTime() }} weeks</span>
+  </div>
+  <div class="total__info-item">
+    <span class="total__text-price">Total price:</span>
+    <span class="total__data-price">{{ calculateTotalPrice() }} $</span>
+  </div>
+  <app-button
+    [text]="'Order now'"
+    [style]="'dark'"
+    [width]="'320px'"
+    [disabled]="forOrderingItems.length === 0"
+    [padding]="'16px 32px'"
+    (click)="orderNow()"></app-button>
+  <app-button
+    [text]="'Back to shop'"
+    [style]="'light'"
+    [width]="'320px'"
+    [disabled]="false"
+    [padding]="'16px 32px'"
+    (click)="backToShop()"></app-button>
+</div>

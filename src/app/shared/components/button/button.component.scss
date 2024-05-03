@@ -44,17 +44,17 @@
     cursor: pointer;
 
     &:hover {
-      background-color: $small_text_color;
+      // background-color: $small_text_color;
       color: $hover_green_button;
     }
 
     &:focus {
-      background-color: $small_text_color;
+      // background-color: $small_text_color;
       color: $hover_green_button;
     }
 
     &:active {
-      background-color: $common_text_color;
+      // background-color: $common_text_color;
       color: $click_green_button;
     }
 

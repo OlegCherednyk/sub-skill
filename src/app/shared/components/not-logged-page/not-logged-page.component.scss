@@ -12,6 +12,7 @@
   height: 90vh;
   overflow: auto;
   margin: auto 0 auto 0;
+  padding-top: 115px;
   &__title {
     @include font-24-700;
     color: $root-black;

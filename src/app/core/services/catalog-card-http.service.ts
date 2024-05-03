@@ -46,9 +46,6 @@ export class CatalogCardHttpService {
             photo: `data:image/jpeg;base64,${card.photo}`,
           }))
         ),
-        tap(cards => {
-          console.log('Fetched data and stored in cache:', cards);
-        }),
         shareReplay(1)
       );
   }

@@ -1,0 +1,38 @@
+<div class="order-card" [routerLink]="['/product-card', orderCard.id]">
+  <div class="order-card__img">
+    <img [src]="orderCard.photo" alt="" />
+  </div>
+  <div class="order-card__details">
+    <div class="order-card__title-block">
+      <span class="order-card__title">{{ orderCard.name }}</span>
+      <button
+        type="button"
+        class="order-card__delete"
+        aria-label="Close"
+        (click)="deleteForOrderCard()">
+        <i class="uil uil-multiply"></i>
+      </button>
+    </div>
+    <div class="order-card__info-row">
+      <span class="order-card__time">
+        <i class="uil uil-clock-three"></i>
+        {{ orderCard.learningTime }}
+      </span>
+      <span class="order-card__level">{{ orderCard.level.toLowerCase() }}</span>
+      <span class="order-card__lessons"
+        >{{ orderCard.lessonsCount }} lessons</span
+      >
+    </div>
+    <div class="order-card__bottom-block">
+      <div class="order-card__rating-block">
+        <star-rating
+          class="order-card__rating-stars"
+          [rating]="orderCard.rating"></star-rating>
+        <span class="order-card__rating">{{ orderCard.rating }}</span>
+        (<span class="order-card__votes">{{ orderCard.views }}</span
+        >)
+      </div>
+      <span class="order-card__price">{{ orderCard.price }}$</span>
+    </div>
+  </div>
+</div>

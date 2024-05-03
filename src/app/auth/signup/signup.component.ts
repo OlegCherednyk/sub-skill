@@ -98,7 +98,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   //   this.eventService.emitSignUpFormEvent();
   // }
   closeSignUpForm() {
-    // Принимаем идентификатор формы
     this.eventService.emitCloseSignUpFormEvent(this.formId);
   }
   togglePasswordVisibility() {

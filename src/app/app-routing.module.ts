@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
-import { bookmarkGuard } from './core/guards/bookmark.guard';
+import { notloggedGuard } from './core/guards/not-logged.guard';
 
 export const routes: Routes = [
   {
@@ -13,10 +13,13 @@ export const routes: Routes = [
   {
     path: 'cart',
     loadComponent: () =>
-      import('./features/catalog/catalog.component').then(
-        // тут буде щлях до компоненту корзини
-        m => m.CatalogComponent // тут буде компонент корзини
+      import('./layout/shoping-cart/shoping-cart.component').then(
+        m => m.ShopingCartComponent
       ),
+    canActivate: [notloggedGuard],
+    data: {
+      source: 'cart',
+    },
   },
   {
     path: 'product-card/:id',
@@ -62,13 +65,16 @@ export const routes: Routes = [
       import('./layout/bookmarks/bookmarks.component').then(
         m => m.BookmarksComponent
       ),
-    canActivate: [bookmarkGuard],
+    canActivate: [notloggedGuard],
+    data: {
+      source: 'bookmarks',
+    },
   },
   {
-    path: 'not-logged-page',
+    path: 'not-logged-page/:source',
     loadComponent: () =>
       import(
-        './layout/bookmarks/not-logged-page/not-logged-page.component'
+        './shared/components/not-logged-page/not-logged-page.component'
       ).then(m => m.NotLoggedPageComponent),
   },
 ];

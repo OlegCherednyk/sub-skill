@@ -24,8 +24,6 @@ import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.
 })
 export class CatalogCardComponent {
   @Input() public card!: CatalogCard;
-  public hoverIcon: boolean = false;
-  public clickedIcon: boolean = false;
   @Output() cardDeleted: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(
@@ -35,19 +33,19 @@ export class CatalogCardComponent {
   ) {}
 
   public toggleSaves(event: Event, id: number): void {
+    event.stopPropagation();
+
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/not-logged-page']);
-    }
-    event.stopPropagation();
-    if (this.card.isSaved) {
-      this.card.isSaved = !this.card.isSaved;
-      this.cardHttpService.removeMicroskillById(this.card.id).subscribe();
-      this.cardDeleted.emit(id);
-      this.cdr.detectChanges();
     } else {
-      this.cdr.detectChanges();
-      this.card.isSaved = !this.card.isSaved;
-      this.cardHttpService.saveMicroskillById(this.card.id).subscribe();
+      if (this.card.isSaved) {
+        this.card.isSaved = !this.card.isSaved;
+        this.cardHttpService.removeMicroskillById(this.card.id).subscribe();
+        this.cardDeleted.emit(id);
+      } else {
+        this.card.isSaved = !this.card.isSaved;
+        this.cardHttpService.saveMicroskillById(this.card.id).subscribe();
+      }
     }
   }
 }

@@ -47,23 +47,33 @@
     height: 44px;
     aspect-ratio: 1/1;
     background-color: $hover_small_green_button;
+    background-image: url('../../../../assets/icons/bookmark-1.svg');
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  &__title-icon:hover {
+    background-image: url('../../../../assets/icons/bookmark-2.svg');
+  }
+  &__title-icon.active {
+    background-image: url('../../../../assets/icons/bookmark-3.svg');
 
-    i {
-      font-size: 20px;
-      color: $normal_green_button;
-    }
+    // i {
+    //   font-size: 20px;
+    //   color: $normal_green_button;
+    // }
 
-    &:hover {
-      i {
-        color: $hover_small_green_button_bookmark;
-      }
-    }
+    // &:hover {
+    //   i {
+    //     color: $hover_small_green_button_bookmark;
+    //   }
+    // }
 
-    &:active {
-      i {
-        color: $normal_green_button;
-      }
-    }
+    // &:active {
+    //   i {
+    //     color: $normal_green_button;
+    //   }
+    // }
   }
   &__img {
     width: 48%;
@@ -184,5 +194,36 @@
   &__buy-block {
     display: flex;
     gap: 16px;
+  }
+  &__add-button {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 272px;
+    padding: 16px 32px;
+    background-color: inherit;
+    color: $common_text_color;
+    border: 1px solid $normal_green_button;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24.32px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  &__add-button:hover {
+    color: $normal_green_button;
+  }
+  &__add-button:hover {
+    color: $normal_green_button;
+  }
+  &__add-button:focus {
+    color: $hover_green_button;
+  }
+
+  &__add-button:active {
+    color: $click_green_button;
+  }
+  i {
+    font-size: 24px;
   }
 }

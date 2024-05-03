@@ -6,6 +6,7 @@ import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { CatalogCardComponent } from 'src/app/shared/components/catalog-card/catalog-card.component';
 import { CatalogHorizontalCardComponent } from 'src/app/shared/components/catalog-horizontal-card/catalog-horizontal-card.component';
 import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.service';
+import { EventService } from 'src/app/core/services/event.service';
 
 @Component({
   selector: 'card-track',
@@ -25,11 +26,23 @@ export class CardTrackComponent implements OnInit {
   @Input() title: string = '';
   @Input() typeOfCard: string = 'standart';
   public currentPage: number = 1;
-  constructor(private cardHttpService: CatalogCardHttpService) {}
+  constructor(
+    private cardHttpService: CatalogCardHttpService,
+    private eventService: EventService
+  ) {}
   savedCards$!: Observable<CatalogCard[]>;
   savedCardsAll: CatalogCard[] = [];
   isSaved: boolean = false;
   ngOnInit(): void {
+    this.subscribeToModalEvent();
+    this.loadData();
+  }
+  private subscribeToModalEvent(): void {
+    this.eventService.modalForHomeEvent$.subscribe(() => {
+      this.loadData();
+    });
+  }
+  loadData(): void {
     if (localStorage.getItem('token')) {
       this.trackService
         .getTrack(this.pageSize * this.countOfPages, this.typeOfTrack)
@@ -58,15 +71,6 @@ export class CardTrackComponent implements OnInit {
     }
   }
 
-  setIsSavedFlags(): void {
-    if (!this.trackCardsAll || !this.savedCardsAll) return;
-    this.trackCardsAll.forEach(trackCard => {
-      const savedCard = this.savedCardsAll.find(
-        savedCard => savedCard.id === trackCard.id
-      );
-      trackCard.isSaved = !!savedCard;
-    });
-  }
 
   nextPage(): void {
     if (this.currentPage < this.countOfPages) {

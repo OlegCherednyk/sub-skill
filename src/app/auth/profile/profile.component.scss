@@ -6,7 +6,7 @@
   align-items: flex-start;
   gap: 16px;
   font-family: $primary_font_family;
-  padding: 48px;
+  padding: 162px 48px 48px 48px;
   &__personal {
     @include flex-column-center;
     gap: 16px;

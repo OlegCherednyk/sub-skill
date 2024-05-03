@@ -1,0 +1,17 @@
+<ng-container *ngIf="forOrderingCards$ | async as forOrderingCards">
+  <div
+    *ngIf="forOrderingCards.length > 0; else noCardsForOrder"
+    class="forOrder">
+      <app-order-single-card
+        *ngFor="let card of forOrderingCards"
+        [orderCard]="card"
+        (orderCardDeleted)="
+          onOrderCardDeleted(card.id)
+        "></app-order-single-card>
+    </div>
+</ng-container>
+<ng-template #noCardsForOrder>
+  <p class="forOrder__card-list__no-cards">
+    You don’t have any products yet ;(
+  </p>
+</ng-template>

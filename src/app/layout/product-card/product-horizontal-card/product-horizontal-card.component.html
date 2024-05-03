@@ -3,20 +3,8 @@
     <span class="product-card__title-text">{{ product.name }}</span>
     <div
       class="product-card__title-icon"
-      (mouseenter)="hoverActive()"
-      (mouseleave)="hoverDisable()"
-      (click)="addToSaves()">
-      <i
-        [ngClass]="{
-          uil: !hoverIcon,
-          'uil-bookmark': !hoverIcon,
-          uis: hoverIcon,
-          'uis-bookmark': hoverIcon
-        }"
-        [ngStyle]="{
-          color: !clickedIcon && hoverIcon ? '#9FE894' : '#53CA3E'
-        }"></i>
-    </div>
+      (click)="toggleSaves($event, product.id)"
+      [ngClass]="{ active: product.isSaved }"></div>
   </div>
   <div class="product-card__rating">
     <star-rating [rating]="product.rating"></star-rating>
@@ -36,7 +24,7 @@
             product.level.toLowerCase()
           }}</span>
           <span>·</span>
-          <span>12 lessons</span>
+          <span>{{ product.lessonsCount }} lessons</span>
         </div>
       </div>
       <div class="product-card__bottom-block">
@@ -55,11 +43,22 @@
             [padding]="'16px 32px'"></app-button>
 
           <app-button
+            *ngIf="!product.isIntoCart"
             [text]="'Add to cart'"
             [style]="'light'"
             [width]="'272px'"
             [disabled]="false"
-            [padding]="'16px 32px'"></app-button>
+            [padding]="'16px 32px'"
+            (click)="toggleAddToCard(product.id)"></app-button>
+          <button
+            type="button"
+            class="product-card__add-button"
+            *ngIf="product.isIntoCart"
+            [disabled]="false"
+            (click)="toggleAddToCard(product.id)">
+            <i class="uil uil-check"></i>
+            <span>Added</span>
+          </button>
         </div>
       </div>
     </div>
