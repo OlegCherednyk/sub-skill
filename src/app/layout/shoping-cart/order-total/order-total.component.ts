@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { ShopingCartService } from 'src/app/core/services/shoping-cart.service';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-order-total',
   standalone: true,
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, RouterModule],
   templateUrl: './order-total.component.html',
   styleUrls: ['./order-total.component.scss'],
 })
@@ -40,5 +41,7 @@ export class OrderTotalComponent {
     return Number(totalPrice.toFixed(2));
   }
   orderNow() {}
-  backToShop() {}
+  backToShop()
+  {
+  }
 }

@@ -19,7 +19,7 @@ export class HomeTrackService {
         map(cards =>
           cards.map(card => ({
             ...card,
-            // photo: `data:image/jpeg;base64,${card.photo}`,
+            photo: `data:image/jpeg;base64,${card.photo}`,
           }))
         )
       );

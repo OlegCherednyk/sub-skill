@@ -60,7 +60,7 @@ export class CatalogCardHttpService {
       .pipe(
         map(data => ({
           ...data,
-          // photo: `data:image/jpeg;base64,${data.photo}`,
+          photo: `data:image/jpeg;base64,${data.photo}`,
         })),
         shareReplay(1)
       );

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { OrderSingleCardComponent } from 'src/app/shared/components/order-single-card/order-single-card.component';
 import { Observable } from 'rxjs';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
-import { ShopingCartHttpService } from 'src/app/core/services/shoping-cart-http.service';
 import { ShopingCartService } from 'src/app/core/services/shoping-cart.service';
 
 @Component({
@@ -16,10 +15,7 @@ import { ShopingCartService } from 'src/app/core/services/shoping-cart.service';
 export class OrderInfoComponent implements OnInit {
   forOrderingCards$!: Observable<CatalogCard[]>;
   forOrderingCardsAll: CatalogCard[] = [];
-  constructor(
-    private shopingCartHttpService: ShopingCartHttpService,
-    private shopingCartService: ShopingCartService
-  ) {}
+  constructor(private shopingCartService: ShopingCartService) {}
   ngOnInit() {
     this.loadForOrderingCards();
   }
@@ -33,9 +29,14 @@ export class OrderInfoComponent implements OnInit {
     });
   }
   onOrderCardDeleted(id: number) {
+    console.log('DELETE');
+
     const index = this.forOrderingCardsAll.findIndex(card => card.id === id);
     if (index !== -1) {
       this.forOrderingCardsAll.splice(index, 1);
     }
+    this.shopingCartService.forOrderingCardsSubject.next(
+      this.forOrderingCardsAll
+    );
   }
 }

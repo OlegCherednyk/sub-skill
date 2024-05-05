@@ -56,25 +56,24 @@ export class ProductHorizontalCardComponent {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['not-logged-page/cart']);
     } else {
-      if (this.product.isIntoCart) {
-        this.product.isIntoCart = !this.product.isIntoCart;
-        this.shopingCartHttpService
-          .removeCardForOrderingById(this.product.id)
-          .subscribe(response => {
-            // this.shopingCartService.forOrderingCardsSubject.next(response);
-          });
-        this.cardDeletedFromCart.emit(id);
-      } else {
-        this.product.isIntoCart = !this.product.isIntoCart;
+      // if (this.product.isIntoCart) {
+      //   this.product.isIntoCart = !this.product.isIntoCart;
+      //   this.shopingCartHttpService
+      //     .removeCardForOrderingById(this.product.id)
+      //     .subscribe(response => {
+      //       // this.shopingCartService.forOrderingCardsSubject.next(response);
+      //     });
+      //   this.cardDeletedFromCart.emit(id);
+      // } else {
+      this.product.isIntoCart = !this.product.isIntoCart;
 
-        this.shopingCartHttpService
-          .saveCardForOrderingById(this.product.id)
-          .subscribe(response => {
-            this.shopingCartService.forOrderingCardsSubject.next(
-              response.listOfMicroSkills
-            );
-          });
-      }
+      this.shopingCartHttpService
+        .saveCardForOrderingById(this.product.id)
+        .subscribe(response => {
+          this.shopingCartService.forOrderingCardsSubject.next(
+            response.listOfMicroSkills
+          );
+        });
     }
   }
 }
