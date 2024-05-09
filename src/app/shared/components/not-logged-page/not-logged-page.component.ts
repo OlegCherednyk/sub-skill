@@ -44,6 +44,8 @@ export class NotLoggedPageComponent implements OnInit, OnDestroy {
         this.title = 'Log in to see your bookmarks';
       } else if (this.source === 'cart') {
         this.title = 'Log in to see your cart';
+      } else if (this.source === 'order') {
+        this.title = 'Log in to see your cart';
       }
     });
   }

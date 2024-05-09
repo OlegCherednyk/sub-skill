@@ -1,8 +1,9 @@
 <div class="order-card" [routerLink]="['/product-card', orderCard.id]">
-  <div class="order-card__img">
-    <img [src]="orderCard.photo" alt="" />
+  <div [ngClass]="!isSmall ? 'order-card__img' : 'order-card__img-small'">
+    <img [src]="orderCard.photo" alt="photo" />
   </div>
-  <div class="order-card__details">
+  <div
+    [ngClass]="!isSmall ? 'order-card__details' : 'order-card__details-small'">
     <div class="order-card__title-block">
       <span class="order-card__title">{{ orderCard.name }}</span>
       <button
@@ -13,7 +14,7 @@
         <i class="uil uil-multiply"></i>
       </button>
     </div>
-    <div class="order-card__info-row">
+    <div  [ngClass]="!isSmall ? 'order-card__info-row' : 'order-card__info-row-small'">
       <span class="order-card__time">
         <i class="uil uil-clock-three"></i>
         {{ orderCard.learningTime }}
@@ -32,7 +33,7 @@
         (<span class="order-card__votes">{{ orderCard.views }}</span
         >)
       </div>
-      <span class="order-card__price">{{ orderCard.price }}$</span>
+      <span  [ngClass]="!isSmall ? 'order-card__price' : 'order-card__price-small'">{{ orderCard.price }}$</span>
     </div>
   </div>
 </div>

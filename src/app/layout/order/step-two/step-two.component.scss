@@ -1,0 +1,32 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.step-two {
+  @include flex-column-start;
+  gap: 56px;
+  padding: 40px;
+
+  padding-top: 145px;
+  font-family: $primary_font_family;
+  &__main {
+    @include flex-column-start;
+    gap: 24px;
+  }
+  &__columns {
+    display: flex;
+    gap: 16px;
+  }
+  &__column {
+    width: 50%;
+  }
+
+  &__title {
+    @include font-24-700;
+    color: $root-black;
+  }
+
+  &__buttons {
+    @include flex-row-space;
+  }
+}

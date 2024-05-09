@@ -77,4 +77,10 @@ export const routes: Routes = [
         './shared/components/not-logged-page/not-logged-page.component'
       ).then(m => m.NotLoggedPageComponent),
   },
+  {
+    path: 'order',
+    loadComponent: () =>
+      import('./layout/order/order.component').then(m => m.OrderComponent),
+    canActivate: [notloggedGuard],
+  },
 ];

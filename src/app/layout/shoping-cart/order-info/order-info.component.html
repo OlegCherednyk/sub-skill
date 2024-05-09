@@ -1,14 +1,17 @@
 <ng-container *ngIf="forOrderingCards$ | async as forOrderingCards">
   <div
     *ngIf="forOrderingCards.length > 0; else noCardsForOrder"
-    class="forOrder">
+    [ngClass]="isCart ? 'forOrder-content' : 'forOrder-content__order'">
+    <div
+     [ngClass]="isCart ? 'forOrder' : (isOrderSmall ? 'forOrder__order' : 'forOrder__order-big')">
+      <!-- <div [ngClass]="isCart ? 'forOrder-content' : 'forOrder-content__order'"> -->
       <app-order-single-card
         *ngFor="let card of forOrderingCards"
         [orderCard]="card"
-        (orderCardDeleted)="
-          onOrderCardDeleted(card.id)
-        "></app-order-single-card>
+        (orderCardDeleted)="onOrderCardDeleted(card.id)"
+        [isSmall]="!isCart"></app-order-single-card>
     </div>
+  </div>
 </ng-container>
 <ng-template #noCardsForOrder>
   <p class="forOrder__card-list__no-cards">

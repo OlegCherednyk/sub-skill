@@ -52,14 +52,14 @@ export class LoginComponent implements OnDestroy {
       }
     });
 
- this.signupFormSubscription = this.eventService.closeSignUpForm$.subscribe(
-   (closedFormId: string) => {
-     if (closedFormId === this.formId) {
-       this.signUpFormOpen = false;
-       this.cdr.detectChanges();
-     }
-   }
- );
+    this.signupFormSubscription = this.eventService.closeSignUpForm$.subscribe(
+      (closedFormId: string) => {
+        if (closedFormId === this.formId) {
+          this.signUpFormOpen = false;
+          this.cdr.detectChanges();
+        }
+      }
+    );
     this.changePasswordSubscription =
       this.eventService.changePasswordEvent$.subscribe(() => {
         this.signUpFormOpen = !this.signUpFormOpen;

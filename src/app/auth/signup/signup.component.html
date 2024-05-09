@@ -1,8 +1,8 @@
 <div
   class="signup"
   [ngClass]="{
-    'signup__modaltype ': isModalType,
-    'signup__pagetype ': !isModalType
+    signup__modaltype: isModalType,
+    signup__pagetype: !isModalType
   }">
   <button
     *ngIf="isModalType"
@@ -22,7 +22,10 @@
       *ngIf="continueWithEmailClicked"
       (click)="gobackButton()"></app-goback>
     <div class="signup__join">
-      <div class="signup__switcher">
+      <div class="signup__switcher" [ngClass]="{
+            'signup__switcher-page': !isModalType,
+            'signup__switcher': isModalType
+          }">
         <button
           [ngClass]="{
             'signup__switcher-signup-page': !isModalType,

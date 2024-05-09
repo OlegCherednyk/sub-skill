@@ -1,0 +1,61 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.success {
+  @include flex-column-center;
+  width: 560px;
+  align-items: center;
+  background-color: inherit;
+  font-family: $primary_font_family;
+  gap: 32px;
+  width: 100%;
+  height: 90vh;
+  overflow: auto;
+  margin: auto 0 auto 0;
+  padding-top: 115px;
+  &__hooray {
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    padding: 10px;
+    background-color: $hover_small_green_button;
+    border-radius: 50px;
+  }
+  &__title {
+    @include font-24-700;
+    color: $common_text_color;
+  }
+  &__subtitle {
+    @include font-20-500;
+    color: $root-dark_grey;
+  }
+  &__text {
+    @include font-16-400;
+    color: $gray_text;
+    width: 560px;
+    word-wrap: break-word;
+    align-items: center;
+    text-align: center;
+  }
+  &__bookmark {
+    border: none;
+    outline: none;
+    width: 560px;
+    padding: 16px 32px;
+    cursor: pointer;
+    background-color: $common_text_color;
+    color: $focus_green_button;
+    border: none;
+    @include font-16-700;
+
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  &__bookmark-img {
+    width: auto;
+    height: 24px;
+    cursor: pointer;
+    margin-right: 4px;
+  }
+}

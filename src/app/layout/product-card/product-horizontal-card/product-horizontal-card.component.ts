@@ -36,7 +36,9 @@ export class ProductHorizontalCardComponent {
     private router: Router,
     private shopingCartService: ShopingCartService
   ) {}
-
+  // ngOnInit(){
+  //       this.forOrderingCards$ = this.shopingCartService.forOrderingCards$;
+  // }
   public toggleSaves(event: Event, id: number): void {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/not-logged-page']);
@@ -65,6 +67,22 @@ export class ProductHorizontalCardComponent {
       //     });
       //   this.cardDeletedFromCart.emit(id);
       // } else {
+      this.product.isIntoCart = !this.product.isIntoCart;
+
+      this.shopingCartHttpService
+        .saveCardForOrderingById(this.product.id)
+        .subscribe(response => {
+          this.shopingCartService.forOrderingCardsSubject.next(
+            response.listOfMicroSkills
+          );
+        });
+    }
+  }
+  public toggleBuyNowCard(id: number) {
+    if (!localStorage.getItem('token')) {
+      this.router.navigate(['not-logged-page/cart']);
+    } else {
+      this.router.navigate(['/cart']);
       this.product.isIntoCart = !this.product.isIntoCart;
 
       this.shopingCartHttpService

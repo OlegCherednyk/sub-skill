@@ -14,6 +14,7 @@ import { ShopingCartHttpService } from 'src/app/core/services/shoping-cart-http.
   styleUrls: ['./order-single-card.component.scss'],
 })
 export class OrderSingleCardComponent {
+  @Input() public isSmall!: boolean;
   @Input() public orderCard!: CatalogCard;
   @Output() orderCardDeleted: EventEmitter<number> = new EventEmitter<number>();
 

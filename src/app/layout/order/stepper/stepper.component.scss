@@ -1,0 +1,140 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.stepper {
+  @include flex-column-space;
+  font-family: $primary_font_family;
+  width: inherit;
+  &__item {
+    @include flex-row-center;
+    width: 100%;
+  }
+  &__flexline-one {
+    width: 100%;
+    border: 1px solid $stroke-color;
+    color: $light_grey;
+  }
+  &__flexline-one.active {
+    border: 1px solid $normal_green_button;
+    color: $light_grey;
+  }
+  &__flexline-two {
+    width: 100%;
+    border: 1px solid $stroke-color;
+    color: $light_grey;
+  }
+  &__flexline-two.active {
+    border: 1px solid $normal_green_button;
+    color: $light_grey;
+  }
+  &__one {
+    position: relative;
+    margin: 0 8px 0 57px;
+  }
+
+  &__one::after {
+    content: 'Personal Information';
+    position: absolute;
+    top: 40px;
+    left: -57px;
+    @include font-14-500;
+    color: $normal_green_button;
+    overflow: visible;
+    white-space: nowrap;
+  }
+  &__two {
+    position: relative;
+    margin: 0 8px 0 8px;
+  }
+  &__two::after {
+    content: 'Delivery & Payment';
+    position: absolute;
+    top: 40px;
+    @include font-14-500;
+    color: $gray_text;
+    overflow: visible;
+    white-space: nowrap;
+  }
+  &__two.active::after {
+    content: 'Delivery & Payment';
+    position: absolute;
+    top: 40px;
+    @include font-14-500;
+    color: $normal_green_button;
+    overflow: visible;
+    white-space: nowrap;
+  }
+  &__three {
+    position: relative;
+
+    margin: 0 57px 0 8px;
+  }
+  &__three::after {
+    content: 'Order';
+    position: absolute;
+    top: 40px;
+    @include font-14-500;
+    color: $gray_text;
+    overflow: visible;
+    white-space: nowrap;
+  }
+  &__item-step {
+    @include flex-row-center;
+    @include font-13-500;
+
+    color: $gray_text;
+    border: 1px solid $gray_text;
+    border-radius: 50%;
+    min-width: 32px;
+    height: 32px;
+    background-color: $banner-white;
+  }
+  &__item-step.done {
+    background-color: $normal_green_button;
+    border: 1px solid$normal_green_button;
+  }
+
+  &__item-step.active {
+    color: $normal_green_button;
+    border: 1px solid $normal_green_button;
+  }
+  &__label {
+    @include flex-row-start;
+    gap: 33%;
+  }
+  &__item-text {
+    @include font-14-500;
+    color: $gray_text;
+    overflow: visible;
+  }
+}
+
+// .center::after {
+//   content: '';
+//   position: absolute;
+//   top: 50%;
+//   left: 150%;
+//   min-width: 1250%;
+//   width: 1450%;
+//   max-width: 1500%;
+//   height: 2px;
+//   background-color: $stroke-color;
+//   transform: translateY(-1px);
+// }
+// .center::before {
+//   content: '';
+//   position: absolute;
+//   top: 50%;
+//   right: 150%;
+//   min-width: 1250%;
+//   width: 1450%;
+//   max-width: 1500%;
+//   height: 2px;
+//   background-color: $stroke-color;
+//   transform: translateY(-1px);
+// }
+.uil-check {
+  font-size: 24px;
+  color: $banner-white;
+}

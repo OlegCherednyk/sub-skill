@@ -51,7 +51,7 @@ export class SignupComponent implements OnInit, OnDestroy {
   @Output() loginWithGoogle: EventEmitter<any> = new EventEmitter<any>();
 
   @Output() closeSignupForm: EventEmitter<any> = new EventEmitter();
-  isModalType: boolean = false;
+  isModalType!: boolean;
   isError: boolean = false;
   continueWithEmailClicked = false;
   showPassword = false;
@@ -68,6 +68,12 @@ export class SignupComponent implements OnInit, OnDestroy {
     private eventService: EventService,
     private cdr: ChangeDetectorRef
   ) {
+    this.isModalTypeSubscription = this.authService.isModalTypeOpen$.subscribe(
+      isModal => {
+        this.isModalType = isModal;
+      }
+    );
+    console.log('SignupComponent', this.isModalType);
     this.authForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.pattern(/^.{8,}$/)]],
@@ -80,11 +86,12 @@ export class SignupComponent implements OnInit, OnDestroy {
     );
   }
   ngOnInit(): void {
-    this.isModalTypeSubscription = this.authService.isModalTypeOpen$.subscribe(
-      isModal => {
-        this.isModalType = isModal;
-      }
-    );
+    this.toggleLoginButton();
+    // this.isModalTypeSubscription = this.authService.isModalTypeOpen$.subscribe(
+    //   isModal => {
+    //     this.isModalType = isModal;
+    //   }
+    // );
   }
 
   gobackButton() {
@@ -98,6 +105,10 @@ export class SignupComponent implements OnInit, OnDestroy {
   //   this.eventService.emitSignUpFormEvent();
   // }
   closeSignUpForm() {
+    this.isModalType = false;
+    console.log('closeSignUpForm', this.formId);
+    this.authService.setModalStatus(false);
+
     this.eventService.emitCloseSignUpFormEvent(this.formId);
   }
   togglePasswordVisibility() {
@@ -105,14 +116,17 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
   toggleLoginButton() {
     this.loginActive = true;
+    if (this.authForm.get('username')) {
+      this.authForm.removeControl('username');
+    }
+  }
+  toggleSignUpButton() {
+    console.log('toggleSignUpButton');
+    this.loginActive = false;
     this.authForm.addControl(
       'username',
       this.formBuilder.control('', [Validators.required])
     );
-  }
-  toggleSignUpButton() {
-    this.loginActive = false;
-    this.authForm.removeControl('username');
   }
 
   requestData = {} as SignUpRequestBody;
