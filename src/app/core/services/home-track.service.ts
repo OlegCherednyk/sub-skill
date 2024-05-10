@@ -5,13 +5,13 @@ import { Observable, map } from 'rxjs';
 import { base_url } from '../core_variables';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class HomeTrackService {
-
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient) {}
 
   public getTrack(size: number, categories: string): Observable<CatalogCard[]> {
+    console.log('HNNT GET NRACK');
     return this._httpClient
       .get<CatalogCardsData>(`${base_url}microskill/${categories}?size=${size}`)
       .pipe(
@@ -22,14 +22,12 @@ export class HomeTrackService {
             photo: `data:image/jpeg;base64,${card.photo}`,
           }))
         )
-      )
+      );
   }
 
   public getCountOfPages(): Observable<number> {
     return this._httpClient
       .get<CatalogCardsData>(`${base_url}microskill/all-paging`)
-      .pipe(
-        map(data => data.totalPages)
-      )
+      .pipe(map(data => data.totalPages));
   }
 }

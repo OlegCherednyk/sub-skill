@@ -1,0 +1,31 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.shoping-cart-wrapper {
+  @include flex-column-start;
+  padding: 40px;
+  padding-top: 145px;
+  font-family: $primary_font_family;
+  gap: 24px;
+}
+.shoping-cart {
+  @include flex-column-start;
+  align-items: flex-start;
+  gap: 24px;
+  &__title {
+    @include font-24-700;
+    color: $root-black;
+  }
+  &__main {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 100%;
+    gap: 16px;
+  }
+}
+app-order-info {
+  flex: 1;
+}

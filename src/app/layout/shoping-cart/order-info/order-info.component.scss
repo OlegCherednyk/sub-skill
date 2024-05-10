@@ -1,0 +1,17 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.forOrder {
+  @include flex-column-start;
+
+  width: 100%;
+  background-color: $banner-white;
+  overflow: hidden;
+  border-radius: 20px;
+  padding: 24px;
+  gap: 16px;
+}
+app-order-single-card:not(:last-child) {
+  border-bottom: 1px solid $stroke-color;
+}

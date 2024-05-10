@@ -4,13 +4,14 @@
 .categories {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px 0px;
+  gap: 24px;
 
   ul {
     display: flex;
     flex-direction: column;
-    padding: 8px;
+    padding: 0 0 0 16px;
     gap: 16px;
+    margin: 0;
 
     li {
       list-style: none;
@@ -19,16 +20,16 @@
         display: inline-block;
         font-family: $primary_font_family;
         color: $small_text_color;
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 18px;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 21px;
         letter-spacing: 0em;
         text-align: left;
         padding: 8px 16px 8px 16px;
         margin-left: 8px;
         cursor: pointer;
       }
-      
+
       div:hover {
         border-radius: 6px;
         transition: 0.5s;

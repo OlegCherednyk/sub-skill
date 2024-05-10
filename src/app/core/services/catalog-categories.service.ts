@@ -6,15 +6,20 @@ import { CatalogCard, CatalogCardsData, CatalogCategoryCardsData } from '../inte
 import { base_url } from '../core_variables';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CatalogCategoriesService {
-
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient) {}
 
   public getCategories(): Observable<CatalogCategory[]> {
-    console.log(this._httpClient.get<CatalogCategory>('https://subskill.onrender.com/api/v1/technology/all'));
-    return this._httpClient.get<CatalogCategory[]>('https://subskill.onrender.com/api/v1/technology/all')
+    console.log(
+      this._httpClient.get<CatalogCategory>(
+        'https://subskill.onrender.com/api/v1/profession/all'
+      )
+    );
+    return this._httpClient.get<CatalogCategory[]>(
+      'https://subskill.onrender.com/api/v1/profession/all'
+    );
   }
 
   public getCategoryCards(id: string): Observable<CatalogCard[]> {

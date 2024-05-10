@@ -1,11 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { debounceTime, switchMap, tap } from 'rxjs/operators';
 import { SearchService } from 'src/app/core/services/search.service';
-import { CatalogCardService } from 'src/app/core/services/catalog-card.service';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { of } from 'rxjs';
+import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.service';
 
 @Component({
   selector: 'app-search',
@@ -20,11 +19,11 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private searchService: SearchService,
-    private catalogCardService: CatalogCardService
+    private catalogCardHttpService: CatalogCardHttpService
   ) {}
 
   ngOnInit() {
-    this.catalogCardService
+    this.catalogCardHttpService
       .getCatalogCardsData()
       .subscribe((cards: CatalogCard[]) => {
         this.searchService.setCatalogCards(cards);

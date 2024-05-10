@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ModalService } from 'src/app/core/services/modal.service';
 import { ModalData } from 'src/app/core/interfaces/modal';
@@ -15,8 +21,6 @@ import { Router, RouterModule } from '@angular/router';
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-
-
 })
 export class ModalComponent implements OnInit, OnDestroy {
   modalData!: ModalData;
@@ -29,20 +33,17 @@ export class ModalComponent implements OnInit, OnDestroy {
     private modalService: ModalService,
     private authService: AuthService,
     private eventService: EventService,
-    private router: Router,
-  ) {
-  }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.modalSubscription = this.modalService.modalData$.subscribe(data => {
-
       this.modalData = data;
       if (data.message !== '' || data.additionalMessage !== '') {
         this.isLogo = data.isLogo;
         this.isBookmark = data.isBookmark;
         this.isProfile = data.isProfile;
       }
-   
     });
     const redirectUrl = this.authService.getRedirectUrl();
     if (redirectUrl) {
@@ -62,15 +63,30 @@ export class ModalComponent implements OnInit, OnDestroy {
     this.closeModal();
   }
   close(): void {
-    this.eventService.emitModalEvent();
-
+    console.log('this.router.url', this.router.url);
+    if (this.router.url === '/') {
+      this.eventService.emitModalForHomeEvent();
+      this.eventService.emitModalEvent();
+    } else {
+      this.eventService.emitModalEvent();
+    }
   }
   deleteProfile(): void {
     this.authService.deleteAccount();
     this.eventService.emitModalEvent();
-
   }
   ngOnDestroy(): void {
     this.modalSubscription.unsubscribe();
+  }
+
+  navigateToProfile(): void {
+    // Здесь можно выполнить какие-то действия перед переходом, если нужно
+    this.router.navigate(['/profile']);
+    this.closeModal(); // Вызываем функцию закрытия модального окна
+  }
+  navigateToSkills(): void {
+    // Здесь можно выполнить какие-то действия перед переходом, если нужно
+    this.router.navigate(['/my-skills']);
+    this.closeModal(); // Вызываем функцию закрытия модального окна
   }
 }

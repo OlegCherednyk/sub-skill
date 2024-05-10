@@ -24,6 +24,7 @@ export class ModalService {
   constructor(private eventService: EventService) {}
 
   openModal(data: ModalData): void {
+    console.log('openModal', data);
     this.modalDataSubject.next(data);
   }
 }

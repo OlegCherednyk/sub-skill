@@ -1,0 +1,20 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.not-logged-page {
+  @include flex-column-center;
+  align-items: center;
+  background-color: inherit;
+  font-family: $primary_font_family;
+  gap: 32px;
+  width: 100%;
+  height: 90vh;
+  overflow: auto;
+  margin: auto 0 auto 0;
+  padding-top: 115px;
+  &__title {
+    @include font-24-700;
+    color: $root-black;
+  }
+}

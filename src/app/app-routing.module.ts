@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { authGuard } from './core/guards/auth.guard';
+import { notloggedGuard } from './core/guards/not-logged.guard';
 
 export const routes: Routes = [
   {
@@ -12,10 +13,13 @@ export const routes: Routes = [
   {
     path: 'cart',
     loadComponent: () =>
-      import('./features/catalog/catalog.component').then(
-        // тут буде щлях до компоненту корзини
-        m => m.CatalogComponent // тут буде компонент корзини
+      import('./layout/shoping-cart/shoping-cart.component').then(
+        m => m.ShopingCartComponent
       ),
+    canActivate: [notloggedGuard],
+    data: {
+      source: 'cart',
+    },
   },
   {
     path: 'product-card/:id',
@@ -24,7 +28,6 @@ export const routes: Routes = [
         m => m.ProductCardComponent
       ),
   },
-
   {
     path: 'catalog-cards/:id',
     loadComponent: () =>
@@ -32,8 +35,6 @@ export const routes: Routes = [
         m => m.CatalogComponent
       ),
   },
-
-
   // {
   //   path: 'auth/register',
   //   loadComponent: () =>
@@ -43,19 +44,37 @@ export const routes: Routes = [
     path: 'profile',
     loadComponent: () =>
       import('./auth/profile/profile.component').then(m => m.ProfileComponent),
-      canActivate: [authGuard],
+    canActivate: [authGuard],
   },
-
 
   {
     path: 'signup-page',
     loadComponent: () =>
-      import('./auth/signup-page/signup-page.component').then(m => m.SignupPageComponent),
+      import('./auth/signup-page/signup-page.component').then(
+        m => m.SignupPageComponent
+      ),
   },
   // {
   //   path: 'my-skills',
   //   loadComponent: () =>
   //     import('./').then(m => m.), // тут буде щлях до компоненту my-skills
   // },
-
+  {
+    path: 'bookmarks',
+    loadComponent: () =>
+      import('./layout/bookmarks/bookmarks.component').then(
+        m => m.BookmarksComponent
+      ),
+    canActivate: [notloggedGuard],
+    data: {
+      source: 'bookmarks',
+    },
+  },
+  {
+    path: 'not-logged-page/:source',
+    loadComponent: () =>
+      import(
+        './shared/components/not-logged-page/not-logged-page.component'
+      ).then(m => m.NotLoggedPageComponent),
+  },
 ];
