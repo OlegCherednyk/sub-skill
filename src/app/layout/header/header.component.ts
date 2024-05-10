@@ -87,6 +87,9 @@ export class HeaderComponent implements OnDestroy, OnInit {
           case 'not-logged-page':
             this.pageTitle = 'Bookmarks';
             break;
+          case 'my-skills':
+            this.pageTitle = 'My Skills';
+            break;
 
           default:
             this.pageTitle = 'Unknown';

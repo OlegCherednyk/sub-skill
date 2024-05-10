@@ -34,7 +34,10 @@
         [style]="'dark'"
         [width]="'304px'"
         [disabled]="false"
-        [padding]="'16px 32px'"></app-button>
+        [padding]="'16px 32px'"
+        
+        (click)="toggleBuyNowCard(product.id)"
+        ></app-button>
     </div>
     <ul class="autolayout-card__bottom-part">
       <li class="autolayout-card__bottom-text">Share on</li>

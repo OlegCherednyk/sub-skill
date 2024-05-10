@@ -82,5 +82,19 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./layout/order/order.component').then(m => m.OrderComponent),
     canActivate: [notloggedGuard],
+    data: {
+      source: 'order',
+    },
+  },
+  {
+    path: 'my-skills',
+    loadComponent: () =>
+      import('./layout/my-skills/my-skills.component').then(
+        m => m.MySkillsComponent
+      ),
+    canActivate: [notloggedGuard],
+    data: {
+      source: 'my-skills',
+    },
   },
 ];

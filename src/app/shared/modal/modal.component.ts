@@ -80,13 +80,11 @@ export class ModalComponent implements OnInit, OnDestroy {
   }
 
   navigateToProfile(): void {
-    // Здесь можно выполнить какие-то действия перед переходом, если нужно
     this.router.navigate(['/profile']);
-    this.closeModal(); // Вызываем функцию закрытия модального окна
+    this.closeModal();
   }
   navigateToSkills(): void {
-    // Здесь можно выполнить какие-то действия перед переходом, если нужно
     this.router.navigate(['/my-skills']);
-    this.closeModal(); // Вызываем функцию закрытия модального окна
+    this.closeModal();
   }
 }
