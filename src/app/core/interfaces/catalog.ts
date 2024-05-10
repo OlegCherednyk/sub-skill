@@ -34,4 +34,15 @@ export interface CatalogCardsData {
 	empty: boolean;
 }
 
-
+export interface CatalogCategoryCardsData {
+	microSkills: CatalogCard[];
+	totalPages: number;
+	totalElements: number;
+	last: boolean;
+	size: number;
+	number: number;
+	sort: object;
+	numberOfElements: number;
+	first: boolean;
+	empty: boolean;
+}

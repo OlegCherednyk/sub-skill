@@ -6,6 +6,8 @@ import { CatalogCardService } from 'src/app/core/services/catalog-card.service';
 import { CatalogCard, CatalogCardsData } from 'src/app/core/interfaces/catalog';
 import { CatalogHorizontalCardComponent } from 'src/app/shared/components/catalog-horizontal-card/catalog-horizontal-card.component';
 import { SearchService } from 'src/app/core/services/search.service';
+import { CatalogCategoriesService } from 'src/app/core/services/catalog-categories.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'catalog',
@@ -16,23 +18,20 @@ import { SearchService } from 'src/app/core/services/search.service';
 })
 export class CatalogComponent implements OnInit {
   constructor(
-    private cardService: CatalogCardService,
-    private searchService: SearchService
-  ) {}
+    private cardService: CatalogCategoriesService,
+    private route: ActivatedRoute
+  ) { }
 
   public catalogCards$!: Observable<CatalogCard[]>;
 
   public ngOnInit(): void {
-    this.searchService.keyword$.subscribe(searchKeyword => {
-      if (searchKeyword) {
-        this.catalogCards$ = of(
-          this.searchService.filterCourses(searchKeyword)
-        );
-      } else {
-        this.catalogCards$ = this.cardService.getCatalogCardsData();
-      }
-    });
-  }
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      this.catalogCards$ = this.cardService.getCategoryCards(id ? id : 'all')
+    })
+    };
+
+
 
   goBack(): void {
     window.history.back();

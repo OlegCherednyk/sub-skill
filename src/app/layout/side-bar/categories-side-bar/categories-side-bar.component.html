@@ -1,6 +1,9 @@
 <div class="categories">
     <icon-side-bar [icon]="categoryIcon"></icon-side-bar>
     <ul>
+        <li>
+            <div [routerLink]="['/catalog-cards', 'all']">All categories</div>
+        </li>
         <li *ngFor="let category of categories | async">
             <div [routerLink]="['/catalog-cards', category.id]">
             {{ category.name }}
