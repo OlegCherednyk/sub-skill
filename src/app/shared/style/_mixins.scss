@@ -37,6 +37,11 @@
   font-weight: 500;
   line-height: 150%; //16px;
 }
+@mixin font-13-500 {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 120%; //15.73px;
+}
 
 @mixin font-14-500 {
   font-size: 14px;
@@ -64,6 +69,11 @@
   font-size: 16px;
   font-weight: 700;
   line-height: 150%; //24.32px;
+}
+@mixin font-20-500 {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 150%; // 30.4px;
 }
 @mixin font-20-700 {
   font-size: 20px;

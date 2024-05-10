@@ -70,7 +70,10 @@ export class HeaderComponent implements OnDestroy, OnInit {
             this.pageTitle = 'Home';
             break;
           case 'cart':
-            this.pageTitle = 'Cart';
+            this.pageTitle = 'Shopping Cart';
+            break;
+          case 'order':
+            this.pageTitle = 'Ordering';
             break;
           case 'profile':
             this.pageTitle = 'Profile settings';
@@ -83,6 +86,9 @@ export class HeaderComponent implements OnDestroy, OnInit {
             break;
           case 'not-logged-page':
             this.pageTitle = 'Bookmarks';
+            break;
+          case 'my-skills':
+            this.pageTitle = 'My Skills';
             break;
 
           default:

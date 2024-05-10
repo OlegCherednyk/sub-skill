@@ -1,16 +1,62 @@
 @import 'src/app/shared/style/_fonts.scss';
 @import 'src/app/shared/style/_colors.scss';
 @import 'src/app/shared/style/_mixins.scss';
-
 .forOrder {
   @include flex-column-start;
-
   width: 100%;
+  max-height: auto;
   background-color: $banner-white;
-  overflow: hidden;
   border-radius: 20px;
   padding: 24px;
   gap: 16px;
+}
+.forOrder__order {
+  @include flex-column-start;
+  width: 100%;
+  max-height: 440px;
+  overflow-y: auto;
+  background-color: $banner-white;
+  border-radius: 20px;
+  padding: 24px;
+  gap: 16px;
+  position: relative;
+}
+.forOrder__order-big {
+  @include flex-column-start;
+  width: 100%;
+  height: 501px;
+  max-height: 501px;
+
+  overflow-y: auto;
+  background-color: $banner-white;
+  border-radius: 20px;
+  padding: 24px;
+  gap: 16px;
+  position: relative;
+}
+.forOrder-content__order {
+  padding-right: 30px;
+}
+.forOrder__order,
+.forOrder__order-big {
+  overflow-y: auto;
+  padding-right: 24px;
+}
+
+.forOrder__order::-webkit-scrollbar,
+.forOrder__order-big::-webkit-scrollbar {
+  width: 8px;
+}
+
+.forOrder__order::-webkit-scrollbar-thumb,
+.forOrder__order-big::-webkit-scrollbar-thumb {
+  background-color: $hover_small_green_button_bookmark;
+  border-radius: 100px;
+}
+
+.forOrder__order::-webkit-scrollbar-track,
+.forOrder__order-big::-webkit-scrollbar-track {
+  background: $background_color;
 }
 app-order-single-card:not(:last-child) {
   border-bottom: 1px solid $stroke-color;

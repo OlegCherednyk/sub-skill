@@ -1,0 +1,33 @@
+<div class="step-three">
+  <app-stepper></app-stepper>
+  <div class="step-three__main">
+    <div class="step-three__personal-info">
+      <span class="step-three__title">Delivery & Payment</span>
+      <div class="step-three__columns">
+        <app-your-order [isOrderSm]="false"></app-your-order>
+        <div class="step-three__info-right">
+          <app-personal-info></app-personal-info>
+          <app-delivery></app-delivery>
+
+          <app-payment></app-payment>
+        </div>
+      </div>
+    </div>
+    <div class="step-three__buttons">
+      <app-button
+        [text]="'Back to previous page'"
+        [style]="'light'"
+        [width]="'272px'"
+        [disabled]="false"
+        [padding]="'16px 32px'"
+        (click)="setCurrentStep(2)"></app-button>
+      <app-button
+        [text]="'Order'"
+        [style]="'dark'"
+        [width]="'272px'"
+        [disabled]="false"
+        [padding]="'16px 32px'"
+        (click)="setCurrentStep(4)"></app-button>
+    </div>
+  </div>
+</div>

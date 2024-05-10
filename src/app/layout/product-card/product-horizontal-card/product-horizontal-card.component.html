@@ -40,7 +40,8 @@
             [style]="'dark'"
             [width]="'272px'"
             [disabled]="false"
-            [padding]="'16px 32px'"></app-button>
+            [padding]="'16px 32px'"
+            (click)="toggleBuyNowCard(product.id)"></app-button>
 
           <app-button
             *ngIf="!product.isIntoCart"

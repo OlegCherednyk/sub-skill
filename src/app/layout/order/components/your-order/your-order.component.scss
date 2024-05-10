@@ -1,0 +1,21 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.your-order {
+  &__info {
+    @include flex-column-space;
+    position: relative;
+    width: 560px;
+    height: 100%;
+    background-color: $banner-white;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  &__subtitle {
+    @include font-16-600;
+    color: $root-black;
+    padding: 24px 0 0 24px;
+  }
+}

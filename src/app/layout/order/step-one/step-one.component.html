@@ -1,0 +1,28 @@
+<div class="step-one">
+  <app-stepper></app-stepper>
+  <div class="step-one__main">
+    <div class="step-one__personal-info">
+      <span class="step-one__title">Personal Information</span>
+      <div class="step-one__columns">
+        <app-your-order [isOrderSm]="true"></app-your-order>
+        <div class="step-one__info-right">
+          <app-personal-info></app-personal-info>
+          <app-button
+            [text]="'Confirm'"
+            [style]="'dark'"
+            [width]="'100%'"
+            [disabled]="false"
+            [padding]="'16px 32px'"
+            (click)="setCurrentStep(2)"></app-button>
+          <button
+            type="button"
+            class="step-one__button"
+            [disabled]="false"
+            [routerLink]="['/cart']">
+            Back to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
