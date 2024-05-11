@@ -66,11 +66,9 @@ export class CardTrackComponent implements OnInit {
       );
       this.trackCards$.subscribe(res => {
         this.trackCardsAll = res;
-        console.log(this.trackCardsAll);
       });
     }
   }
-
 
   nextPage(): void {
     if (this.currentPage < this.countOfPages) {

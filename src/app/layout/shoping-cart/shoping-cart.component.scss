@@ -9,6 +9,10 @@
   font-family: $primary_font_family;
   gap: 24px;
 }
+.shoping-cart-content {
+  @include flex-column-start;
+  gap: 80px;
+}
 .shoping-cart {
   @include flex-column-start;
   align-items: flex-start;

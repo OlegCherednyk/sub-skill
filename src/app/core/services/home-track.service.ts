@@ -11,7 +11,6 @@ export class HomeTrackService {
   constructor(private _httpClient: HttpClient) {}
 
   public getTrack(size: number, categories: string): Observable<CatalogCard[]> {
-    console.log('HNNT GET NRACK');
     return this._httpClient
       .get<CatalogCardsData>(`${base_url}microskill/${categories}?size=${size}`)
       .pipe(
