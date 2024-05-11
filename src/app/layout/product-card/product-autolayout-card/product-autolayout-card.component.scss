@@ -73,6 +73,7 @@
   }
   .gray {
     color: $blocked_gray_button;
+    cursor: pointer;
   }
   &__list-item {
     display: flex;

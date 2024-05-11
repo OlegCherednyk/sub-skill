@@ -38,6 +38,15 @@
         font-weight: 500;
         line-height: 152.023%;
       }
+      div.active {
+        border-radius: 6px;
+        transition: 0.5s;
+        background-color: $hover_small_green_button;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 152.023%;
+        color: $normal_green_button;
+      }
     }
   }
 }

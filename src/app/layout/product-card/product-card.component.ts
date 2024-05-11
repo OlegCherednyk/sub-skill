@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductHorizontalCardComponent } from './product-horizontal-card/product-horizontal-card.component';
 import { ProductAboutCardComponent } from './product-about-card/product-about-card.component';
@@ -9,6 +9,8 @@ import { ProductWhatIsInCardComponent } from './product-what-is-in-card/product-
 import { ProductAutolayoutCardComponent } from './product-autolayout-card/product-autolayout-card.component';
 import { GobackComponent } from 'src/app/shared/goback/goback.component';
 import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.service';
+import { PopularCategory } from 'src/app/core/interfaces/popular-category';
+import { PopularCategoriesService } from 'src/app/core/services/popular-categories.service';
 
 @Component({
   selector: 'app-product-card',
@@ -24,14 +26,15 @@ import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.scss'],
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnInit, OnDestroy {
   productId!: string | null;
 
   product$!: Observable<CatalogCard | null>;
   constructor(
     private route: ActivatedRoute,
     private catalogCardHttpService: CatalogCardHttpService,
-    private cardHttpService: CatalogCardHttpService
+    private cardHttpService: CatalogCardHttpService,
+    private pupularCategoriesService: PopularCategoriesService
   ) {}
   ngOnInit(): void {
     this.productId = this.route.snapshot.paramMap.get('id');
@@ -51,6 +54,17 @@ export class ProductCardComponent {
                 } else {
                   product.isSaved = false;
                 }
+                const category: PopularCategory | undefined =
+                  this.pupularCategoriesService.getCategoryById(
+                    product.technologyId
+                  );
+                if (category) {
+                  console.log('category', category.name);
+
+                  this.pupularCategoriesService.setCategoryTitle(category.name);
+                } else {
+                  console.error('Category not found');
+                }
                 return of(product);
               })
             );
@@ -65,11 +79,26 @@ export class ProductCardComponent {
               if (!product) {
                 return null;
               }
+              console.log(product);
+              const category: PopularCategory | undefined =
+                this.pupularCategoriesService.getCategoryById(
+                  product.technologyId
+                );
+              if (category) {
+                console.log('category', category.name);
+
+                this.pupularCategoriesService.setCategoryTitle(category.name);
+              } else {
+                console.error('Category not found');
+              }
               product.isSaved = false;
               return product;
             })
           );
       }
     }
+  }
+  ngOnDestroy(): void {
+    this.pupularCategoriesService.setCategoryTitle('');
   }
 }

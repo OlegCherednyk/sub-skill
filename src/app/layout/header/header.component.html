@@ -4,8 +4,9 @@
       <a
         type="button"
         title="home"
-        class="header__container-homelink">
-        {{ pageTitle }}
+        class="header__container-homelink"
+        *ngIf="pageTitle$ | async as title">
+        {{ title.charAt(0).toUpperCase() + title.slice(1).toLowerCase() }}
       </a>
     </div>
     <app-search></app-search>

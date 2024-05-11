@@ -12,6 +12,7 @@ export interface CatalogCard {
   views: number;
   reviews: [];
   price: number;
+  technologyId: number;
   isSaved?: boolean;
   isIntoCart?: boolean;
 }
