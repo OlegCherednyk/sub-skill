@@ -4,12 +4,12 @@ import { ButtonComponent } from 'src/app/shared/components/button/button.compone
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { ShopingCartHttpService } from 'src/app/core/services/shoping-cart-http.service';
 import { ShopingCartService } from 'src/app/core/services/shoping-cart.service';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-product-autolayout-card',
   standalone: true,
-  imports: [CommonModule, ButtonComponent],
+  imports: [CommonModule, ButtonComponent, RouterModule],
   templateUrl: './product-autolayout-card.component.html',
   styleUrls: ['./product-autolayout-card.component.scss'],
 })

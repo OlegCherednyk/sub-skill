@@ -1,5 +1,5 @@
-@import "../../../shared/style/colors";
-@import "../../../shared/style/fonts";
+@import '../../../shared/style/colors';
+@import '../../../shared/style/fonts';
 
 .horizontal-card {
   border-radius: 20px;
@@ -14,7 +14,7 @@
     width: 306px;
     flex-shrink: 0;
     height: 100%;
-    background: url("../../../../assets/images/test-card-img.jpeg") center/cover no-repeat;
+    // background: url("../../../../assets/images/test-card-img.jpeg") center/cover no-repeat;
 
     img {
       width: 100%;
@@ -111,11 +111,11 @@
     text-transform: capitalize;
 
     &::before {
-      content: "·";
+      content: '·';
     }
 
     &::after {
-      content: "·";
+      content: '·';
     }
   }
 

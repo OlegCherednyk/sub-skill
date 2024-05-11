@@ -1,8 +1,10 @@
 <div class="categories">
   <icon-side-bar [icon]="categoryIcon"></icon-side-bar>
   <ul>
-    <li *ngFor="let category of categories | async">
-      <div [routerLink]="['/catalog-cards', category.id]">
+    <li *ngFor="let category of categories$ | async">
+      <div
+        [routerLink]="['/catalog-cards', category.id]"
+        [ngClass]="{ active: category.name === (activeCategory$ | async) }">
         {{
           category.name.charAt(0).toUpperCase() +
             category.name.slice(1).toLowerCase()
