@@ -29,7 +29,7 @@ export const routes: Routes = [
       ),
   },
   {
-    path: 'catalog-cards/:id',
+    path: 'catalog-cards/:name',
     loadComponent: () =>
       import('./features/catalog/catalog.component').then(
         m => m.CatalogComponent

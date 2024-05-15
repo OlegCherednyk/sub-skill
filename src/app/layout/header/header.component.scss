@@ -2,9 +2,7 @@
 @import 'src/app/shared/style/_colors.scss';
 @import 'src/app/shared/style/_mixins.scss';
 .header {
-  width: calc(100% - 208px);
-  position: fixed;
-  top: 0;
+
   z-index: 3;
   &__container {
     @include flex-row-space;

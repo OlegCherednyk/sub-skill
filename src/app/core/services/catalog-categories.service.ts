@@ -22,6 +22,17 @@ export class CatalogCategoriesService {
     );
   }
 
+  public getProfessionTechnologies(name: string): Observable<CatalogCategory[]> {
+    if(name === 'all') {
+      return this._httpClient.get<CatalogCategory[]>(
+        `${base_url}technology/all`
+      );
+    }
+    return this._httpClient.get<CatalogCategory[]>(
+      `${base_url}technology/profession/${name}`
+    );
+  }
+
   public getCategoryCards(id: string): Observable<CatalogCard[]> {
     {
       if (id === 'all') {

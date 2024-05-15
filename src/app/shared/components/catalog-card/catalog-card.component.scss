@@ -60,7 +60,7 @@
         border-radius: 20px 20px 0px 0px;
         // background: url("../../../../assets/images/test-card-img.jpeg") center/cover no-repeat;
         overflow: hidden;
-
+    }
 
   &__title {
     font-size: 20px;
@@ -141,5 +141,4 @@
   &__icon.active {
     background-image: url('../../../../assets/icons/bookmark-3.svg');
   }
-}
 }

@@ -17,6 +17,12 @@ import { RouterModule } from '@angular/router';
 export class CategoriesSideBarComponent {
 
     private CategoriesService = inject(CatalogCategoriesService);
+    public currentCategory: string = '';
+    
+    public selectCategory(name: string):void {
+        this.currentCategory = name;
+        console.log(this.currentCategory);
+    } 
 
     public categoryIcon: Icon = {
         img: 'url(../../../assets/icons/apps.svg)',
