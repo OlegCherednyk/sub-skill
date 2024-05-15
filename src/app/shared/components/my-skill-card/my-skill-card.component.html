@@ -15,5 +15,12 @@
       </div>
       <div class="card__description">{{ card.description }}</div>
     </div>
+    <app-button
+      [text]="'Delete'"
+      [style]="'light'"
+      [width]="'100%'"
+      [disabled]="false"
+      [padding]="'16px 32px'"
+      (click)="removeFromMySkills(card.id)"></app-button>
   </div>
 </div>

@@ -10,12 +10,28 @@ export class ShopingCartService {
   forOrderingCardsSubject = new BehaviorSubject<CatalogCard[]>([]);
   forOrderingCards$: Observable<CatalogCard[]> =
     this.forOrderingCardsSubject.asObservable();
-
+  afterPaymentCardsSubject = new BehaviorSubject<CatalogCard[]>([]);
+  afterPaymentCards$: Observable<CatalogCard[]> =
+    this.afterPaymentCardsSubject.asObservable();
   constructor(private shopingCartHttpService: ShopingCartHttpService) {}
 
   loadForOrderingCards() {
     this.shopingCartHttpService
       .getAllForOrderingCards()
+      .pipe(
+        catchError(error => {
+          console.error('Error loading data:', error);
+          return throwError(error);
+        })
+      )
+      .subscribe(cards => {
+        this.forOrderingCardsSubject.next(cards);
+      });
+  }
+
+  loadAllCardAfterPayment() {
+    this.shopingCartHttpService
+      .getAllCardAfterPaymentById()
       .pipe(
         catchError(error => {
           console.error('Error loading data:', error);

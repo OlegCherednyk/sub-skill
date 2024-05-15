@@ -36,7 +36,7 @@ export class ShopingCartHttpService {
         ),
         shareReplay(1),
         catchError((err: HttpErrorResponse) =>
-          this.httpErrorService.handleHttpError<any>(err, 'deleteUser')
+          this.httpErrorService.handleHttpError<any>(err, 'error')
         )
       );
   }
@@ -69,7 +69,7 @@ export class ShopingCartHttpService {
         })),
         tap(data => console.log(data)),
         catchError((err: HttpErrorResponse) =>
-          this.httpErrorService.handleHttpError<any>(err, 'deleteUser')
+          this.httpErrorService.handleHttpError<any>(err, 'error')
         )
       );
   }
@@ -85,7 +85,52 @@ export class ShopingCartHttpService {
       })
       .pipe(
         catchError((err: HttpErrorResponse) =>
-          this.httpErrorService.handleHttpError<any>(err, 'deleteUser')
+          this.httpErrorService.handleHttpError<any>(err, 'error')
+        )
+      );
+  }
+  public saveCardAfterPaymentById(
+    microskillId: number
+  ): Observable<ShopingCart> {
+    const authToken = localStorage.getItem('token') as string;
+    const headers = {
+      Authorization: `Bearer ${authToken}`,
+    };
+    if (authToken) {
+      console.log('authToken', authToken);
+    }
+    return this._httpClient
+      .post<ShopingCart>(
+        `${base_url}mySavedMicroSkill/add/${microskillId}`,
+        {},
+        {
+          headers: this.createHeaders(),
+        }
+      )
+      .pipe(
+        catchError((err: HttpErrorResponse) =>
+          this.httpErrorService.handleHttpError<any>(err, 'error')
+        )
+      );
+  }
+  public getAllCardAfterPaymentById(): Observable<CatalogCard[]> {
+    console.log('HTTP getAllCardAfterPaymentById');
+    const authToken = localStorage.getItem('token') as string;
+    const headers = {
+      Authorization: `Bearer ${authToken}`,
+    };
+    return this._httpClient
+      .get<CatalogCard[]>(`${base_url}mySavedMicroSkill/all`, { headers })
+      .pipe(
+        map(cards =>
+          cards.map(card => ({
+            ...card,
+            photo: `data:image/jpeg;base64,${card.photo}`,
+          }))
+        ),
+        shareReplay(1),
+        catchError((err: HttpErrorResponse) =>
+          this.httpErrorService.handleHttpError<any>(err, 'error')
         )
       );
   }

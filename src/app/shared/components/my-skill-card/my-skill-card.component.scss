@@ -5,16 +5,16 @@
 .card {
   border-radius: 20px;
   display: flex;
-  height: 412px;
-  width: 272px;
+  height: 368px;
+  width: 368px;
   flex-direction: column;
-  background-color: #fff;
+  background-color: $banner-white;
   font-family: $primary_font_family;
+  overflow: hidden;
 
   &__img {
-    width: 272px;
-    height: 194px;
-    border-radius: 20px 20px 0px 0px;
+    width: 368px;
+    height: 154px;
     // background: url('../../../../assets/images/test-card-img.jpeg') center/cover
     //   no-repeat;
     overflow: hidden;
@@ -27,30 +27,10 @@
     }
   }
 
-  &__rating {
-    display: flex;
-    justify-content: space-between;
-
-    &__star-rating {
-      width: 50%;
-    }
-
-    &__reviews {
-      display: inline-block;
-      cursor: pointer;
-      font-size: 12px;
-      line-height: 18px;
-      font-weight: 600;
-      color: $gray_text;
-    }
-  }
-
   &__detailed-info {
-    width: 272px;
-    display: flex;
-    flex-direction: column;
-    height: 218px;
-    justify-content: space-between;
+    width: 368px;
+    @include flex-column-space;
+    height: 100%;
     padding: 16px;
   }
 
@@ -91,18 +71,6 @@
     -webkit-line-clamp: 2;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  &__buy {
-    display: flex;
-    // margin-top: auto;
-    align-items: center;
-    justify-content: space-between;
-
-    i {
-      font-size: 20px;
-      color: $normal_green_button;
-    }
   }
 
   &__time {
