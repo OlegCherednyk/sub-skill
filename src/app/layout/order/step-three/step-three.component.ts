@@ -7,6 +7,9 @@ import { PersonalInfoComponent } from '../components/personal-info/personal-info
 import { DeliveryComponent } from '../components/delivery/delivery.component';
 import { PaymentComponent } from '../components/payment/payment.component';
 import { StepService } from 'src/app/core/services/step.service';
+import { CatalogCard } from 'src/app/core/interfaces/catalog';
+import { ShopingCartService } from 'src/app/core/services/shoping-cart.service';
+import { ShopingCartHttpService } from 'src/app/core/services/shoping-cart-http.service';
 
 @Component({
   selector: 'app-step-three',
@@ -24,8 +27,19 @@ import { StepService } from 'src/app/core/services/step.service';
   styleUrls: ['./step-three.component.scss'],
 })
 export class StepThreeComponent {
-  constructor(private stepService: StepService) {}
+  cardsForPayment: CatalogCard[] = [];
+  constructor(
+    private stepService: StepService,
+    private shopingCartService: ShopingCartService,
+    private shopingCartHttpService: ShopingCartHttpService
+  ) {}
+  successOrder(step: number) {
+    this.shopingCartHttpService.saveCardAfterPayment().subscribe(() => {
+      this.shopingCartService.loadForOrderingCards();
+    });
 
+    this.setCurrentStep(step);
+  }
   setCurrentStep(step: number) {
     this.stepService.setCurrentStep(step);
   }

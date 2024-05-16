@@ -4,16 +4,30 @@
   </div>
   <div class="card__detailed-info">
     <div class="card__title-description">
-      <div class="card__title">
-        <span>{{ card.name }}</span>
-      </div>
-      <div class="card__buy">
-        <div class="card__time">
-          <i class="uil uil-clock-three"></i>
-          <div class="card__time-value">{{ card.learningTime }}</div>
+      <div class="card__description-block">
+        <div class="card__title">
+          <span>{{ card.name }}</span>
         </div>
+        <div class="card__buy">
+          <div class="card__time">
+            <i class="uil uil-clock-three"></i>
+            <div class="card__time-value">{{ card.learningTime }}</div>
+          </div>
+        </div>
+        <div class="card__description">{{ card.description }}</div>
       </div>
-      <div class="card__description">{{ card.description }}</div>
+      <div class="card__rating">
+        <star-rating
+          class="card__rating__star-rating"
+          [rating]="card.rating"></star-rating>
+      </div>
     </div>
+    <!-- <app-button
+      [text]="'Delete'"
+      [style]="'light'"
+      [width]="'100%'"
+      [disabled]="false"
+      [padding]="'16px 32px'"
+      (click)="removeFromMySkills(card.id)"></app-button> -->
   </div>
 </div>

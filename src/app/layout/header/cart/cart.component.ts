@@ -32,8 +32,6 @@ export class CartComponent {
     });
   }
 
-
-
   toCartPage() {
     this.router.navigate(['/cart']);
   }
