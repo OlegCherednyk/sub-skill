@@ -34,14 +34,10 @@ export class StepThreeComponent {
     private shopingCartHttpService: ShopingCartHttpService
   ) {}
   successOrder(step: number) {
-    this.shopingCartService.forOrderingCards$.subscribe(res => {
-      this.cardsForPayment = res;
-      this.cardsForPayment.forEach(card => {
-        this.shopingCartHttpService
-          .saveCardAfterPaymentById(card.id)
-          .subscribe();
-      });
+    this.shopingCartHttpService.saveCardAfterPayment().subscribe(() => {
+      this.shopingCartService.loadForOrderingCards();
     });
+
     this.setCurrentStep(step);
   }
   setCurrentStep(step: number) {

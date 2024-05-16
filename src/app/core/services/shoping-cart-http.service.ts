@@ -89,8 +89,7 @@ export class ShopingCartHttpService {
         )
       );
   }
-  public saveCardAfterPaymentById(
-    microskillId: number
+  public saveCardAfterPayment(
   ): Observable<ShopingCart> {
     const authToken = localStorage.getItem('token') as string;
     const headers = {
@@ -101,7 +100,7 @@ export class ShopingCartHttpService {
     }
     return this._httpClient
       .post<ShopingCart>(
-        `${base_url}mySavedMicroSkill/add/${microskillId}`,
+        `${base_url}payment/ordered`,
         {},
         {
           headers: this.createHeaders(),
@@ -113,7 +112,7 @@ export class ShopingCartHttpService {
         )
       );
   }
-  public getAllCardAfterPaymentById(): Observable<CatalogCard[]> {
+  public getAllCardAfterPayment(): Observable<CatalogCard[]> {
     console.log('HTTP getAllCardAfterPaymentById');
     const authToken = localStorage.getItem('token') as string;
     const headers = {

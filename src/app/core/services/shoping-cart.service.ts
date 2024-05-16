@@ -29,17 +29,17 @@ export class ShopingCartService {
       });
   }
 
-  loadAllCardAfterPayment() {
-    this.shopingCartHttpService
-      .getAllCardAfterPaymentById()
-      .pipe(
-        catchError(error => {
-          console.error('Error loading data:', error);
-          return throwError(error);
-        })
-      )
-      .subscribe(cards => {
-        this.forOrderingCardsSubject.next(cards);
-      });
-  }
+  // loadAllCardAfterPayment() {
+  //   this.shopingCartHttpService
+  //     .getAllCardAfterPayment()
+  //     .pipe(
+  //       catchError(error => {
+  //         console.error('Error loading data:', error);
+  //         return throwError(error);
+  //       })
+  //     )
+  //     .subscribe(cards => {
+  //       this.forOrderingCardsSubject.next(cards);
+  //     });
+  // }
 }

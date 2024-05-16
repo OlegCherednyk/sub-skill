@@ -6,9 +6,15 @@
         [card]="card"
         (cardDeleted)="onCardDeleted(card.id)"></app-my-skill-card>
     </div>
- 
   </div>
 </ng-container>
 <ng-template #noCards>
   <p class="my-skills__no-cards">You don’t have any Skills yet ;(</p>
+  <app-button
+    [text]="'Go to catalog'"
+    [style]="'dark'"
+    [width]="'560'"
+    [disabled]="false"
+    [padding]="'16px 32px'"
+    [routerLink]="['/']"></app-button>
 </ng-template>
