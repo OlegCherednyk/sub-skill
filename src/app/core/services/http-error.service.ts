@@ -31,7 +31,7 @@ export class HttpErrorService {
     console.log('error', error.status);
     console.log('error type', typeof error.status);
     console.log('type', type);
-    if (error.status === 401 && type === 'login') {
+    if (error.status === 404 && type === 'login') {
       console.log('this.setErrorStatus(true)');
       this.setErrorStatus(true);
       return EMPTY;
