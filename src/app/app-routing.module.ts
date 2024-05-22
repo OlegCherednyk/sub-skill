@@ -54,11 +54,7 @@ export const routes: Routes = [
         m => m.SignupPageComponent
       ),
   },
-  // {
-  //   path: 'my-skills',
-  //   loadComponent: () =>
-  //     import('./').then(m => m.), // тут буде щлях до компоненту my-skills
-  // },
+
   {
     path: 'bookmarks',
     loadComponent: () =>
@@ -96,5 +92,19 @@ export const routes: Routes = [
     data: {
       source: 'my-skills',
     },
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import(
+        './shared/components/not-found-page/not-found-page.component'
+      ).then(m => m.NotFoundPageComponent),
+  },
+  {
+    path: 'server-error',
+    loadComponent: () =>
+      import(
+        './shared/components/server-error-page/server-error-page.component'
+      ).then(m => m.ServerErrorPageComponent),
   },
 ];

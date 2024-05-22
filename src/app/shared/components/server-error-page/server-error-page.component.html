@@ -1,0 +1,29 @@
+<div class="not-found-wrapper">
+  <div class="not-found-page">
+    <div>
+      <p class="not-found-page__title">Sorry, something went</p>
+      <p class="not-found-page__title">technically wrong:(</p>
+      <p class="not-found-page__addition">
+        HTTP Version Not Supported. We work on it.
+      </p>
+    </div>
+    <app-button
+      [text]="'Back to Home'"
+      [style]="'dark'"
+      [width]="'272px'"
+      [disabled]="false"
+      [padding]="'16px 32px'"
+      [routerLink]="['/']"></app-button>
+  </div>
+  <img
+    src="./../../../../assets/images/robot.png"
+    alt="robot"
+    class="not-found-page__robot" />
+  <div class="digits">
+    <span class="digits__one">500</span>
+    <span class="digits__two">500</span>
+    <span class="digits__three">500</span>
+    <span class="digits__four">500</span>
+    <span class="digits__five">500</span>
+  </div>
+</div>
