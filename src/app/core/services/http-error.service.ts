@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   BehaviorSubject,
   EMPTY,
@@ -16,7 +17,7 @@ export class HttpErrorService {
   private isErrorSubject = new BehaviorSubject<boolean>(false);
   isError$ = this.isErrorSubject.asObservable();
 
-  constructor() {}
+  constructor(private router: Router) {}
   setErrorStatus(status: boolean) {
     this.isErrorSubject.next(status);
   }
@@ -52,7 +53,32 @@ export class HttpErrorService {
       //     modalType: 'Big',
       //   };
       //   this.modalService.openModal(modalInfo);
+    } else if (error.status === 500) {
+      console.log('500 500 500 500 500');
+      this.router.navigate(['/server-error']);
+      return EMPTY;
+      //   console.log('if');
+
+      //   const modalInfo = {
+      //     type: 'notification',
+      //     isLogo: false,
+      //     isBookmark: false,
+      //     isProfile: false,
+      //     title: 'ERROR',
+      //     message:
+      //       'Invalid credentials. Please check your login and password and try again.',
+      //     additionalMessage: '',
+      //     isVisible: true,
+      //     isSuccess: false,
+      //     showButtons: false,
+      //     modalType: 'Big',
+      //   };
+      //   this.modalService.openModal(modalInfo);
     }
+    return throwError(
+      () => new Error('Something bad happened; please try again.')
+    );
+
     return throwError(
       () => new Error('Something bad happened; please try again.')
     );
