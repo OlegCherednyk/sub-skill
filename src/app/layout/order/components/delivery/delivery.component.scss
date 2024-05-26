@@ -1,0 +1,77 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.delivery {
+  &__info {
+    @include flex-column-start;
+    background-color: $banner-white;
+    overflow: hidden;
+    border-radius: 20px;
+    padding: 24px;
+    gap: 24px;
+  }
+  &__subtitle {
+    @include font-16-600;
+    color: $root-black;
+  }
+  &__link {
+    color: $normal_green_button;
+    text-decoration: underline;
+  }
+  &__email {
+    font-weight: 500;
+  }
+  &__radio-block {
+    @include flex-row-start;
+    gap: 24px;
+  }
+}
+.radio-container {
+  @include flex-row-start;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  padding-left: 40px;
+  cursor: pointer;
+  @include font-14-500;
+  color: $root-black;
+  width: 50%;
+}
+
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 24px;
+  width: 24px;
+  border: 1px solid $blocked_gray_button;
+  border-radius: 50%;
+  background-color: $banner-white;
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+}
+
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.radio-container .checkmark:after {
+  left: 0px;
+  top: 0px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 3px solid $banner-white;
+  background: $hover_green_button;
+}

@@ -15,6 +15,7 @@ import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.
 import { Router } from '@angular/router';
 import { ShopingCartHttpService } from 'src/app/core/services/shoping-cart-http.service';
 import { ShopingCartService } from 'src/app/core/services/shoping-cart.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-horizontal-card',
@@ -29,6 +30,7 @@ export class ProductHorizontalCardComponent {
   @Output() cardDeleted: EventEmitter<number> = new EventEmitter<number>();
   @Output() cardDeletedFromCart: EventEmitter<number> =
     new EventEmitter<number>();
+  forOrderingCards$!: Observable<CatalogCard[]>;
 
   constructor(
     private cardHttpService: CatalogCardHttpService,
@@ -36,7 +38,12 @@ export class ProductHorizontalCardComponent {
     private router: Router,
     private shopingCartService: ShopingCartService
   ) {}
-
+  ngOnInit() {
+    this.forOrderingCards$ = this.shopingCartService.forOrderingCards$;
+    this.forOrderingCards$.subscribe(cards => {
+      this.product.isIntoCart = cards.some(card => card.id === this.product.id);
+    });
+  }
   public toggleSaves(event: Event, id: number): void {
     if (!localStorage.getItem('token')) {
       this.router.navigate(['/not-logged-page']);
@@ -65,6 +72,22 @@ export class ProductHorizontalCardComponent {
       //     });
       //   this.cardDeletedFromCart.emit(id);
       // } else {
+      this.product.isIntoCart = true;
+
+      this.shopingCartHttpService
+        .saveCardForOrderingById(this.product.id)
+        .subscribe(response => {
+          this.shopingCartService.forOrderingCardsSubject.next(
+            response.listOfMicroSkills
+          );
+        });
+    }
+  }
+  public toggleBuyNowCard(id: number) {
+    if (!localStorage.getItem('token')) {
+      this.router.navigate(['not-logged-page/cart']);
+    } else {
+      this.router.navigate(['/cart']);
       this.product.isIntoCart = !this.product.isIntoCart;
 
       this.shopingCartHttpService

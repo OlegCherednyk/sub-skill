@@ -1,0 +1,30 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.not-found-page {
+  @include flex-column-center;
+  align-items: start;
+  background-color: inherit;
+  font-family: $primary_font_family;
+  background-color: $background_search;
+  background-image: url('./../../../../assets/images/404.png');
+  background-size: 545px 616px;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-position-y: 115px;
+  background-position-x: 95%;
+
+  gap: 96px;
+  width: 100%;
+  height: 105vh;
+  overflow: auto;
+  margin: auto 0 auto 0;
+  padding: 115px 40px 40px 40px;
+  &__title {
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 72.8px;
+    color: $normal_green_button;
+  }
+}

@@ -1,0 +1,62 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.step-three {
+  @include flex-column-start;
+  gap: 56px;
+  padding: 40px;
+  height: 100%;
+  padding-top: 145px;
+  font-family: $primary_font_family;
+  &__main {
+    @include flex-column-start;
+    gap: 24px;
+    height: 100%;
+  }
+  &__columns {
+    @include flex-row-start;
+    align-items: flex-start;
+    gap: 16px;
+    height: 100%;
+  }
+  &__personal-info {
+    @include flex-column-start;
+    gap: 24px;
+    height: 100%;
+  }
+  &__info-right {
+    @include flex-column-start;
+    gap: 24px;
+    width: 50%;
+    // background-color: $banner-white;
+    // overflow: hidden;
+    // border-radius: 20px;
+  }
+  &__title {
+    @include font-24-700;
+    color: $root-black;
+  }
+  &__buttons {
+    @include flex-row-space;
+  }
+  &__button {
+    width: 100%;
+    color: $common_text_color;
+    @include font-16-700;
+    background-color: inherit;
+    border: none;
+    outline: none;
+  }
+  &__button:hover {
+    color: $hover_green_button;
+  }
+  &__button:focus {
+    color: $hover_green_button;
+  }
+}
+app-your-order {
+  height: 100%;
+  flex-grow: 1;
+  flex: 1;
+}

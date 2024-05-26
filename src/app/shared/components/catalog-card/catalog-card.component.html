@@ -2,23 +2,33 @@
   <div class="card__img">
     <img [src]="card.photo" alt="" />
   </div>
-  <div class="card__detailed-info">
+  <div class="card__info">
     <div class="card__rating">
       <star-rating
         class="card__rating__star-rating"
         [rating]="card.rating"></star-rating>
-      <a class="card__rating__reviews"> All Reviews</a>
+        <div class="card__rating__box">
+          <span class="card__rating__value">{{ card.rating }}</span>
+          <span class="card__rating__reviews">({{ card.views }})</span>
+        </div>
     </div>
     <div class="card__title-description">
       <div class="card__title">
         <span>{{ card.name }}</span>
       </div>
+      <div class="card__detailed-info">
+        <i class="uil uil-clock card__detailed-info__text"></i>
+        <span class="card__detailed-info__text">{{ card.learningTime }}</span>
+        <span class="card__detailed-info__dot">·</span>
+        <span class="card__detailed-info__text">{{ card.level }}</span>
+        <span class="card__detailed-info__dot">·</span>
+        <span class="card__detailed-info__text">{{ card.lessonsCount }} lessons</span>
+      </div>
       <div class="card__description">{{ card.description }}</div>
     </div>
     <div class="card__buy">
-      <div class="card__time">
-        <i class="uil uil-clock-three"></i>
-        <div class="card__time-value">{{ card.learningTime }}</div>
+      <div class="card__price">
+        <div class="card__price__value">{{ card.price }}$</div>
       </div>
       <div
         class="card__icon"

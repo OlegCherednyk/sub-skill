@@ -13,6 +13,7 @@ import { delay, Subscription } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { EventService } from 'src/app/core/services/event.service';
 import { Router, RouterModule } from '@angular/router';
+import { ShopingCartService } from 'src/app/core/services/shoping-cart.service';
 
 @Component({
   selector: 'app-modal',
@@ -33,7 +34,8 @@ export class ModalComponent implements OnInit, OnDestroy {
     private modalService: ModalService,
     private authService: AuthService,
     private eventService: EventService,
-    private router: Router
+    private router: Router,
+    private shopingCartService: ShopingCartService
   ) {}
 
   ngOnInit(): void {
@@ -74,19 +76,19 @@ export class ModalComponent implements OnInit, OnDestroy {
   deleteProfile(): void {
     this.authService.deleteAccount();
     this.eventService.emitModalEvent();
+    this.shopingCartService.loadForOrderingCards();
+    this.authService.setUsername(null);
   }
   ngOnDestroy(): void {
     this.modalSubscription.unsubscribe();
   }
 
   navigateToProfile(): void {
-    // Здесь можно выполнить какие-то действия перед переходом, если нужно
     this.router.navigate(['/profile']);
-    this.closeModal(); // Вызываем функцию закрытия модального окна
+    this.closeModal();
   }
   navigateToSkills(): void {
-    // Здесь можно выполнить какие-то действия перед переходом, если нужно
     this.router.navigate(['/my-skills']);
-    this.closeModal(); // Вызываем функцию закрытия модального окна
+    this.closeModal();
   }
 }

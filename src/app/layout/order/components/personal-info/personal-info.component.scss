@@ -1,0 +1,42 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.personal-info {
+  &__title {
+    @include font-24-700;
+    color: $root-black;
+  }
+  &__columns {
+    @include flex-row-start;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  &__info-right {
+    @include flex-column-start;
+    gap: 16px;
+    padding: 24px;
+    background-color: $banner-white;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  &__subtitle {
+    @include font-16-600;
+    color: $root-black;
+  }
+  &__info-item {
+    @include flex-column-start;
+    border-bottom: 1px solid $stroke-color;
+  }
+  &__label {
+    @include font-14-500;
+    color: $gray_text;
+  }
+  &__name {
+    @include font-16-400;
+    color: $common_text_color;
+    padding: 20px 0 12px 24px;
+  }
+}

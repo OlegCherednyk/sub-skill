@@ -1,0 +1,108 @@
+@import 'src/app/shared/style/_fonts.scss';
+@import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
+
+.not-found-wrapper {
+  display: flex;
+  //   position: relative;
+}
+.not-found-page {
+  @include flex-column-center;
+  //   position: absolute;
+  //   top: 0;
+  //   z-index: 0;
+  align-items: start;
+  background-color: inherit;
+  font-family: $primary_font_family;
+  background-color: $background_search;
+  //   background-image: url('./../../../../assets/images/robot.png');
+  //   background-size: 235px 343px;
+  //   background-repeat: no-repeat;
+  //   background-position: right;
+  //   background-position-y: 60%;
+  //   background-position-x: 80%;
+
+  gap: 96px;
+  width: 100%;
+  height: 115vh;
+  overflow: auto;
+  margin: auto 0 auto 0;
+  padding: 115px 40px 40px 40px;
+  &__title {
+    font-size: 56px;
+    font-weight: 500;
+    line-height: 72.8px;
+    color: $normal_green_button;
+  }
+  &__robot {
+    width: 235px;
+    height: 343px;
+    display: block;
+    position: absolute;
+    top: 250px;
+    left: 70%;
+    z-index: 2;
+  }
+  &__addition {
+    @include font-20-500;
+    color: $gray_text;
+  }
+}
+.digits {
+  display: flex;
+  //   z-index: 0;
+  //   position: absolute;
+  //   top: 350px;
+  //   left: 500px;
+  &__one {
+    position: absolute;
+    top: 40px;
+    left: 300px;
+
+    font-size: 200px;
+    font-weight: 900;
+    line-height: 260px;
+    color: $normal_green_button;
+    opacity: 0.05;
+  }
+  &__two {
+    position: absolute;
+    top: 20px;
+    left: 700px;
+    font-size: 400px;
+    font-weight: 900;
+    line-height: 520px;
+    color: $normal_green_button;
+    opacity: 0.12;
+  }
+  &__three {
+    position: absolute;
+    top: 400px;
+    left: 600px;
+    font-size: 400px;
+    font-weight: 900;
+    line-height: 520px;
+    color: $normal_green_button;
+    opacity: 0.05;
+  }
+  &__four {
+    position: absolute;
+    top: 580px;
+    left: 200px;
+    font-size: 200px;
+    font-weight: 900;
+    line-height: 260px;
+    color: $normal_green_button;
+    opacity: 0.05;
+  }
+  &__five {
+    position: absolute;
+    top: 390px;
+    left: 1300px;
+    font-size: 200px;
+    font-weight: 900;
+    line-height: 260px;
+    color: $normal_green_button;
+    opacity: 0.05;
+  }
+}

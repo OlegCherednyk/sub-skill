@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OrderSingleCardComponent } from 'src/app/shared/components/order-single-card/order-single-card.component';
 import { Observable } from 'rxjs';
@@ -13,12 +13,15 @@ import { ShopingCartService } from 'src/app/core/services/shoping-cart.service';
   styleUrls: ['./order-info.component.scss'],
 })
 export class OrderInfoComponent implements OnInit {
+  @Input() isCart!: boolean;
+  @Input() isOrderSmall!: boolean;
   forOrderingCards$!: Observable<CatalogCard[]>;
   forOrderingCardsAll: CatalogCard[] = [];
   constructor(private shopingCartService: ShopingCartService) {}
   ngOnInit() {
     this.loadForOrderingCards();
   }
+
   private loadForOrderingCards() {
     this.forOrderingCards$ = this.shopingCartService.forOrderingCards$;
     this.forOrderingCards$.subscribe(res => {

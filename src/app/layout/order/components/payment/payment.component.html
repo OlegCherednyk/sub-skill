@@ -1,0 +1,67 @@
+<div class="payment__info">
+  <span class="payment__subtitle">Payment</span>
+  <div class="payment__radio-block-right">
+    <label class="radio-container"
+      >Pay by Card
+      <input type="radio" name="payway" value="card" [(ngModel)]="isByCard" />
+      <span class="checkmark"></span>
+    </label>
+    <div class="payment__card-input-block" *ngIf="isByCard">
+      <div class="payment__card-input">
+        <label for="inputCard" class="payment__card-input-label"
+          >Card number
+        </label>
+
+        <input
+          [type]="'text'"
+          id="inputCard"
+          class="payment__card-input-input"
+          placeholder="XXXX XXXX XXXX XXXX" />
+      </div>
+      <div class="payment__card-input-block-row">
+        <div class="payment__card-input">
+          <label for="inputData" class="payment__card-input-label"
+            >Expiry date
+          </label>
+          <input
+            [type]="'text'"
+            id="inputData"
+            class="payment__card-input-input"
+            placeholder="MM/YYYY" />
+        </div>
+        <div class="payment__card-input">
+          <label for="inputCode" class="payment__card-input-label"
+            >CVV-code*
+          </label>
+          <input
+            [type]="'text'"
+            id="inputCode"
+            class="payment__card-input-input" />
+
+          <span class="payment__card-input-descr">
+            This is your security code
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <label class="radio-container"
+    >Apple pay
+    <input
+      type="radio"
+      name="payway"
+      value="apple"
+      checked
+      (change)="resetIsByCard()" />
+    <span class="checkmark"></span>
+  </label>
+  <label class="radio-container"
+    >Google pay
+    <input
+      type="radio"
+      name="payway"
+      value="google"
+      (change)="resetIsByCard()" />
+    <span class="checkmark"></span>
+  </label>
+</div>

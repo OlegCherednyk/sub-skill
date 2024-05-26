@@ -13,10 +13,12 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from 'src/app/auth/signup/signup.component';
 import { ModalComponent } from 'src/app/shared/modal/modal.component';
 import { ModalService } from 'src/app/core/services/modal.service';
-import { filter, Subscription } from 'rxjs';
+import { BehaviorSubject, filter, Subscription } from 'rxjs';
 import { ChangePasswordComponent } from 'src/app/auth/change-password/change-password.component';
 import { EventService } from 'src/app/core/services/event.service';
 import { ForgotPasswordComponent } from 'src/app/auth/forgot-password/forgot-password.component';
+import { PopularCategoriesComponent } from 'src/app/shared/components/popular-categories/popular-categories.component';
+import { PopularCategoriesService } from 'src/app/core/services/popular-categories.service';
 
 @Component({
   selector: 'app-header',
@@ -42,11 +44,13 @@ export class HeaderComponent implements OnDestroy, OnInit {
   forgotPasswordFormOpen: boolean = false;
   private forgotPasswordSubscription: Subscription;
   private changePasswordSubscription: Subscription;
+  pageTitle$: BehaviorSubject<string> = new BehaviorSubject<string>('');
   constructor(
     public modalService: ModalService,
     private router: Router,
     private eventService: EventService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private popularCategoriesService: PopularCategoriesService
   ) {
     this.changePasswordSubscription =
       this.eventService.changePasswordEvent$.subscribe(() => {
@@ -61,35 +65,57 @@ export class HeaderComponent implements OnDestroy, OnInit {
   }
 
   ngOnInit(): void {
+    this.popularCategoriesService.categoryTitle$.subscribe(title => {
+      this.pageTitle$.next(title);
+    });
     this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe(() => {
         const path = this.router.url.split('/').pop();
         switch (path) {
           case '':
-            this.pageTitle = 'Home';
+            // this.pageTitle = 'Home';
+            this.pageTitle$.next('Home');
             break;
           case 'cart':
-            this.pageTitle = 'Cart';
+            // this.pageTitle = 'Shopping Cart';
+            this.pageTitle$.next('Shopping Cart');
+            break;
+          case 'order':
+            this.pageTitle$.next('Ordering');
+            // this.pageTitle = 'Ordering';
             break;
           case 'profile':
-            this.pageTitle = 'Profile settings';
+            this.pageTitle$.next('Profile settings');
+
+            // this.pageTitle = 'Profile settings';
             break;
           case 'signup-page':
-            this.pageTitle = 'Profile settings';
+            this.pageTitle$.next('Profile settings');
+
+            // this.pageTitle = 'Profile settings';
             break;
           case 'bookmarks':
-            this.pageTitle = 'Bookmarks';
+            this.pageTitle$.next('Bookmarks');
+
+            // this.pageTitle = 'Bookmarks';
             break;
           case 'not-logged-page':
-            this.pageTitle = 'Bookmarks';
+            this.pageTitle$.next('Bookmarks');
+
+            // this.pageTitle = 'Bookmarks';
+            break;
+          case 'my-skills':
+            this.pageTitle$.next('My Skills');
+
+            // this.pageTitle = 'My Skills';
             break;
           case 'catalog-cards':
             this.pageTitle = 'Catalog';
             break
 
           default:
-            this.pageTitle = 'Unknown';
+            this.pageTitle$.next('Home');
         }
         this.cdr.detectChanges();
       });

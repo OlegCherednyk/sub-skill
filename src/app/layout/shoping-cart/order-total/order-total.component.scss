@@ -15,6 +15,11 @@
   &__info-item {
     @include flex-row-space;
   }
+  &__info-item-price {
+    @include flex-row-space;
+    padding: 12px 0;
+    border-top: 1px solid $stroke-color;
+  }
   &__text {
     @include font-16-400;
     color: $common_text_color;
@@ -25,7 +30,7 @@
   }
   &__text-price {
     @include font-20-700;
-    color: $normal_green_button;
+    color: $common_text_color;
   }
   &__data-price {
     @include font-20-700;
@@ -34,4 +39,7 @@
 }
 .forOrder:not(:last-child) {
   border-bottom: 1px solid $stroke-color;
+}
+.order {
+  width: 100%;
 }

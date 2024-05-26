@@ -37,6 +37,9 @@ export class IconSideBarComponent implements OnInit {
     if (icon.title === 'Bookmarks') {
       this.router.navigate(['/bookmarks']);
     }
+    if (icon.title === 'My Skills') {
+      this.router.navigate(['/my-skills']);
+    }
   }
 
   ngOnInit() {
@@ -59,6 +62,9 @@ export class IconSideBarComponent implements OnInit {
         }
         if (path == 'bookmarks') {
           this.isIconActive = this.icon.title === 'Bookmarks';
+        }
+        if (path == 'my-skills') {
+          this.isIconActive = this.icon.title === 'My Skills';
         }
         this.cdr.detectChanges();
       });

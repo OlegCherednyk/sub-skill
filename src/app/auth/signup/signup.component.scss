@@ -77,6 +77,14 @@
     background-color: $background_color;
     border-radius: 10px;
   }
+  &__switcher-page {
+    @include flex-row-center;
+    width: 498px;
+    height: 40px;
+    padding: 2px;
+    background-color: $banner-white;
+    border-radius: 10px;
+  }
   &__switcher-signup {
     background-color: inherit;
     color: $common_text_color;

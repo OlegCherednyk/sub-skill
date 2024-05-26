@@ -1,0 +1,30 @@
+<div class="step-two">
+  <app-stepper></app-stepper>
+  <div class="step-two__main">
+    <span class="step-two__title">Delivery & Payment</span>
+    <div class="step-two__columns">
+      <div class="step-two__column">
+        <app-delivery></app-delivery>
+      </div>
+      <div class="step-two__column">
+        <app-payment></app-payment>
+      </div>
+    </div>
+    <div class="step-two__buttons">
+      <app-button
+        [text]="'Back to previous page'"
+        [style]="'light'"
+        [width]="'272px'"
+        [disabled]="false"
+        [padding]="'16px 32px'"
+        (click)="setCurrentStep(1)"></app-button>
+      <app-button
+        [text]="'Confirm'"
+        [style]="'dark'"
+        [width]="'272px'"
+        [disabled]="false"
+        [padding]="'16px 32px'"
+        (click)="setCurrentStep(3)"></app-button>
+    </div>
+  </div>
+</div>

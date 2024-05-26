@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from 'src/app/shared/components/button/button.component';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
@@ -13,8 +13,9 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./order-total.component.scss'],
 })
 export class OrderTotalComponent {
-  forOrderingItems: CatalogCard[] = [];
+  @Input() isCart!: boolean;
 
+  forOrderingItems: CatalogCard[] = [];
   constructor(private shopingCartService: ShopingCartService) {}
 
   ngOnInit() {
@@ -39,9 +40,5 @@ export class OrderTotalComponent {
       0
     );
     return Number(totalPrice.toFixed(2));
-  }
-  orderNow() {}
-  backToShop()
-  {
   }
 }

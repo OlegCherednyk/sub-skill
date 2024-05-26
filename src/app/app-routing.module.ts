@@ -54,11 +54,7 @@ export const routes: Routes = [
         m => m.SignupPageComponent
       ),
   },
-  // {
-  //   path: 'my-skills',
-  //   loadComponent: () =>
-  //     import('./').then(m => m.), // тут буде щлях до компоненту my-skills
-  // },
+
   {
     path: 'bookmarks',
     loadComponent: () =>
@@ -76,5 +72,39 @@ export const routes: Routes = [
       import(
         './shared/components/not-logged-page/not-logged-page.component'
       ).then(m => m.NotLoggedPageComponent),
+  },
+  {
+    path: 'order',
+    loadComponent: () =>
+      import('./layout/order/order.component').then(m => m.OrderComponent),
+    canActivate: [notloggedGuard],
+    data: {
+      source: 'order',
+    },
+  },
+  {
+    path: 'my-skills',
+    loadComponent: () =>
+      import('./layout/my-skills/my-skills.component').then(
+        m => m.MySkillsComponent
+      ),
+    canActivate: [notloggedGuard],
+    data: {
+      source: 'my-skills',
+    },
+  },
+  {
+    path: '**',
+    loadComponent: () =>
+      import(
+        './shared/components/not-found-page/not-found-page.component'
+      ).then(m => m.NotFoundPageComponent),
+  },
+  {
+    path: 'server-error',
+    loadComponent: () =>
+      import(
+        './shared/components/server-error-page/server-error-page.component'
+      ).then(m => m.ServerErrorPageComponent),
   },
 ];

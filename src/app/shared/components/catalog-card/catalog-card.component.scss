@@ -12,8 +12,9 @@
 
   &__img {
     width: 272px;
-    height: 194px;
+    height: 180px;
     border-radius: 20px 20px 0px 0px;
+    cursor: pointer;
     // background: url('../../../../assets/images/test-card-img.jpeg') center/cover
     //   no-repeat;
     overflow: hidden;
@@ -28,29 +29,40 @@
 
   &__rating {
     display: flex;
-    justify-content: space-between;
+    gap: 8px;
 
     &__star-rating {
       width: 50%;
     }
 
-    &__reviews {
+    &__box {
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+    }
+
+
+    &__reviews,
+    &__value {
       display: inline-block;
       cursor: pointer;
+
       font-size: 12px;
-      line-height: 18px;
-      font-weight: 600;
+      font-weight: 500;
+      line-height: 16px;
+      text-align: center;
+
       color: $gray_text;
     }
   }
 
-  &__detailed-info {
+  &__info {
     width: 272px;
     display: flex;
     flex-direction: column;
     height: 218px;
     justify-content: space-between;
-    padding: 16px;
+    padding: 16px 16px 0px 16px;
   }
 
 
@@ -62,11 +74,37 @@
         overflow: hidden;
     }
 
+  &__detailed-info {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    color: $gray_text;
+
+    &__text {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      text-align: left;
+      
+    }
+
+    &__dot {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 24.32px;
+      text-align: left;
+    }
+
+    i {
+      font-size: 16px;
+    }
+  }
+
   &__title {
-    font-size: 20px;
-    font-weight: 700;
-    line-height: 30px;
-    letter-spacing: 0em;
+
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24.32px;
     text-align: left;
     color: $common_text_color;
 
@@ -107,17 +145,16 @@
     }
   }
 
-  &__time {
+  &__price {
     display: flex;
     gap: 8px;
 
-    &-value {
-      font-size: 16px;
+    &__value {
+      font-size: 20px;
       font-weight: 700;
-      line-height: 24px;
-      letter-spacing: 0em;
+      line-height: 30.4px;
       text-align: left;
-      color: $gray_text;
+      color: $common_text_color;
     }
   }
 
@@ -135,9 +172,11 @@
     background-repeat: no-repeat;
     background-position: center;
   }
+
   &__icon:hover {
     background-image: url('../../../../assets/icons/bookmark-2.svg');
   }
+
   &__icon.active {
     background-image: url('../../../../assets/icons/bookmark-3.svg');
   }

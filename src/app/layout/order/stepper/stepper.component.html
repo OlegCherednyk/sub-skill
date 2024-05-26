@@ -1,0 +1,43 @@
+<div class="stepper">
+  <div class="stepper__item">
+    <span
+      class="stepper__item-step stepper__one"
+      [ngClass]="{
+        active: currentStep === 1,
+        done: currentStep === 2 || currentStep === 3
+      }">
+      <span *ngIf="currentStep === 1"> 01</span>
+      <span *ngIf="currentStep === 2 || currentStep === 3"><i class="uil uil-check"></i></span>
+    </span>
+
+    <span
+      class="stepper__flexline-one"
+      [ngClass]="
+        currentStep === 2 || currentStep === 3 ? 'active' : null
+      "></span>
+    <span
+      class="stepper__item-step stepper__two"
+      [ngClass]="{
+        active: currentStep === 2,
+        done: currentStep === 3
+      }">
+      <span *ngIf="currentStep === 2 || currentStep === 1"> 02</span>
+      <span *ngIf="currentStep === 3"><i class="uil uil-check"></i></span
+    ></span>
+
+    <span
+      class="stepper__flexline-two"
+      [ngClass]="currentStep === 3 ? 'active' : null"></span>
+
+    <span
+      class="stepper__item-step stepper__three"
+      [ngClass]="currentStep === 3 ? 'active' : null"
+      >03</span
+    >
+  </div>
+  <!-- <div class="stepper__label">
+    <span class="stepper__item-text">Personal Information</span>
+    <span class="stepper__item-text">Delivery & Payment</span>
+    <span class="stepper__item-text">Order</span>
+  </div> -->
+</div>

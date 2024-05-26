@@ -1,4 +1,4 @@
-<div class="total">
+<div [ngClass]="isCart ? 'total' : 'total order'">
   <div class="total__info-item">
     <span class="total__text">Order Information:</span>
     <span class="total__data">{{ forOrderingItems.length }} items</span>
@@ -7,18 +7,20 @@
     <span class="total__text">Total duration:</span>
     <span class="total__data">{{ calculateTotalTime() }} weeks</span>
   </div>
-  <div class="total__info-item">
+  <div class="total__info-item-price">
     <span class="total__text-price">Total price:</span>
     <span class="total__data-price">{{ calculateTotalPrice() }} $</span>
   </div>
   <app-button
+    *ngIf="isCart"
     [text]="'Order now'"
     [style]="'dark'"
     [width]="'320px'"
     [disabled]="forOrderingItems.length === 0"
     [padding]="'16px 32px'"
-    (click)="orderNow()"></app-button>
+    [routerLink]="['/order']"></app-button>
   <app-button
+    *ngIf="isCart"
     [text]="'Back to shop'"
     [style]="'light'"
     [width]="'320px'"
