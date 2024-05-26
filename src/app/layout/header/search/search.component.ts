@@ -5,6 +5,7 @@ import { SearchService } from 'src/app/core/services/search.service';
 import { CatalogCard } from 'src/app/core/interfaces/catalog';
 import { of } from 'rxjs';
 import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.service';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -16,18 +17,23 @@ import { CatalogCardHttpService } from 'src/app/core/services/catalog-card-http.
 })
 export class SearchComponent implements OnInit {
   keyword = '';
-
+  filteredItems: CatalogCard[] = [];
   constructor(
     private searchService: SearchService,
-    private catalogCardHttpService: CatalogCardHttpService
+    private catalogCardHttpService: CatalogCardHttpService,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.catalogCardHttpService
       .getCatalogCardsData()
       .subscribe((cards: CatalogCard[]) => {
+        console.log('SearchComponent', cards);
         this.searchService.setCatalogCards(cards);
       });
+    this.searchService.keyword$.subscribe(keyword => {
+      this.filteredItems = this.searchService.filterCourses(keyword);
+    });
   }
   onInputChange(keyword: string) {
     if (this.debounceTimer) {
@@ -38,6 +44,11 @@ export class SearchComponent implements OnInit {
       this.searchService.setKeyword(keyword);
     }, 100);
   }
+  onSelectItem(item: CatalogCard) {
+    this.router.navigate(['/product-card', item.id]);
 
+    this.keyword = '';
+    this.filteredItems = [];
+  }
   private debounceTimer: any = null;
 }
