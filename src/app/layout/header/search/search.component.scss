@@ -1,6 +1,10 @@
+@import 'src/app/shared/style/_fonts.scss';
 @import 'src/app/shared/style/_colors.scss';
+@import 'src/app/shared/style/_mixins.scss';
 
 .search-field {
+  position: relative;
+  font-family: $primary_font_family;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -22,7 +26,6 @@
   &__input::placeholder {
     color: $blocked_gray_button;
     font-size: 16px;
-    font-family: 'Montserrat', sans-serif;
   }
 
   &__button {
@@ -59,4 +62,59 @@
 }
 .search-field__button:hover .search-field__button-icon {
   fill: $common_text_color;
+}
+
+.dropdown {
+  @include flex-column-start;
+  position: absolute;
+  top: 56px;
+  left: 0;
+  right: 0;
+  background: $banner-white;
+  border: 0.5px solid $normal_green_button;
+  border-radius: 10px;
+  width: 560px;
+  padding: 8px 0px;
+
+  max-height: 224px;
+  overflow-y: auto;
+  z-index: 3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  margin: 0;
+}
+
+.dropdown li {
+  @include flex-row-start;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: $common_text_color;
+  @include font-12-500;
+  .uil-arrow-right {
+    display: none;
+    margin-left: auto;
+  }
+}
+
+.dropdown li:hover {
+  background: $hover_small_green_button;
+  .uil-arrow-right {
+    display: block;
+    margin-left: auto;
+    color: $normal_green_button;
+    font-size: 24px;
+  }
+}
+.dropdown::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown::-webkit-scrollbar-thumb {
+  background-color: $hover_small_green_button_bookmark;
+  border-radius: 100px;
+}
+
+.dropdown::-webkit-scrollbar-track {
+  background: $background_color;
 }

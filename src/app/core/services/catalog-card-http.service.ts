@@ -35,10 +35,11 @@ export class CatalogCardHttpService {
   }
 
   private fetchCatalogCards(): Observable<CatalogCard[]> {
+    console.log('fetchCatalogCards');
     return this._httpClient
-      .get<CatalogCardsData>(`${base_url}microskill/all-paging`)
+      .get<CatalogCard[]>(`${base_url}microskill/all`)
       .pipe(
-        map(data => data.content),
+        // map(data => data.content),
         // add base64 prefix to images
         map(cards =>
           cards.map(card => ({
