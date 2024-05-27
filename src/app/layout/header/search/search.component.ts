@@ -33,13 +33,18 @@ export class SearchComponent implements OnInit {
       });
     this.searchService.keyword$.subscribe(keyword => {
       this.filteredItems = this.searchService.filterCourses(keyword);
+      if (!keyword.trim()) {
+        this.filteredItems = [];
+      }
     });
   }
   onInputChange(keyword: string) {
     if (this.debounceTimer) {
       clearTimeout(this.debounceTimer);
     }
-
+    if (keyword === '') {
+      this.filteredItems = [];
+    }
     this.debounceTimer = setTimeout(() => {
       this.searchService.setKeyword(keyword);
     }, 100);
