@@ -19,11 +19,14 @@
         fill="none" />
     </svg>
   </button>
-
-  <ul *ngIf="filteredItems.length" class="dropdown">
-    <li *ngFor="let item of filteredItems"  (click)="onSelectItem(item)">
-      <span> <img [src]="item.photo" alt="img" width="50" height="36" /></span
-      >{{ item.name }} <i class="uil uil-arrow-right"></i>
-    </li>
-  </ul>
+  <div class="dropdown" *ngIf="filteredItems.length">
+    <ul class="dropdown__content">
+      <li *ngFor="let item of filteredItems" (click)="onSelectItem(item)">
+        <span>
+          <img [src]="item.photo" alt="img" width="50" height="36" />
+        </span>
+        {{ item.name }} <i class="uil uil-arrow-right"></i>
+      </li>
+    </ul>
+  </div>
 </div>
