@@ -15,20 +15,18 @@ import { PopularCategoriesService } from 'src/app/core/services/popular-categori
   templateUrl: './categories-side-bar.component.html',
   styleUrls: ['./categories-side-bar.component.scss'],
 })
-export class CategoriesSideBarComponent implements OnInit {
+export class CategoriesSideBarComponent {
   activeCategory$: BehaviorSubject<string> = new BehaviorSubject<string>('');
 
 
-    private CategoriesService = inject(CatalogCategoriesService);
-    public currentCategory: string = '';
-    
-    public selectCategory(name: string):void {
-        this.currentCategory = name;
-        console.log(this.currentCategory);
-    } 
-
-
   private CategoriesService = inject(CatalogCategoriesService);
+  public currentCategory: string = '';
+
+  public selectCategory(name: string): void {
+    this.currentCategory = name;
+    console.log(this.currentCategory);
+  }
+
 
   public categoryIcon: Icon = {
     img: 'url(../../../assets/icons/apps.svg)',

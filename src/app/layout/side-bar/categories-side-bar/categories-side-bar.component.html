@@ -11,7 +11,7 @@
                 'background-color': '#EEFCEC' 
                 } : null">All categories</div>
         </li>
-        <li *ngFor="let category of categories | async">
+        <li *ngFor="let category of categories$ | async">
             <div [routerLink]="['/catalog-cards', category.name]" 
             (click)="selectCategory(category.name)"
             [ngStyle]="(category.name === currentCategory) ? { 
