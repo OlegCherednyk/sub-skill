@@ -4,9 +4,16 @@
         <span class="catalog__goback-text">Go Back</span>
     </button>
 
-    <div class="catalog__cards">
-        <ng-container *ngIf="catalogCards$ | async as cards">
-            <catalog-card *ngFor="let card of cards" [card]="card"></catalog-card>
-        </ng-container>
+    <div class="catalog__conteiner">
+        <div class="catalog__technologies">
+            <ng-container *ngIf="ProfessionTechnologies$ | async as technologies">
+                <div class="catalog__technologies__technology" *ngFor="let technology of technologies ">{{ technology.name }}</div>
+            </ng-container>
+        </div>
+        <div class="catalog__cards">
+            <ng-container *ngIf="catalogCards$ | async as cards">
+                <catalog-card *ngFor="let card of cards" [card]="card"></catalog-card>
+            </ng-container>
+        </div>
     </div>
 </div>

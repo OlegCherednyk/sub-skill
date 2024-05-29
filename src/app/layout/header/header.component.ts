@@ -110,6 +110,9 @@ export class HeaderComponent implements OnDestroy, OnInit {
 
             // this.pageTitle = 'My Skills';
             break;
+          case 'catalog-cards':
+            this.pageTitle = 'Catalog';
+            break
 
           default:
             this.pageTitle$.next('Home');

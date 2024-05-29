@@ -1,15 +1,27 @@
 <div class="categories">
-  <icon-side-bar [icon]="categoryIcon"></icon-side-bar>
-  <ul>
-    <li *ngFor="let category of categories$ | async">
-      <div
-        [routerLink]="['/catalog-cards', category.id]"
-        [ngClass]="{ active: category.name === (activeCategory$ | async) }">
-        {{
-          category.name.charAt(0).toUpperCase() +
-            category.name.slice(1).toLowerCase()
-        }}
-      </div>
-    </li>
-  </ul>
+
+    <icon-side-bar [icon]="categoryIcon"></icon-side-bar>
+    <ul>
+        <li>
+            <div [routerLink]="['/catalog-cards', 'all']"
+            (click)="selectCategory('All')"
+            [ngStyle]="('All' === currentCategory) ? { 
+                'color': '#53CA3E', 
+                'font-weight': '500px',
+                'background-color': '#EEFCEC' 
+                } : null">All categories</div>
+        </li>
+        <li *ngFor="let category of categories$ | async">
+            <div [routerLink]="['/catalog-cards', category.name]" 
+            (click)="selectCategory(category.name)"
+            [ngStyle]="(category.name === currentCategory) ? { 
+                'color': '#53CA3E', 
+                'font-weight': '500px',
+                'background-color': '#EEFCEC' 
+                } : null">
+            {{ category.name }}
+            </div>
+        </li>
+
+    </ul>
 </div>
