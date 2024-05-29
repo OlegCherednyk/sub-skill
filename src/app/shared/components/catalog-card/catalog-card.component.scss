@@ -41,7 +41,6 @@
       gap: 4px;
     }
 
-
     &__reviews,
     &__value {
       display: inline-block;
@@ -62,17 +61,16 @@
     flex-direction: column;
     height: 218px;
     justify-content: space-between;
-    padding: 16px 16px 0px 16px;
+    padding: 16px 16px 16px 16px;
   }
 
-
-    &__img {
-        width: 272px;
-        height: 194px;
-        border-radius: 20px 20px 0px 0px;
-        // background: url("../../../../assets/images/test-card-img.jpeg") center/cover no-repeat;
-        overflow: hidden;
-    }
+  &__img {
+    width: 272px;
+    height: 194px;
+    border-radius: 20px 20px 0px 0px;
+    // background: url("../../../../assets/images/test-card-img.jpeg") center/cover no-repeat;
+    overflow: hidden;
+  }
 
   &__detailed-info {
     display: flex;
@@ -85,7 +83,6 @@
       font-weight: 500;
       line-height: 16px;
       text-align: left;
-      
     }
 
     &__dot {
@@ -101,7 +98,6 @@
   }
 
   &__title {
-
     font-size: 16px;
     font-weight: 600;
     line-height: 24.32px;
