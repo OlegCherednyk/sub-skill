@@ -7,10 +7,10 @@
       <star-rating
         class="card__rating__star-rating"
         [rating]="card.rating"></star-rating>
-        <div class="card__rating__box">
-          <span class="card__rating__value">{{ card.rating }}</span>
-          <span class="card__rating__reviews">({{ card.views }})</span>
-        </div>
+      <div class="card__rating__box">
+        <span class="card__rating__value">{{ card.rating }}</span>
+        <span class="card__rating__reviews">({{ card.views }})</span>
+      </div>
     </div>
     <div class="card__title-description">
       <div class="card__title">
@@ -20,9 +20,13 @@
         <i class="uil uil-clock card__detailed-info__text"></i>
         <span class="card__detailed-info__text">{{ card.learningTime }}</span>
         <span class="card__detailed-info__dot">·</span>
-        <span class="card__detailed-info__text">{{ card.level }}</span>
+        <span class="card__detailed-info__text">{{
+          card.level.charAt(0).toUpperCase() + card.level.slice(1).toLowerCase()
+        }}</span>
         <span class="card__detailed-info__dot">·</span>
-        <span class="card__detailed-info__text">{{ card.lessonsCount }} lessons</span>
+        <span class="card__detailed-info__text"
+          >{{ card.lessonsCount }} lessons</span
+        >
       </div>
       <div class="card__description">{{ card.description }}</div>
     </div>

@@ -27,7 +27,7 @@ import { CatalogCategory } from 'src/app/core/interfaces/categories-side-bar';
 })
 export class CatalogComponent implements OnInit {
   constructor(
-    private cardService: CatalogCategoriesService,
+    private catalogCategoriesService: CatalogCategoriesService,
     private route: ActivatedRoute,
     private cdr: ChangeDetectorRef
   ) {}
@@ -66,47 +66,105 @@ export class CatalogComponent implements OnInit {
   //     );
   //   });
   // }
+  // public ngOnInit(): void {
+  //   this.route.paramMap.subscribe(params => {
+  //     const nameProf = params.get('name');
+  //     console.log(nameProf);
+
+  //     let categoryRequests: Observable<CatalogCard[]>[] = [];
+
+  //     if (nameProf && nameProf.toLowerCase() !== 'all') {
+  //       this.ProfessionTechnologies$ =
+  //         this.catalogCategoriesService.getProfessionTechnologies(nameProf);
+  //     } else {
+  //       if (nameProf && nameProf.toLowerCase() === 'all') {
+  //         this.ProfessionTechnologies$ =
+  //           this.catalogCategoriesService.getProfessionTechnologies(nameProf);
+  //       }
+  //     }
+
+  //     this.ProfessionTechnologies$.pipe(
+  //       switchMap(categories => {
+  //         if (nameProf && nameProf.toLowerCase() !== 'all') {
+  //           for (let i = 0; i < categories.length; i++) {
+  //             console.log('categories[i].id', categories[i].id);
+  //             categoryRequests.push(
+  //               this.catalogCategoriesService
+  //                 .getCategoryCards(categories[i].id.toString())
+  //                 .subscribe()
+  //             );
+  //             console.log('categoryRequests', categoryRequests);
+  //           }
+  //         } else {
+  //           categoryRequests.push(
+  //             this.catalogCategoriesService.getCategoryCards('all')
+  //           );
+  //         }
+  //         console.log('forkJoin(categoryRequests)', forkJoin(categoryRequests));
+  //         return forkJoin(categoryRequests);
+  //       })
+  //     ).subscribe(
+  //       categoryCards => {
+  //         this.catalogCards$ = of(categoryCards.flat());
+  //         this.catalogCards$.subscribe(cards => {
+  //           console.log('this.catalogCards$', cards);
+  //         });
+  //         this.cdr.detectChanges();
+  //       },
+  //       err => console.error(err)
+  //     );
+  //   });
+  // }
+
+  // goBack(): void {
+  //   window.history.back();
+  // }
   public ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
       const nameProf = params.get('name');
-      console.log(nameProf);
+      console.log('Selected Profession:', nameProf);
 
       let categoryRequests: Observable<CatalogCard[]>[] = [];
 
       if (nameProf && nameProf.toLowerCase() !== 'all') {
         this.ProfessionTechnologies$ =
-          this.cardService.getProfessionTechnologies(nameProf);
+          this.catalogCategoriesService.getProfessionTechnologies(nameProf);
       } else {
-        if (nameProf && nameProf.toLowerCase() === 'all') {
-          this.ProfessionTechnologies$ =
-            this.cardService.getProfessionTechnologies(nameProf);
-        }
+        this.ProfessionTechnologies$ =
+          this.catalogCategoriesService.getProfessionTechnologies('all');
       }
 
       this.ProfessionTechnologies$.pipe(
         switchMap(categories => {
-          if (nameProf && nameProf.toLowerCase() !== 'all') {
-            for (let i = 0; i < categories.length; i++) {
-              categoryRequests.push(
-                this.cardService.getCategoryCards(categories[i].id.toString())
-              );
-            }
-          } else {
-            categoryRequests.push(this.cardService.getCategoryCards('all'));
-          }
-
+          categoryRequests = [];
+          categories.forEach(category => {
+            console.log('Fetching cards for category id:', category.id);
+            categoryRequests.push(
+              this.catalogCategoriesService
+                .getCategoryCards(category.id.toString())
+                .pipe(
+                  tap(cards => {
+                    console.log(
+                      `Fetched ${cards.length} cards for category id: ${category.id}`
+                    );
+                  })
+                )
+            );
+          });
           return forkJoin(categoryRequests);
         })
       ).subscribe(
         categoryCards => {
           this.catalogCards$ = of(categoryCards.flat());
+          this.catalogCards$.subscribe(cards => {
+            console.log('Loaded catalog cards:', cards);
+          });
           this.cdr.detectChanges();
         },
-        err => console.error(err)
+        err => console.error('Error loading catalog cards:', err)
       );
     });
   }
-
 
   goBack(): void {
     window.history.back();

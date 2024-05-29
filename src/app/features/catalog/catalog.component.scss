@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   gap: 20px;
+  padding-top: 125px;
 
   &__goback-block {
     display: flex;
@@ -73,10 +74,6 @@
       &:hover {
         background-color: $hover_small_green_button;
       }
-
     }
   }
-
-
-
 }
